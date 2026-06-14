@@ -49,4 +49,4 @@ app.*.map.json
 *.gr.dart
 *.config.dart
 *.generated.dart
-*.pubspec.lock
+pubspec.lock
