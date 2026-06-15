@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 abstract class FontConstants {
-  static final interFamily = "Inter";
-  static final imfEllEnglish = "IMFellEnglish";
+  static const String interFamily = "Inter";
+  static const String imfEllEnglish = "IMFellEnglish";
 }
 
 abstract class FontWeightManager {
@@ -14,20 +13,20 @@ abstract class FontWeightManager {
   static const FontWeight bold = FontWeight.w700;
 }
 
-class FontSize {
+abstract class FontSize {
+  static const double s10 = 10;
+  static const double s12 = 12;
   static const double s12c = 12;
-  static double get s10 => 10.sp;
-  static double get s12 => 12.sp;
-  static double get s14 => 14.sp;
-  static double get s16 => 16.sp;
-  static double get s17 => 17.sp;
-  static double get s18 => 18.sp;
-  static double get s20 => 20.sp;
-  static double get s22 => 22.sp;
-  static double get s24 => 24.sp;
-  static double get s25 => 25.sp;
-  static double get s30 => 30.sp;
-  static double get s35 => 35.sp;
-  static double get s40 => 40.sp;
-  static double get s48 => 48.sp;
+  static const double s14 = 14;
+  static const double s16 = 16;
+  static const double s17 = 17;
+  static const double s18 = 18;
+  static const double s20 = 20;
+  static const double s22 = 22;
+  static const double s24 = 24;
+  static const double s25 = 25;
+  static const double s30 = 30;
+  static const double s35 = 35;
+  static const double s40 = 40;
+  static const double s48 = 48;
 }
