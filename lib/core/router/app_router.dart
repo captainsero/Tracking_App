@@ -6,6 +6,7 @@ import '../../features/auth/forget_password/presentation/view/reset_password_vie
 import '../../features/auth/forget_password/presentation/view/verification_code_view.dart';
 import '../../features/auth/login/presentation/view/login_view.dart';
 import '../../features/auth/sign_up/presentation/view/sign_up_view.dart';
+import '../../features/auth/sign_up/presentation/view/success_apply_view.dart';
 import '../../features/home/presentation/view/home_view.dart';
 import '../../features/orders/presentaion/view/orders_view.dart';
 import '../../features/profile/presentaion/view/profile_view.dart';
@@ -13,7 +14,7 @@ import '../../features/splash/presentaion/view/splash_view.dart';
 
 abstract class AppRouter {
   static final GoRouter goRouter = GoRouter(
-    initialLocation: RoutePath.login,
+    initialLocation: RoutePath.successApply,
     routes: [
       GoRoute(
         path: RoutePath.splash,
@@ -49,6 +50,10 @@ abstract class AppRouter {
       GoRoute(
         path: RoutePath.onboarding,
         builder: (context, state) => OnboardingView(),
+      ),
+      GoRoute(
+        path: RoutePath.successApply,
+        builder: (context, state) => SuccessApplyView(),
       ),
     ],
   );
