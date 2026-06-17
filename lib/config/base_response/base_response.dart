@@ -1,4 +1,4 @@
-import 'package:tracking_app/config/base_response/error_base_response_extention.dart';
+import 'package:tracking_app/core/errors/app_error.dart';
 
 sealed class BaseResponse<T> {
   const BaseResponse();
@@ -15,5 +15,5 @@ class ErrorBaseResponse<T> extends BaseResponse<T> {
 
   const ErrorBaseResponse({this.error, this.errorMessage});
 
-  String getErrorMessage() => handleErrorMessage(error);
+  AppError get appError => AppError.from(error);
 }

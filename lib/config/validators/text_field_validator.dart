@@ -1,71 +1,75 @@
+// lib/core/validators/text_field_validator.dart
 
 import 'package:tracking_app/core/constants/validators_constants.dart';
-import 'package:tracking_app/generated/l10n.dart';
+import 'package:tracking_app/core/errors/validation_error.dart';
 
 abstract class AppTextFieldValidator {
   // ✅ Email validation
-  static String? validateEmail(String? value) {
+  static ValidationError? validateEmail(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return S.current.emailIsRequired;
+      return ValidationError.emailRequired;
     }
 
     final email = value.trim();
-
     final emailRegex = RegExp(ValidatorsConstants.regExpValidateEmail);
 
     if (!emailRegex.hasMatch(email)) {
-      return S.current.enterValidEmail;
+      return ValidationError.invalidEmail;
     }
 
     return null;
   }
 
-  // ✅ Password validation (matches backend regex)
-  static String? validatePassword(String? value) {
+  // ✅ Password validation
+  static ValidationError? validatePassword(String? value) {
     final passRegex = RegExp(ValidatorsConstants.regExpValidatePassword);
     if (value == null || !passRegex.hasMatch(value)) {
-      return S.current.enterValidPassword;
+      return ValidationError.invalidPassword;
     }
     return null;
   }
 
-  // ✅ Confirm Password (equality check only)
-  static String? validateConfirmPassword(String? value, String password) {
+  // ✅ Confirm Password
+  static ValidationError? validateConfirmPassword(
+    String? value,
+    String password,
+  ) {
     if (value == null || value.isEmpty) {
-      return S.current.confirmPassword;
+      return ValidationError.confirmPasswordRequired;
     }
     if (value != password) {
-      return S.current.paswordNotMatched;
+      return ValidationError.passwordsDoNotMatch;
     }
     return null;
   }
 
-  // ✅ OTP validation (6 digits)
-  static String? validateOtpCode(String? value) {
+  // ✅ OTP validation
+  static ValidationError? validateOtpCode(String? value) {
     if (value == null || value.isEmpty) {
-      return S.current.codeIsRequired;
+      return ValidationError.otpRequired;
     }
     if (value.length != 6) {
-      return S.current.invalidCode;
+      return ValidationError.invalidOtp;
     }
     return null;
   }
 
-  // ✅ Egyptian phone (01[0125]xxxxxxxx)
-  static String? validatePhone(String? value) {
+  // ✅ Egyptian phone
+  static ValidationError? validatePhone(String? value) {
     final phoneRegex = RegExp(ValidatorsConstants.regExpValidatePhone);
     if (value == null || !phoneRegex.hasMatch(value)) {
-      return S.current.enterValidEgyptianPhoneNumber;
+      return ValidationError.invalidEgyptianPhone;
     }
     return null;
   }
 
-  static String? validateName(String? value) {
+  // ✅ Name validation
+  static ValidationError? validateName(String? value) {
     if (value == null || value.length < 3) {
-      return S.current.mustBeAtLeast3Characters;
+      return ValidationError.nameTooShort;
     }
     if (!RegExp(ValidatorsConstants.regExpValidateName).hasMatch(value)) {
-      return S.current.onlyLettersAllowed;
+      return ValidationError.nameOnlyLetters;
     }
     return null;
   }

@@ -4,15 +4,9 @@ class BaseState<T> extends Equatable {
   final bool? isLoading;
   final T? data;
   final String? errorMessage;
-  const BaseState({this.isLoading, this.data, this.errorMessage});
+  const BaseState({this.isLoading = false, this.data, this.errorMessage});
 
-  BaseState<T> copyWith({bool? isLoading, String? errorMessage, T? data}) {
-    return BaseState<T>(
-      isLoading: isLoading ?? this.isLoading,
-      errorMessage: errorMessage ?? this.errorMessage,
-      data: data ?? this.data,
-    );
-  }
+  // !Removed Copy With, We Depend on Constractor
 
   @override
   List<Object?> get props => [isLoading, data, errorMessage];
