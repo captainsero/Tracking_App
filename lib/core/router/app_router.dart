@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tracking_app/core/router/route_path.dart';
+import 'package:tracking_app/features/error/error_screen.dart';
 import 'package:tracking_app/features/onboarding/presentation/view/onboarding_view.dart';
 import '../../features/auth/forget_password/presentation/view/forget_password_view.dart';
 import '../../features/auth/forget_password/presentation/view/reset_password_view.dart';
@@ -51,5 +53,10 @@ abstract class AppRouter {
         builder: (context, state) => OnboardingView(),
       ),
     ],
+    errorBuilder: (BuildContext context, GoRouterState state) {
+      return ErrorScreen(
+        errorMessage: state.error?.toString() ?? 'Page not found',
+      );
+    },
   );
 }
