@@ -1,4 +1,5 @@
 import 'package:tracking_app/generated/l10n.dart';
+
 import 'validation_error.dart';
 
 extension ValidationErrorLocalization on ValidationError {
