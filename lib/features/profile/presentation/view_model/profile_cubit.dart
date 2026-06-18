@@ -1,3 +1,4 @@
+import 'package:injectable/injectable.dart';
 import 'package:tracking_app/config/base_state/base_state.dart';
 import 'package:tracking_app/config/handler/response_to_state_mapper.dart';
 import 'package:tracking_app/features/profile/domain/use_cases/logout_use_case.dart';
@@ -5,9 +6,10 @@ import 'package:tracking_app/features/profile/presentation/view_model/profile_ev
 import 'package:tracking_app/features/profile/presentation/view_model/profile_state.dart';
 import 'package:bloc/bloc.dart';
 
+@injectable
 class ProfileCubit extends Cubit<ProfileState> {
   final LogoutUseCase logoutUseCase;
-  ProfileCubit(super.initialState, {required this.logoutUseCase});
+  ProfileCubit({required this.logoutUseCase}) : super(ProfileState());
 
   void onEvent(ProfileEvent event) {
     switch (event) {
