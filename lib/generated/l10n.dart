@@ -259,6 +259,356 @@ class S {
       args: [],
     );
   }
+
+  /// `Apply`
+  String get apply {
+    return Intl.message(
+      'Apply',
+      name: 'apply',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome!!`
+  String get welcome {
+    return Intl.message(
+      'Welcome!!',
+      name: 'welcome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You want to be a delivery man?\nJoin our team`
+  String get applySubtitle {
+    return Intl.message(
+      'You want to be a delivery man?\nJoin our team',
+      name: 'applySubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Application submitted successfully!`
+  String get applySuccess {
+    return Intl.message(
+      'Application submitted successfully!',
+      name: 'applySuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Country`
+  String get country {
+    return Intl.message(
+      'Country',
+      name: 'country',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select country`
+  String get selectCountry {
+    return Intl.message(
+      'Select country',
+      name: 'selectCountry',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First legal name`
+  String get firstLegalName {
+    return Intl.message(
+      'First legal name',
+      name: 'firstLegalName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter first legal name`
+  String get enterFirstLegalName {
+    return Intl.message(
+      'Enter first legal name',
+      name: 'enterFirstLegalName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Second legal name`
+  String get secondLegalName {
+    return Intl.message(
+      'Second legal name',
+      name: 'secondLegalName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter second legal name`
+  String get enterSecondLegalName {
+    return Intl.message(
+      'Enter second legal name',
+      name: 'enterSecondLegalName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vehicle type`
+  String get vehicleType {
+    return Intl.message(
+      'Vehicle type',
+      name: 'vehicleType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vehicle number`
+  String get vehicleNumber {
+    return Intl.message(
+      'Vehicle number',
+      name: 'vehicleNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter vehicle number`
+  String get enterVehicleNumber {
+    return Intl.message(
+      'Enter vehicle number',
+      name: 'enterVehicleNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vehicle number is required`
+  String get vehicleNumberRequired {
+    return Intl.message(
+      'Vehicle number is required',
+      name: 'vehicleNumberRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vehicle license`
+  String get vehicleLicense {
+    return Intl.message(
+      'Vehicle license',
+      name: 'vehicleLicense',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload license photo`
+  String get uploadLicensePhoto {
+    return Intl.message(
+      'Upload license photo',
+      name: 'uploadLicensePhoto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get email {
+    return Intl.message(
+      'Email',
+      name: 'email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your email`
+  String get enterEmail {
+    return Intl.message(
+      'Enter your email',
+      name: 'enterEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number`
+  String get phoneNumber {
+    return Intl.message(
+      'Phone number',
+      name: 'phoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter phone number`
+  String get enterPhoneNumber {
+    return Intl.message(
+      'Enter phone number',
+      name: 'enterPhoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ID number`
+  String get idNumber {
+    return Intl.message(
+      'ID number',
+      name: 'idNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter national ID number`
+  String get enterIdNumber {
+    return Intl.message(
+      'Enter national ID number',
+      name: 'enterIdNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ID number is required`
+  String get idNumberRequired {
+    return Intl.message(
+      'ID number is required',
+      name: 'idNumberRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter a valid 14-digit ID number`
+  String get invalidIdNumber {
+    return Intl.message(
+      'Enter a valid 14-digit ID number',
+      name: 'invalidIdNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ID image`
+  String get idImage {
+    return Intl.message(
+      'ID image',
+      name: 'idImage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload ID image`
+  String get uploadIdImage {
+    return Intl.message(
+      'Upload ID image',
+      name: 'uploadIdImage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get password {
+    return Intl.message(
+      'Password',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter password`
+  String get enterPassword {
+    return Intl.message(
+      'Enter password',
+      name: 'enterPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm password`
+  String get enterConfirmPassword {
+    return Intl.message(
+      'Confirm password',
+      name: 'enterConfirmPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Gender`
+  String get gender {
+    return Intl.message(
+      'Gender',
+      name: 'gender',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Female`
+  String get female {
+    return Intl.message(
+      'Female',
+      name: 'female',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Male`
+  String get male {
+    return Intl.message(
+      'Male',
+      name: 'male',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This field is required`
+  String get fieldRequired {
+    return Intl.message(
+      'This field is required',
+      name: 'fieldRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue`
+  String get continueText {
+    return Intl.message(
+      'Continue',
+      name: 'continueText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `enterA`
+  String get enterA {
+    return Intl.message(
+      'enterA',
+      name: 'enterA',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

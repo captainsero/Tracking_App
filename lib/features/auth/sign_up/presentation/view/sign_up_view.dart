@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/config/di/di.dart';
 import 'package:tracking_app/core/constants/color_manager.dart';
-import 'package:tracking_app/core/utils/image_picker_service.dart';
 import 'package:tracking_app/generated/l10n.dart';
-
 import 'package:tracking_app/features/auth/sign_up/domain/entities/sign_up_entity.dart';
 import 'package:tracking_app/features/auth/sign_up/presentation/view_model/sign_up_cubit.dart';
+import 'package:tracking_app/core/utills/image_picker_service.dart';
 import 'sign_up_body.dart';
 import 'package:tracking_app/features/auth/sign_up/presentation/widgets/sign_up_phone_field.dart';
 

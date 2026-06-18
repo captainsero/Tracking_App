@@ -15,7 +15,7 @@ import '../../features/splash/presentaion/view/splash_view.dart';
 
 abstract class AppRouter {
   static final GoRouter goRouter = GoRouter(
-    initialLocation: RoutePath.login,
+    initialLocation: RoutePath.signup,
     routes: [
       GoRoute(
         path: RoutePath.splash,
