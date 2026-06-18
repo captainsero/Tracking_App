@@ -187,4 +187,20 @@ ThemeData darkTheme = ThemeData(
     linearTrackColor: AppColors.grey,
     borderRadius: BorderRadius.circular(RadiusSize.r8),
   ),
+
+  dialogTheme: DialogThemeData(
+    backgroundColor: AppColors.white,
+    elevation: 0,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    titleTextStyle: getSemiBoldStyle(
+      color: AppColors.black,
+      fontSize: FontSize.s18,
+      fontFamily: FontConstants.interFamily,
+    ),
+    contentTextStyle: getRegularStyle(
+      color: AppColors.black,
+      fontSize: FontSize.s16,
+      fontFamily: FontConstants.interFamily,
+    ),
+  ),
 );
