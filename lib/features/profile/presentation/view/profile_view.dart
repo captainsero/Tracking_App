@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -19,7 +18,9 @@ class _ProfileViewState extends State<ProfileView> {
 
     return Scaffold(
       appBar: AppBar(title: const Text("Profile")),
-      body: Center(child: Text("Profile")),
+      body: Center(
+        child: ElevatedButton(onPressed: () {}, child: Text("Logout")),
+      ),
       bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: NavHelper.getCurrentIndex(location),
         onTap: (index) => NavHelper.onItemTapped(context, index),
