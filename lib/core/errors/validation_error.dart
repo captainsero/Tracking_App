@@ -9,4 +9,6 @@ enum ValidationError {
   invalidEgyptianPhone,
   nameTooShort,
   nameOnlyLetters,
+  idNumberRequired,
+  enterIdNumber,
 }
