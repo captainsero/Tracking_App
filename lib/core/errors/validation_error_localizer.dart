@@ -16,6 +16,8 @@ extension ValidationErrorLocalization on ValidationError {
         l10n.enterValidEgyptianPhoneNumber,
       ValidationError.nameTooShort => l10n.mustBeAtLeast3Characters,
       ValidationError.nameOnlyLetters => l10n.onlyLettersAllowed,
+      ValidationError.idNumberRequired => l10n.idNumberRequired,
+      ValidationError.enterIdNumber => l10n.invalidIdNumber,
     };
   }
 }
