@@ -47,6 +47,7 @@ dependencies:
   injectable: ^3.0.0
   intl: ^0.20.2
   json_annotation: ^4.9.0
+  lottie: ^3.3.3
   path_provider: ^2.1.5
   pinput: ^5.0.0
   pretty_dio_logger: ^1.4.0
@@ -82,8 +83,8 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+     - assets/animations/tick_green.json
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
