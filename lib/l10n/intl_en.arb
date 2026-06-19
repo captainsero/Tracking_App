@@ -56,4 +56,7 @@
     "continueText": "Continue",
     "enterA": "enterA"
 
+    "logout": "Logout",
+    "confirmLogout": "Confirm logout!!",
+    "cancel": "Cancel"
 }
