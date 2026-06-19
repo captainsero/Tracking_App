@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tracking_app/core/router/route_path.dart';
 import 'package:tracking_app/features/error/error_screen.dart';
-import 'package:tracking_app/features/onboarding/presentation/view/onboarding_view.dart';
+import 'package:tracking_app/features/onboarding/presentation/view/onboarding_page.dart';
 import '../../features/auth/forget_password/presentation/view/forget_password_view.dart';
 import '../../features/auth/forget_password/presentation/view/reset_password_view.dart';
 import '../../features/auth/forget_password/presentation/view/verification_code_view.dart';
@@ -15,7 +15,7 @@ import '../../features/splash/presentaion/view/splash_view.dart';
 
 abstract class AppRouter {
   static final GoRouter goRouter = GoRouter(
-    initialLocation: RoutePath.login,
+    initialLocation: RoutePath.onboarding,
     routes: [
       GoRoute(
         path: RoutePath.splash,
@@ -50,7 +50,7 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: RoutePath.onboarding,
-        builder: (context, state) => OnboardingView(),
+        builder: (context, state) => OnBoardingPage(),
       ),
     ],
     errorBuilder: (BuildContext context, GoRouterState state) {

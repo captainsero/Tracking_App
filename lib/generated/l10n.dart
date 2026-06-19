@@ -259,6 +259,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Welcome to Elevate Tracking App`
+  String get onBoardingWelcomeText {
+    return Intl.message(
+      'Welcome to Elevate Tracking App',
+      name: 'onBoardingWelcomeText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get onBoardingLogin {
+    return Intl.message(
+      'Login',
+      name: 'onBoardingLogin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Apply Now`
+  String get onBoardingApplyNow {
+    return Intl.message(
+      'Apply Now',
+      name: 'onBoardingApplyNow',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

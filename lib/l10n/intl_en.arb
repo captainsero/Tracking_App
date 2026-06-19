@@ -19,5 +19,8 @@
     "enterValidPassword": "Password needs uppercase, digit, and special char",
     "error": "Error",
     "oopsSomthingWentWrong": "Oops! Something went wrong.",
-    "goToHome": "goToHome"
+    "goToHome": "goToHome",
+    "onBoardingWelcomeText": "Welcome to Elevate Tracking App",
+    "onBoardingLogin": "Login",
+    "onBoardingApplyNow": "Apply Now"
 }
