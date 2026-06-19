@@ -24,29 +24,29 @@ class SignUpSubmitButton extends StatelessWidget {
         onPressed: isLoading ? null : onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,
-          disabledBackgroundColor: AppColors.primary.withOpacity(0.6),
+          disabledBackgroundColor: AppColors.primary.withValues(alpha: 0.6),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(RadiusSize.r30),
           ),
           elevation: 0,
         ),
         child: isLoading
-            ? const SizedBox(
-                width: AppSize.s24,
-                height: AppSize.s24,
-                child: CircularProgressIndicator(
-                  strokeWidth: 2.5,
-                  color: Colors.white,
-                ),
-              )
+            ? SizedBox(
+          width: AppSize.s24,
+          height: AppSize.s24,
+          child: CircularProgressIndicator(
+            strokeWidth: 2.5,
+            color: AppColors.white,
+          ),
+        )
             : Text(
-                S.of(context).continueText,
-                style: getMediumStyle(
-                  color: Colors.white,
-                  fontSize: FontSize.s16,
-                  fontFamily: FontConstants.interFamily,
-                ),
-              ),
+          S.of(context).continueText,
+          style: getMediumStyle(
+            color: AppColors.white,
+            fontSize: FontSize.s16,
+            fontFamily: FontConstants.interFamily,
+          ),
+        ),
       ),
     );
   }

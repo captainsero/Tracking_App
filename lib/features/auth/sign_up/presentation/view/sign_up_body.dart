@@ -65,85 +65,103 @@ class SignUpBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SignUpCubit, SignUpState>(
-      listener: (ctx, state) {
-        if (state.isSuccess) {
-          ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(
-            content: Text(S.of(ctx).applySuccess),
-            backgroundColor: AppColors.success,
-          ));
-          ctx.go(RoutePath.login);
-        }
-        if (state.isFailure && state.errorMessage != null) {
-          ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(
-            content: Text(state.errorMessage!),
-            backgroundColor: AppColors.error,
-          ));
-        }
-      },
+      listener: _handleStateChange,
       builder: (ctx, state) => Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          leading: GestureDetector(
-            onTap: () => context.go(RoutePath.onboarding),
-            child: Icon(Icons.arrow_back_ios_new_rounded,
-                color: AppColors.black, size: AppSize.s20),
-          ),
-          title: Text(
-            S.of(context).apply,
-            style: getMediumStyle(
-              color: AppColors.black,
-              fontSize: FontSize.s18,
-              fontFamily: FontConstants.interFamily,
-            ),
-          ),
+        backgroundColor: AppColors.white,
+        appBar: _buildAppBar(context),
+        body: _buildBody(ctx, state),
+      ),
+    );
+  }
+
+  void _handleStateChange(BuildContext ctx, SignUpState state) {
+    if (state.isSuccess) {
+      ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(
+        content: Text(S.of(ctx).applySuccess),
+        backgroundColor: AppColors.success,
+      ));
+      ctx.go(RoutePath.successApply);
+    }
+    if (state.isFailure && state.errorMessage != null) {
+      ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(
+        content: Text(state.errorMessage!),
+        backgroundColor: AppColors.error,
+      ));
+    }
+  }
+
+  AppBar _buildAppBar(BuildContext context) {
+    return AppBar(
+      backgroundColor: AppColors.white,
+      elevation: 0,
+      leading: GestureDetector(
+        onTap: () => context.go(RoutePath.onboarding),
+        child: Icon(Icons.arrow_back_ios_new_rounded,
+            color: AppColors.black, size: AppSize.s20),
+      ),
+      title: Text(
+        S.of(context).apply,
+        style: getMediumStyle(
+          color: AppColors.black,
+          fontSize: FontSize.s18,
+          fontFamily: FontConstants.interFamily,
         ),
-        body: SafeArea(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(
-              horizontal: AppPadding.p20,
-              vertical: AppPadding.p16,
-            ),
-            child: Form(
-              key: formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SignUpFormTop(
-                    firstNameCtrl: firstNameCtrl,
-                    secondNameCtrl: secondNameCtrl,
-                    vehicleNumberCtrl: vehicleNumberCtrl,
-                    selectedCountry: selectedCountry,
-                    countries: countries,
-                    selectedVehicleType: vehicleType,
-                    vehicleLicenseName: vehicleLicenseName,
-                    vehicleTypes: vehicleTypes,
-                    onCountryChanged: onCountryChanged,
-                    onVehicleTypeChanged: onVehicleTypeChanged,
-                    onPickVehicleLicense: onPickVehicleLicense,
-                  ),
-                  const SizedBox(height: AppSize.s16),
-                  SignUpFormBottom(
-                    selectedCountry: selectedCountry,
-                    emailCtrl: emailCtrl,
-                    phoneCtrl: phoneCtrl,
-                    nidCtrl: nidCtrl,
-                    passwordCtrl: passwordCtrl,
-                    confirmPasswordCtrl: confirmCtrl,
-                    nidImageName: nidImageName,
-                    selectedGender: gender,
-                    isLoading: state.isLoading,
-                    onPickNidImage: onPickNidImage,
-                    onGenderChanged: onGenderChanged,
-                    onSubmit: () => onSubmit(ctx),
-                  ),
-                ],
-              ),
-            ),
+      ),
+    );
+  }
+
+  Widget _buildBody(BuildContext ctx, SignUpState state) {
+    return SafeArea(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppPadding.p20,
+          vertical: AppPadding.p16,
+        ),
+        child: Form(
+          key: formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildFormTop(),
+              const SizedBox(height: AppSize.s16),
+              _buildFormBottom(ctx, state),
+            ],
           ),
         ),
       ),
+    );
+  }
+
+  SignUpFormTop _buildFormTop() {
+    return SignUpFormTop(
+      firstNameCtrl: firstNameCtrl,
+      secondNameCtrl: secondNameCtrl,
+      vehicleNumberCtrl: vehicleNumberCtrl,
+      selectedCountry: selectedCountry,
+      countries: countries,
+      selectedVehicleType: vehicleType,
+      vehicleLicenseName: vehicleLicenseName,
+      vehicleTypes: vehicleTypes,
+      onCountryChanged: onCountryChanged,
+      onVehicleTypeChanged: onVehicleTypeChanged,
+      onPickVehicleLicense: onPickVehicleLicense,
+    );
+  }
+
+  SignUpFormBottom _buildFormBottom(BuildContext ctx, SignUpState state) {
+    return SignUpFormBottom(
+      selectedCountry: selectedCountry,
+      emailCtrl: emailCtrl,
+      phoneCtrl: phoneCtrl,
+      nidCtrl: nidCtrl,
+      passwordCtrl: passwordCtrl,
+      confirmPasswordCtrl: confirmCtrl,
+      nidImageName: nidImageName,
+      selectedGender: gender,
+      isLoading: state.isLoading,
+      onPickNidImage: onPickNidImage,
+      onGenderChanged: onGenderChanged,
+      onSubmit: () => onSubmit(ctx),
     );
   }
 }

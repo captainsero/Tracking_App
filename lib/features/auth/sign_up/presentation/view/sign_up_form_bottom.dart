@@ -49,55 +49,70 @@ class SignUpFormBottom extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SignUpTextField(
-          label: l10n.email,
-          hint: l10n.enterEmail,
-          controller: emailCtrl,
-          keyboardType: TextInputType.emailAddress,
-          validator: (v) => AppTextFieldValidator.validateEmail(v)?.localize(l10n),
-        ),
+        _buildEmailField(l10n),
         gap,
         SignUpPhoneField(
           controller: phoneCtrl,
           selectedCountry: selectedCountry,
         ),
         gap,
-        // Improved NID Field
-        SignUpTextField(
-          label: l10n.idNumber,
-          hint: l10n.enterIdNumber,
-          controller: nidCtrl,
-          keyboardType: TextInputType.number,
-          maxLength: 14,
-          inputFormatters: [
-            FilteringTextInputFormatter.digitsOnly,
-          ],
-          validator: (v) => AppTextFieldValidator.validateNid(v)?.localize(l10n),
-        ),
+        _buildNidField(l10n),
         gap,
-        SignUpFileUploadField(
-          label: l10n.idImage,
-          hint: l10n.uploadIdImage,
-          fileName: nidImageName,
-          onTap: onPickNidImage,
-        ),
+        _buildNidUpload(l10n),
         gap,
         SignUpPasswordRow(
           passwordController: passwordCtrl,
           confirmController: confirmPasswordCtrl,
         ),
         const SizedBox(height: AppSize.s20),
-        SignUpGenderSelector(
-          selectedGender: selectedGender,
-          labelGender: l10n.gender,
-          labelFemale: l10n.female,
-          labelMale: l10n.male,
-          onChanged: onGenderChanged,
-        ),
+        _buildGenderSelector(l10n),
         const SizedBox(height: AppSize.s30),
         SignUpSubmitButton(isLoading: isLoading, onPressed: onSubmit),
         const SizedBox(height: AppSize.s20),
       ],
+    );
+  }
+
+  SignUpTextField _buildEmailField(S l10n) {
+    return SignUpTextField(
+      label: l10n.email,
+      hint: l10n.enterEmail,
+      controller: emailCtrl,
+      keyboardType: TextInputType.emailAddress,
+      validator: (v) => AppTextFieldValidator.validateEmail(v)?.localize(l10n),
+    );
+  }
+
+  SignUpTextField _buildNidField(S l10n) {
+    return SignUpTextField(
+      label: l10n.idNumber,
+      hint: l10n.enterIdNumber,
+      controller: nidCtrl,
+      keyboardType: TextInputType.number,
+      maxLength: 14,
+      inputFormatters: [
+        FilteringTextInputFormatter.digitsOnly,
+      ],
+      validator: (v) => AppTextFieldValidator.validateNid(v)?.localize(l10n),
+    );
+  }
+
+  SignUpFileUploadField _buildNidUpload(S l10n) {
+    return SignUpFileUploadField(
+      label: l10n.idImage,
+      hint: l10n.uploadIdImage,
+      fileName: nidImageName,
+      onTap: onPickNidImage,
+    );
+  }
+
+  SignUpGenderSelector _buildGenderSelector(S l10n) {
+    return SignUpGenderSelector(
+      selectedGender: selectedGender,
+      labelGender: l10n.gender,
+      labelFemale: l10n.female,
+      labelMale: l10n.male,
+      onChanged: onGenderChanged,
     );
   }
 }

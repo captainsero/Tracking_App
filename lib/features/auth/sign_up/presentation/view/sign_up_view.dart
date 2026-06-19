@@ -152,6 +152,24 @@ class _SignUpViewState extends State<SignUpView> {
     );
   }
 
+  void _onCountryChanged(String? value) {
+    setState(() {
+      _country = value ?? _country;
+    });
+  }
+
+  void _onVehicleTypeChanged(String? value) {
+    setState(() {
+      _vehicleType = value ?? _vehicleType;
+    });
+  }
+
+  void _onGenderChanged(String? value) {
+    setState(() {
+      _gender = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -171,25 +189,11 @@ class _SignUpViewState extends State<SignUpView> {
         vehicleType: _vehicleType,
         vehicleTypes: _vehicleTypes,
         gender: _gender,
-        vehicleLicenseName:
-        _vehicleLicensePath?.split('/').last,
-        nidImageName:
-        _nidImagePath?.split('/').last,
-        onCountryChanged: (value) {
-          setState(() {
-            _country = value ?? _country;
-          });
-        },
-        onVehicleTypeChanged: (value) {
-          setState(() {
-            _vehicleType = value ?? _vehicleType;
-          });
-        },
-        onGenderChanged: (value) {
-          setState(() {
-            _gender = value;
-          });
-        },
+        vehicleLicenseName: _vehicleLicensePath?.split('/').last,
+        nidImageName: _nidImagePath?.split('/').last,
+        onCountryChanged: _onCountryChanged,
+        onVehicleTypeChanged: _onVehicleTypeChanged,
+        onGenderChanged: _onGenderChanged,
         onPickVehicleLicense: _pickVehicleLicense,
         onPickNidImage: _pickNidImage,
         onSubmit: _submit,

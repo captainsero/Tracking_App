@@ -54,63 +54,86 @@ class SignUpFormTop extends StatelessWidget {
       children: [
         const SignUpHeader(),
         const SizedBox(height: AppSize.s24),
-        SignUpDropdown<String>(
-          label: l10n.country,
-          value: selectedCountry,
-          items: countries
-              .map((c) => DropdownMenuItem(
-            value: c,
-            child: Row(
-              children: [
-                Text(_flags[c] ?? '🌍',
-                    style: const TextStyle(fontSize: 18)),
-                const SizedBox(width: 8),
-                Text(c),
-              ],
-            ),
-          ))
-              .toList(),
-          onChanged: onCountryChanged,
-        ),
+        _buildCountryDropdown(l10n),
         gap,
-        SignUpTextField(
-          label: l10n.firstLegalName,
-          hint: l10n.enterFirstLegalName,
-          controller: firstNameCtrl,
-          validator: (v) => AppTextFieldValidator.validateName(v)?.localize(l10n),
-        ),
+        _buildFirstNameField(l10n),
         gap,
-        SignUpTextField(
-          label: l10n.secondLegalName,
-          hint: l10n.enterSecondLegalName,
-          controller: secondNameCtrl,
-          validator: (v) => AppTextFieldValidator.validateName(v)?.localize(l10n),
-        ),
+        _buildSecondNameField(l10n),
         gap,
-        SignUpDropdown<String>(
-          label: l10n.vehicleType,
-          value: selectedVehicleType,
-          items: vehicleTypes
-              .map((t) => DropdownMenuItem(value: t, child: Text(t)))
-              .toList(),
-          onChanged: onVehicleTypeChanged,
-        ),
+        _buildVehicleTypeDropdown(l10n),
         gap,
-        SignUpTextField(
-          label: l10n.vehicleNumber,
-          hint: l10n.enterVehicleNumber,
-          controller: vehicleNumberCtrl,
-          validator: (v) =>
-          (v == null || v.trim().isEmpty) ? l10n.vehicleNumberRequired : null,
-        ),
+        _buildVehicleNumberField(l10n),
         gap,
-        SignUpFileUploadField(
-          label: l10n.vehicleLicense,
-          hint: l10n.uploadLicensePhoto,
-          fileName: vehicleLicenseName,
-          onTap: onPickVehicleLicense,
-        ),
+        _buildVehicleLicenseUpload(l10n),
       ],
+    );
+  }
+
+  SignUpDropdown<String> _buildCountryDropdown(S l10n) {
+    return SignUpDropdown<String>(
+      label: l10n.country,
+      value: selectedCountry,
+      items: countries
+          .map((c) => DropdownMenuItem(
+        value: c,
+        child: Row(
+          children: [
+            Text(_flags[c] ?? '🌍', style: const TextStyle(fontSize: 18)),
+            const SizedBox(width: 8),
+            Text(c),
+          ],
+        ),
+      ))
+          .toList(),
+      onChanged: onCountryChanged,
+    );
+  }
+
+  SignUpTextField _buildFirstNameField(S l10n) {
+    return SignUpTextField(
+      label: l10n.firstLegalName,
+      hint: l10n.enterFirstLegalName,
+      controller: firstNameCtrl,
+      validator: (v) => AppTextFieldValidator.validateName(v)?.localize(l10n),
+    );
+  }
+
+  SignUpTextField _buildSecondNameField(S l10n) {
+    return SignUpTextField(
+      label: l10n.secondLegalName,
+      hint: l10n.enterSecondLegalName,
+      controller: secondNameCtrl,
+      validator: (v) => AppTextFieldValidator.validateName(v)?.localize(l10n),
+    );
+  }
+
+  SignUpDropdown<String> _buildVehicleTypeDropdown(S l10n) {
+    return SignUpDropdown<String>(
+      label: l10n.vehicleType,
+      value: selectedVehicleType,
+      items: vehicleTypes
+          .map((t) => DropdownMenuItem(value: t, child: Text(t)))
+          .toList(),
+      onChanged: onVehicleTypeChanged,
+    );
+  }
+
+  SignUpTextField _buildVehicleNumberField(S l10n) {
+    return SignUpTextField(
+      label: l10n.vehicleNumber,
+      hint: l10n.enterVehicleNumber,
+      controller: vehicleNumberCtrl,
+      validator: (v) =>
+      (v == null || v.trim().isEmpty) ? l10n.vehicleNumberRequired : null,
+    );
+  }
+
+  SignUpFileUploadField _buildVehicleLicenseUpload(S l10n) {
+    return SignUpFileUploadField(
+      label: l10n.vehicleLicense,
+      hint: l10n.uploadLicensePhoto,
+      fileName: vehicleLicenseName,
+      onTap: onPickVehicleLicense,
     );
   }
 }
