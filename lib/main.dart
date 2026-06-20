@@ -20,21 +20,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     ScreenSize.intial(context);
     return ScreenUtilInit(
-      designSize: const Size(360, 690),
+      designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (context, child) {
-        return MaterialApp.router(
-          title: 'Florista Shop App',
-          debugShowCheckedModeBanner: false,
-          localizationsDelegates: [S.delegate],
-          supportedLocales: S.delegate.supportedLocales,
-          routerConfig: AppRouter.goRouter,
-          theme: AppTheme.lightTheme,
-          darkTheme: AppTheme.darkTheme,
-          themeMode: ThemeMode.system,
-        );
-      },
+      builder: (context, child) => MaterialApp.router(
+        title: 'Florista Shop App',
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: [S.delegate],
+        supportedLocales: S.delegate.supportedLocales,
+        routerConfig: AppRouter.goRouter,
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
+        themeMode: ThemeMode.system,
+      ),
     );
   }
 }
