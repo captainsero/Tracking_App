@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// Kept the same name used across the codebase so existing call sites
 /// (`type: ToastificationType.success`) keep working without any change.
@@ -96,8 +95,10 @@ class _ToastBannerState extends State<_ToastBanner>
       vsync: this,
       duration: const Duration(milliseconds: 220),
     );
-    _offset = Tween<Offset>(begin: const Offset(0, -1), end: Offset.zero)
-        .animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
+    _offset = Tween<Offset>(
+      begin: const Offset(0, -1),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
 
     _controller.forward();
     _timer = Timer(widget.duration, _dismiss);
@@ -146,9 +147,9 @@ class _ToastBannerState extends State<_ToastBanner>
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: MediaQuery.of(context).padding.top + 12.h,
-      left: 16.w,
-      right: 16.w,
+      top: MediaQuery.of(context).padding.top + 12,
+      left: 16,
+      right: 16,
       child: SlideTransition(
         position: _offset,
         child: Material(
@@ -156,10 +157,10 @@ class _ToastBannerState extends State<_ToastBanner>
           child: GestureDetector(
             onTap: _dismiss,
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               decoration: BoxDecoration(
                 color: _color,
-                borderRadius: BorderRadius.circular(12.r),
+                borderRadius: BorderRadius.circular(12),
                 boxShadow: const [
                   BoxShadow(
                     color: Colors.black26,
@@ -172,7 +173,7 @@ class _ToastBannerState extends State<_ToastBanner>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Icon(_icon, color: Colors.white),
-                  SizedBox(width: 12.w),
+                  SizedBox(width: 12),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -183,18 +184,15 @@ class _ToastBannerState extends State<_ToastBanner>
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w700,
-                            fontSize: 15.sp,
+                            fontSize: 15,
                           ),
                         ),
                         if (widget.description != null &&
                             widget.description!.isNotEmpty) ...[
-                          SizedBox(height: 4.h),
+                          SizedBox(height: 4),
                           Text(
                             widget.description!,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 13.sp,
-                            ),
+                            style: TextStyle(color: Colors.white, fontSize: 13),
                           ),
                         ],
                       ],

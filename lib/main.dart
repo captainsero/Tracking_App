@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tracking_app/config/di/di.dart';
 import 'package:tracking_app/core/constants/screen_size.dart';
 import 'package:tracking_app/core/router/app_router.dart';
@@ -19,20 +18,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ScreenSize.intial(context);
-    return ScreenUtilInit(
-      designSize: const Size(375, 812),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (context, child) => MaterialApp.router(
-        title: 'Florista Shop App',
-        debugShowCheckedModeBanner: false,
-        localizationsDelegates: [S.delegate],
-        supportedLocales: S.delegate.supportedLocales,
-        routerConfig: AppRouter.goRouter,
-        theme: AppTheme.lightTheme,
-        darkTheme: AppTheme.darkTheme,
-        themeMode: ThemeMode.system,
-      ),
+    return MaterialApp.router(
+      title: 'Florista Shop App',
+      debugShowCheckedModeBanner: false,
+      localizationsDelegates: [S.delegate],
+      supportedLocales: S.delegate.supportedLocales,
+      routerConfig: AppRouter.goRouter,
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.system,
     );
   }
 }

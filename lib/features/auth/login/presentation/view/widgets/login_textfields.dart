@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:tracking_app/generated/l10n.dart';
 
@@ -29,7 +28,7 @@ class LoginTextfields extends StatelessWidget {
             hintText: 'Enter you email',
             floatingLabelBehavior: FloatingLabelBehavior.always,
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12.r),
+              borderRadius: BorderRadius.circular(12),
               borderSide: const BorderSide(color: Colors.grey),
             ),
           ),
@@ -43,7 +42,7 @@ class LoginTextfields extends StatelessWidget {
             return null;
           },
         ),
-        SizedBox(height: 20.h),
+        SizedBox(height: 20),
         TextFormField(
           // TODO: confirm `passwordController` is the real field name on LoginCubit
           controller: cubit.passwordController,
@@ -53,7 +52,7 @@ class LoginTextfields extends StatelessWidget {
             hintText: 'Enter you password',
             floatingLabelBehavior: FloatingLabelBehavior.always,
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12.r),
+              borderRadius: BorderRadius.circular(12),
               borderSide: const BorderSide(color: Colors.grey),
             ),
           ),

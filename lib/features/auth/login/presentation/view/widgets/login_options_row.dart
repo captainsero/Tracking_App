@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginOptionsRow extends StatefulWidget {
   const LoginOptionsRow({super.key});
@@ -20,13 +19,13 @@ class _LoginOptionsRowState extends State<LoginOptionsRow> {
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(
-              width: 22.w,
-              height: 22.w,
+              width: 22,
+              height: 22,
               child: Checkbox(
                 value: _rememberMe,
                 materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(4.r),
+                  borderRadius: BorderRadius.circular(4),
                 ),
                 side: const BorderSide(color: Colors.grey),
                 onChanged: (value) {
@@ -38,8 +37,8 @@ class _LoginOptionsRowState extends State<LoginOptionsRow> {
                 },
               ),
             ),
-            SizedBox(width: 8.w),
-            Text('Remember me', style: TextStyle(fontSize: 14.sp)),
+            SizedBox(width: 8),
+            Text('Remember me', style: TextStyle(fontSize: 14)),
           ],
         ),
         GestureDetector(
@@ -50,7 +49,7 @@ class _LoginOptionsRowState extends State<LoginOptionsRow> {
           child: Text(
             'Forget password?',
             style: TextStyle(
-              fontSize: 14.sp,
+              fontSize: 14,
               fontWeight: FontWeight.w500,
               decoration: TextDecoration.underline,
             ),

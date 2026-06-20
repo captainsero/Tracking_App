@@ -22,7 +22,7 @@
     "goToHome": "goToHome",
     "onBoardingWelcomeText": "Welcome to Elevate Tracking App",
     "onBoardingLogin": "Login",
-    "onBoardingApplyNow": "Apply Now"
+    "onBoardingApplyNow": "Apply Now",
     "apply": "Apply",
     "welcome": "Welcome!!",
     "applySubtitle": "You want to be a delivery man?\nJoin our team",
@@ -57,7 +57,7 @@
     "male": "Male",
     "fieldRequired": "This field is required",
     "continueText": "Continue",
-    "enterA": "enterA"
+    "enterA": "enterA",
 
     "logout": "Logout",
     "confirmLogout": "Confirm logout!!",

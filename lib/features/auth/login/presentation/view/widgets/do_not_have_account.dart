@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:tracking_app/core/router/route_path.dart';
 
 class DoNotHaveAccount extends StatelessWidget {
   const DoNotHaveAccount({super.key});
@@ -15,17 +16,16 @@ class DoNotHaveAccount extends StatelessWidget {
         children: [
           Text(
             "Don't have an account? ",
-            style: TextStyle(fontSize: 14.sp, color: Colors.black87),
+            style: TextStyle(fontSize: 14, color: Colors.black87),
           ),
           GestureDetector(
             onTap: () {
-              // TODO: navigate to the sign-up screen, e.g.
-              // context.go(Routes.signUp)
+              context.go(RoutePath.signup);
             },
             child: Text(
               'Sign up',
               style: TextStyle(
-                fontSize: 14.sp,
+                fontSize: 14,
                 color: _signUpColor,
                 fontWeight: FontWeight.w600,
                 decoration: TextDecoration.underline,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// Reusable pill-shaped primary button used across the app (login, register,
 /// etc). Shows a spinner instead of the title while [isLoading] is true.
@@ -35,16 +34,16 @@ class CustomButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: resolvedColor,
           disabledBackgroundColor: resolvedColor.withValues(alpha: 0.6),
-          padding: EdgeInsets.symmetric(vertical: 16.h),
+          padding: EdgeInsets.symmetric(vertical: 16),
           elevation: 0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30.r),
+            borderRadius: BorderRadius.circular(30),
           ),
         ),
         child: isLoading
             ? SizedBox(
-                width: 22.w,
-                height: 22.w,
+                width: 22,
+                height: 22,
                 child: const CircularProgressIndicator(
                   strokeWidth: 2.5,
                   valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
@@ -54,7 +53,7 @@ class CustomButton extends StatelessWidget {
                 title,
                 style: TextStyle(
                   color: textColor,
-                  fontSize: 16.sp,
+                  fontSize: 16,
                   fontWeight: FontWeight.w600,
                 ),
               ),

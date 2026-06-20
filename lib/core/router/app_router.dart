@@ -5,8 +5,7 @@ import 'package:tracking_app/config/di/di.dart';
 import 'package:tracking_app/core/router/route_path.dart';
 import 'package:tracking_app/features/error/error_screen.dart';
 import 'package:tracking_app/features/onboarding/presentation/view/onboarding_page.dart';
-import 'package:tracking_app/features/onboarding/presentation/view/onboarding_view.dart';
-import 'package:tracking_app/features/profile/presentation/view_model/profile_cubit.dart';
+import 'package:tracking_app/features/profile/presentaion/view/profile_view.dart';
 import '../../features/auth/forget_password/presentation/view/forget_password_view.dart';
 import '../../features/auth/forget_password/presentation/view/reset_password_view.dart';
 import '../../features/auth/forget_password/presentation/view/verification_code_view.dart';
@@ -14,7 +13,6 @@ import '../../features/auth/login/presentation/view/pages/login_page.dart';
 import '../../features/auth/sign_up/presentation/view/sign_up_view.dart';
 import '../../features/home/presentation/view/home_view.dart';
 import '../../features/orders/presentaion/view/orders_view.dart';
-import '../../features/profile/presentation/view/profile_view.dart';
 import '../../features/splash/presentaion/view/splash_view.dart';
 
 abstract class AppRouter {
@@ -44,13 +42,13 @@ abstract class AppRouter {
       ),
       GoRoute(path: RoutePath.home, builder: (context, state) => HomeView()),
 
-      GoRoute(
-        path: RoutePath.profile,
-        builder: (context, state) => BlocProvider(
-          create: (context) => getIt.get<ProfileCubit>(),
-          child: ProfileView(),
-        ),
-      ),
+      // GoRoute(
+      //   path: RoutePath.profile,
+      //   builder: (context, state) => BlocProvider(
+      //     create: (context) => getIt.get<ProfileCubit>(),
+      //     child: ProfileView(),
+      //   ),
+      // ),
       GoRoute(
         path: RoutePath.orders,
         builder: (context, state) => OrdersView(),

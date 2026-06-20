@@ -1,5 +1,3 @@
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:tracking_app/features/auth/login/presentation/view/widgets/Custom%20button.dart';
 import 'package:tracking_app/features/auth/login/presentation/view/widgets/Custom%20toast.dart';
 import 'package:tracking_app/generated/l10n.dart';
@@ -32,23 +30,23 @@ class _LoginBodyState extends State<LoginBody> {
           padding: const EdgeInsets.only(left: 16.0),
           child: Text(
             'Login',
-            style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600),
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
           ),
         ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
+          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           child: Form(
             key: cubit.formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const LoginTextfields(),
-                SizedBox(height: 8.h),
+                SizedBox(height: 8),
 
                 const LoginOptionsRow(),
-                SizedBox(height: 50.h),
+                SizedBox(height: 50),
 
                 BlocConsumer<LoginCubit, LoginStates>(
                   listenWhen: (previous, current) {
@@ -97,7 +95,7 @@ class _LoginBodyState extends State<LoginBody> {
                     );
                   },
                 ),
-                SizedBox(height: 16.h),
+                SizedBox(height: 16),
 
                 SizedBox(
                   width: double.infinity,
@@ -108,23 +106,23 @@ class _LoginBodyState extends State<LoginBody> {
                       // or context.go(Routes.appLayout) directly.
                     },
                     style: OutlinedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(vertical: 16.h),
+                      padding: EdgeInsets.symmetric(vertical: 16),
                       side: const BorderSide(color: Colors.grey),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.r),
+                        borderRadius: BorderRadius.circular(30),
                       ),
                     ),
                     child: Text(
                       'Continue as guest',
                       style: TextStyle(
-                        fontSize: 16.sp,
+                        fontSize: 16,
                         fontWeight: FontWeight.w600,
                         color: Colors.black87,
                       ),
                     ),
                   ),
                 ),
-                SizedBox(height: 16.h),
+                SizedBox(height: 16),
 
                 SizedBox(
                   width: double.infinity,

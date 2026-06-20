@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:tracking_app/core/router/route_path.dart';
@@ -14,7 +13,7 @@ class OnBoardingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        padding: EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -23,20 +22,20 @@ class OnBoardingPage extends StatelessWidget {
               scale: 1.5,
               child: Lottie.asset('assets/animations/motorcycle.json'),
             ),
-            SizedBox(height: 24.h),
+            SizedBox(height: 24),
             Text(
               S.of(context).onBoardingWelcomeText,
               style: 20.medium,
               textAlign: TextAlign.left,
             ),
-            SizedBox(height: 24.h),
+            SizedBox(height: 24),
             CustomButton(
               onPressed: () {
                 context.push(RoutePath.login);
               },
               title: S.of(context).onBoardingLogin,
             ),
-            SizedBox(height: 16.h),
+            SizedBox(height: 16),
             CustomButton(
               backGroundColor: Colors.white,
               borderColor: Colors.black,
