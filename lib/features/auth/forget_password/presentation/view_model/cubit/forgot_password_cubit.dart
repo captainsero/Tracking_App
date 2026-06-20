@@ -22,16 +22,16 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
   final ResetPasswordUseCase _resetPasswordUseCase;
   final SecureStorageService _secureStorageService;
 
-  ForgotPasswordCubit(
-    super.initialState, {
+  ForgotPasswordCubit({
     required ForgotPasswordUseCase forgotPasswordUseCase,
     required VerifyResetUseCase verifyResetUseCase,
     required ResetPasswordUseCase resetPasswordUseCase,
     required SecureStorageService secureStorageService,
-  }) : _secureStorageService = secureStorageService,
-       _forgotPasswordUseCase = forgotPasswordUseCase,
+  }) : _forgotPasswordUseCase = forgotPasswordUseCase,
        _verifyResetUseCase = verifyResetUseCase,
-       _resetPasswordUseCase = resetPasswordUseCase;
+       _resetPasswordUseCase = resetPasswordUseCase,
+       _secureStorageService = secureStorageService,
+       super(ForgotPasswordState());
 
   Future<void> forgotPassword(ForgotPasswordRequest email) async {
     emit(state.copyWith(forgotPasswordState: const BaseState(isLoading: true)));

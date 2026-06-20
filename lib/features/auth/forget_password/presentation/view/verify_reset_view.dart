@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tracking_app/core/constants/font_manager.dart';
 import 'package:tracking_app/core/constants/values_manager.dart';
@@ -8,6 +9,7 @@ import 'package:tracking_app/generated/l10n.dart';
 
 class VerifyResetView extends StatefulWidget {
   const VerifyResetView({super.key, required this.forgotPasswordCubit});
+
   final ForgotPasswordCubit forgotPasswordCubit;
 
   @override
@@ -60,8 +62,7 @@ class _VerifyResetViewState extends State<VerifyResetView> {
                   ).textTheme.titleSmall!.copyWith(fontSize: FontSize.s16),
                 ),
                 TextButton(
-                  onPressed: () async =>
-                      await widget.forgotPasswordCubit.resendCode(),
+                  onPressed: () async => await context.read().resendCode(),
                   style: TextButton.styleFrom(
                     padding: EdgeInsets.zero,
                     minimumSize: Size(AppSize.s0, AppSize.s0),

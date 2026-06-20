@@ -12,7 +12,6 @@ import 'package:tracking_app/features/auth/forget_password/presentation/view_mod
 class OtpCodeField extends StatefulWidget {
   const OtpCodeField({super.key, required this.forgotPasswordCubit});
   final ForgotPasswordCubit forgotPasswordCubit;
-
   @override
   State<OtpCodeField> createState() => _OtpCodeFieldState();
 }
@@ -78,10 +77,7 @@ class _OtpCodeFieldState extends State<OtpCodeField> {
         if (state.verifyResetState == BaseState(isLoading: false) &&
             state.verifyResetState.data != null &&
             state.verifyResetState.errorMessage == null) {
-          context.push(
-            RoutePath.resetPassword,
-            extra: widget.forgotPasswordCubit,
-          );
+          context.push(RoutePath.resetPassword);
         }
       },
       buildWhen: (previous, current) =>
@@ -113,7 +109,7 @@ class _OtpCodeFieldState extends State<OtpCodeField> {
             onCompleted: (pin) async {
               if (_formKey.currentState!.validate()) {
                 String resetCode = pin;
-                await widget.forgotPasswordCubit.verifyReset(resetCode);
+                context.read().verifyReset(resetCode);
               }
             },
           ),

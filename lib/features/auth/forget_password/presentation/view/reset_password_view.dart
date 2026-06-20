@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:tracking_app/config/validators/text_field_validator.dart';
 import 'package:tracking_app/core/constants/values_manager.dart';
 import 'package:tracking_app/core/router/route_path.dart';
-import 'package:tracking_app/features/auth/forget_password/data/models/requests/reset_password_request.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/helper/validator_helper.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/view_model/cubit/forgot_password_cubit.dart';
 import 'package:tracking_app/generated/l10n.dart';
@@ -27,10 +26,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => context.pop(),
-          icon: Icon(Icons.arrow_back_ios),
-        ),
+        leading: BackButton(),
         title: Text(S.of(context).password),
       ),
       body: SingleChildScrollView(
@@ -126,12 +122,6 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                               if (_formKey.currentState!.validate()) {
                                 String newPasswrod =
                                     _newPasswordController.text;
-                                await widget.forgotPasswordCubit.resetPassword(
-                                  ResetPasswordRequest(
-                                    email: "",
-                                    newPassword: newPasswrod.trim(),
-                                  ),
-                                );
                               }
                             },
                       child: Text(S.of(context).continueButton),

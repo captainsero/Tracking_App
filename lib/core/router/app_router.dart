@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tracking_app/config/di/di.dart';
 import 'package:tracking_app/core/router/route_path.dart';
@@ -17,7 +18,7 @@ import '../../features/splash/presentaion/view/splash_view.dart';
 
 abstract class AppRouter {
   static final GoRouter goRouter = GoRouter(
-    initialLocation: RoutePath.login,
+    initialLocation: RoutePath.forgetPassword,
     routes: [
       GoRoute(
         path: RoutePath.splash,
@@ -30,20 +31,37 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: RoutePath.forgetPassword,
-        builder: (context, state) => ForgotPasswordView(
-          forgotPasswordCubit: getIt<ForgotPasswordCubit>(),
-        ),
+        builder: (context, state) {
+          final forgotPasswordCubit = getIt.get<ForgotPasswordCubit>();
+
+          return BlocProvider.value(
+            value: getIt.get<ForgotPasswordCubit>(),
+
+            child: ForgotPasswordView(forgotPasswordCubit: forgotPasswordCubit),
+          );
+        },
       ),
       GoRoute(
         path: RoutePath.verifyReset,
-        builder: (context, state) =>
-            VerifyResetView(forgotPasswordCubit: getIt<ForgotPasswordCubit>()),
+        builder: (context, state) {
+          final ForgotPasswordCubit forgotPasswordCubit =
+              state.extra as ForgotPasswordCubit;
+          return BlocProvider.value(
+            value: forgotPasswordCubit,
+            child: VerifyResetView(forgotPasswordCubit: forgotPasswordCubit),
+          );
+        },
       ),
       GoRoute(
         path: RoutePath.resetPassword,
-        builder: (context, state) => ResetPasswordView(
-          forgotPasswordCubit: getIt<ForgotPasswordCubit>(),
-        ),
+        builder: (context, state) {
+          final ForgotPasswordCubit forgotPasswordCubit =
+              state.extra as ForgotPasswordCubit;
+          return BlocProvider.value(
+            value: forgotPasswordCubit,
+            child: ResetPasswordView(forgotPasswordCubit: forgotPasswordCubit),
+          );
+        },
       ),
       GoRoute(path: RoutePath.home, builder: (context, state) => HomeView()),
 
