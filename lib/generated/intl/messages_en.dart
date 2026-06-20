@@ -54,21 +54,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter phone number"),
         "enterSecondLegalName":
             MessageLookupByLibrary.simpleMessage("Enter second legal name"),
-        "emailIsRequired":
-            MessageLookupByLibrary.simpleMessage("Email is required"),
-        "enterA": MessageLookupByLibrary.simpleMessage("enterA"),
-        "enterConfirmPassword":
-            MessageLookupByLibrary.simpleMessage("Confirm password"),
-        "enterEmail": MessageLookupByLibrary.simpleMessage("Enter your email"),
-        "enterFirstLegalName":
-            MessageLookupByLibrary.simpleMessage("Enter first legal name"),
-        "enterIdNumber":
-            MessageLookupByLibrary.simpleMessage("Enter national ID number"),
-        "enterPassword": MessageLookupByLibrary.simpleMessage("Enter password"),
-        "enterPhoneNumber":
-            MessageLookupByLibrary.simpleMessage("Enter phone number"),
-        "enterSecondLegalName":
-            MessageLookupByLibrary.simpleMessage("Enter second legal name"),
         "enterValidEgyptianPhoneNumber": MessageLookupByLibrary.simpleMessage(
             "Enter a valid Egyptian phone number"),
         "enterValidEmail":
@@ -77,24 +62,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "Password needs uppercase, digit, and special char"),
         "enterVehicleNumber":
             MessageLookupByLibrary.simpleMessage("Enter vehicle number"),
-        "error": MessageLookupByLibrary.simpleMessage("Error"),
-        "errorMessageGeneric": MessageLookupByLibrary.simpleMessage(
-            "Something went wrong. Please try again."),
-        "female": MessageLookupByLibrary.simpleMessage("Female"),
-        "fieldRequired":
-            MessageLookupByLibrary.simpleMessage("This field is required"),
-        "firstLegalName":
-            MessageLookupByLibrary.simpleMessage("First legal name"),
-        "gender": MessageLookupByLibrary.simpleMessage("Gender"),
-        "goToHome": MessageLookupByLibrary.simpleMessage("goToHome"),
-        "idImage": MessageLookupByLibrary.simpleMessage("ID image"),
-        "idNumber": MessageLookupByLibrary.simpleMessage("ID number"),
-        "idNumberRequired":
-            MessageLookupByLibrary.simpleMessage("ID number is required"),
-        "invalidCode": MessageLookupByLibrary.simpleMessage("Invalid code"),
-        "invalidIdNumber": MessageLookupByLibrary.simpleMessage(
-            "Enter a valid 14-digit ID number"),
-        "male": MessageLookupByLibrary.simpleMessage("Male"),
         "error": MessageLookupByLibrary.simpleMessage("Error"),
         "errorMessageGeneric": MessageLookupByLibrary.simpleMessage(
             "Something went wrong. Please try again."),
@@ -131,30 +98,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "oopsSomthingWentWrong":
             MessageLookupByLibrary.simpleMessage("Oops! Something went wrong."),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
-        "paswordNotMatched":
-            MessageLookupByLibrary.simpleMessage("Passwords do not match"),
-        "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
-        "requestTimeout": MessageLookupByLibrary.simpleMessage(
-            "Request timed out. Please try again."),
-        "secondLegalName":
-            MessageLookupByLibrary.simpleMessage("Second legal name"),
-        "secureStorageErrorMessage": MessageLookupByLibrary.simpleMessage(
-            "Failed to save information securely. Please try again."),
-        "selectCountry": MessageLookupByLibrary.simpleMessage("Select country"),
-        "serverError": MessageLookupByLibrary.simpleMessage(
-            "Server error. Please try again later."),
-        "uploadIdImage":
-            MessageLookupByLibrary.simpleMessage("Upload ID image"),
-        "uploadLicensePhoto":
-            MessageLookupByLibrary.simpleMessage("Upload license photo"),
-        "vehicleLicense":
-            MessageLookupByLibrary.simpleMessage("Vehicle license"),
-        "vehicleNumber": MessageLookupByLibrary.simpleMessage("Vehicle number"),
-        "vehicleNumberRequired":
-            MessageLookupByLibrary.simpleMessage("Vehicle number is required"),
-        "vehicleType": MessageLookupByLibrary.simpleMessage("Vehicle type"),
-        "welcome": MessageLookupByLibrary.simpleMessage("Welcome!!")
-      };
         "paswordNotMatched":
             MessageLookupByLibrary.simpleMessage("Passwords do not match"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),

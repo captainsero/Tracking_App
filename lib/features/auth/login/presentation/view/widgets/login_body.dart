@@ -1,3 +1,5 @@
+import 'package:go_router/go_router.dart';
+import 'package:tracking_app/core/router/route_path.dart';
 import 'package:tracking_app/features/auth/login/presentation/view/widgets/Custom%20button.dart';
 import 'package:tracking_app/features/auth/login/presentation/view/widgets/Custom%20toast.dart';
 import 'package:tracking_app/generated/l10n.dart';
@@ -62,7 +64,7 @@ class _LoginBodyState extends State<LoginBody> {
                         type: ToastificationType.success,
                       ).showToast();
 
-                      // context.go(Routes.appLayout);
+                      context.go(RoutePath.home);
                     } else if (loginState.errorMessage != null) {
                       // TODO: no specific "invalid email or password" key was
                       // provided, so the generic error message is used here.
@@ -94,33 +96,6 @@ class _LoginBodyState extends State<LoginBody> {
                             },
                     );
                   },
-                ),
-                SizedBox(height: 16),
-
-                SizedBox(
-                  width: double.infinity,
-                  child: OutlinedButton(
-                    onPressed: () {
-                      // TODO: hook up actual "continue as guest" behaviour,
-                      // e.g. cubit.doIntent(LoginEvents.continueAsGuestEvent())
-                      // or context.go(Routes.appLayout) directly.
-                    },
-                    style: OutlinedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(vertical: 16),
-                      side: const BorderSide(color: Colors.grey),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    child: Text(
-                      'Continue as guest',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black87,
-                      ),
-                    ),
-                  ),
                 ),
                 SizedBox(height: 16),
 
