@@ -145,3 +145,4 @@ String _capitalize(String s) {
 
 // To run this script, use the command:
 // dart lib/generate_feature.dart <feature_name>
+// dart lib/generate_feature.dart <feature_name>

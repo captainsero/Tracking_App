@@ -62,4 +62,65 @@ class MessageLookup extends MessageLookupByLibrary {
         "serverError": MessageLookupByLibrary.simpleMessage(
             "Server error. Please try again later.")
       };
+    "codeIsRequired": MessageLookupByLibrary.simpleMessage("Code is required"),
+    "confirmPassword": MessageLookupByLibrary.simpleMessage(
+      "Please confirm your password",
+    ),
+    "connectionTimeout": MessageLookupByLibrary.simpleMessage(
+      "Request timed out. Please check your internet connection.",
+    ),
+    "emailIsRequired": MessageLookupByLibrary.simpleMessage(
+      "Email is required",
+    ),
+    "enterValidEgyptianPhoneNumber": MessageLookupByLibrary.simpleMessage(
+      "Enter a valid Egyptian phone number",
+    ),
+    "enterValidEmail": MessageLookupByLibrary.simpleMessage(
+      "Enter a valid email address",
+    ),
+    "enterValidPassword": MessageLookupByLibrary.simpleMessage(
+      "Password needs uppercase, digit, and special char",
+    ),
+    "error": MessageLookupByLibrary.simpleMessage("Error"),
+    "errorMessageGeneric": MessageLookupByLibrary.simpleMessage(
+      "Something went wrong. Please try again.",
+    ),
+    "goToHome": MessageLookupByLibrary.simpleMessage("goToHome"),
+    "invalidCode": MessageLookupByLibrary.simpleMessage("Invalid code"),
+    "mustBeAtLeast3Characters": MessageLookupByLibrary.simpleMessage(
+      "Must be at least 3 characters",
+    ),
+    "networkError": MessageLookupByLibrary.simpleMessage(
+      "Network error. Please check your connection.",
+    ),
+    "noValueKeyFound": MessageLookupByLibrary.simpleMessage(
+      "No value found for key: ",
+    ),
+    "notFound": MessageLookupByLibrary.simpleMessage(
+      "Requested resource not found.",
+    ),
+    "onBoardingApplyNow": MessageLookupByLibrary.simpleMessage("Apply Now"),
+    "onBoardingLogin": MessageLookupByLibrary.simpleMessage("Login"),
+    "onBoardingWelcomeText": MessageLookupByLibrary.simpleMessage(
+      "Welcome to Elevate Tracking App",
+    ),
+    "onlyLettersAllowed": MessageLookupByLibrary.simpleMessage(
+      "Only letters allowed",
+    ),
+    "oopsSomthingWentWrong": MessageLookupByLibrary.simpleMessage(
+      "Oops! Something went wrong.",
+    ),
+    "paswordNotMatched": MessageLookupByLibrary.simpleMessage(
+      "Passwords do not match",
+    ),
+    "requestTimeout": MessageLookupByLibrary.simpleMessage(
+      "Request timed out. Please try again.",
+    ),
+    "secureStorageErrorMessage": MessageLookupByLibrary.simpleMessage(
+      "Failed to save information securely. Please try again.",
+    ),
+    "serverError": MessageLookupByLibrary.simpleMessage(
+      "Server error. Please try again later.",
+    ),
+  };
 }
