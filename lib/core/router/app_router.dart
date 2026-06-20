@@ -6,7 +6,7 @@ import 'package:tracking_app/features/onboarding/presentation/view/onboarding_vi
 import '../../features/auth/forget_password/presentation/view/forget_password_view.dart';
 import '../../features/auth/forget_password/presentation/view/reset_password_view.dart';
 import '../../features/auth/forget_password/presentation/view/verification_code_view.dart';
-import '../../features/auth/login/presentation/view/login_view.dart';
+import '../../features/auth/login/presentation/view/pages/login_page.dart';
 import '../../features/auth/sign_up/presentation/view/sign_up_view.dart';
 import '../../features/home/presentation/view/home_view.dart';
 import '../../features/orders/presentaion/view/orders_view.dart';
@@ -21,7 +21,7 @@ abstract class AppRouter {
         path: RoutePath.splash,
         builder: (context, state) => SplashView(),
       ),
-      GoRoute(path: RoutePath.login, builder: (context, state) => LoginView()),
+      GoRoute(path: RoutePath.login, builder: (context, state) => LoginPage()),
       GoRoute(
         path: RoutePath.signup,
         builder: (context, state) => SignUpView(),
