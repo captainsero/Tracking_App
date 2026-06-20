@@ -1,4 +1,7 @@
 import 'package:tracking_app/config/base_response/base_response.dart';
+import 'package:tracking_app/config/di/di.dart';
+import 'package:tracking_app/config/secure_storage/secure_storage_service.dart';
+import 'package:tracking_app/core/constants/app_keys/secure_storage_keys.dart';
 import 'package:tracking_app/features/auth/login/data/models/login_response_model.dart';
 import '../models/login_model_mapper.dart';
 import 'package:injectable/injectable.dart';
@@ -26,6 +29,11 @@ class LoginRepositoryImpl implements LoginRepository {
         rememberMe: rememberMe,
       );
       if (result is SuccessBaseResponse<LoginResponseModel>) {
+        final secure = getIt.get<SecureStorageService>();
+        await secure.write(
+          key: SecureStorageKeys.token,
+          value: result.data.token,
+        );
         return SuccessBaseResponse<LoginResponseEntity>(
           data: result.data.toEntity(),
         );
