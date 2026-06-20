@@ -265,6 +265,11 @@ class S {
     return Intl.message(
       'Apply',
       name: 'apply',
+  /// `Welcome to Elevate Tracking App`
+  String get onBoardingWelcomeText {
+    return Intl.message(
+      'Welcome to Elevate Tracking App',
+      name: 'onBoardingWelcomeText',
       desc: '',
       args: [],
     );
@@ -275,6 +280,11 @@ class S {
     return Intl.message(
       'Welcome!!',
       name: 'welcome',
+  /// `Login`
+  String get onBoardingLogin {
+    return Intl.message(
+      'Login',
+      name: 'onBoardingLogin',
       desc: '',
       args: [],
     );
@@ -605,6 +615,11 @@ class S {
     return Intl.message(
       'enterA',
       name: 'enterA',
+  /// `Apply Now`
+  String get onBoardingApplyNow {
+    return Intl.message(
+      'Apply Now',
+      name: 'onBoardingApplyNow',
       desc: '',
       args: [],
     );
