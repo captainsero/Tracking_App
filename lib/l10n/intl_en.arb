@@ -20,6 +20,9 @@
     "error": "Error",
     "oopsSomthingWentWrong": "Oops! Something went wrong.",
     "goToHome": "goToHome",
+    "onBoardingWelcomeText": "Welcome to Elevate Tracking App",
+    "onBoardingLogin": "Login",
+    "onBoardingApplyNow": "Apply Now"
     "apply": "Apply",
     "welcome": "Welcome!!",
     "applySubtitle": "You want to be a delivery man?\nJoin our team",
