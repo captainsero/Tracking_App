@@ -9,6 +9,7 @@ import 'package:tracking_app/features/home/presentation/view_model/cubit/home_cu
 import 'package:tracking_app/features/home/presentation/view_model/cubit/home_events.dart';
 import 'package:tracking_app/features/home/presentation/view_model/cubit/home_state.dart';
 import 'package:tracking_app/features/home/presentation/widgets/home_order_container.dart';
+import 'package:tracking_app/generated/l10n.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -23,25 +24,21 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     super.initState();
-
     controller = ScrollController();
 
     controller.addListener(() {
       final cubit = context.read<HomeCubit>();
-
       if (controller.position.pixels >=
           controller.position.maxScrollExtent - 100) {
         cubit.onEvent(GetPendingOrdersEvent());
       }
     });
-
     context.read<HomeCubit>().onEvent(GetPendingOrdersEvent());
   }
 
   @override
   void dispose() {
     controller.dispose();
-
     super.dispose();
   }
 
@@ -55,7 +52,7 @@ class _HomeViewState extends State<HomeView> {
         leading: Padding(
           padding: const EdgeInsets.only(left: AppPadding.p16),
           child: Text(
-            "Flowery rider",
+            S.current.floweryRider,
             style: Theme.of(context).textTheme.headlineSmall!.copyWith(
               color: Theme.of(context).colorScheme.primary,
               fontFamily: FontConstants.imfEllEnglish,
@@ -86,7 +83,7 @@ class _HomeViewState extends State<HomeView> {
             }
 
             if (orders == null || orders.isEmpty) {
-              return const Center(child: Text('No pending orders'));
+              return Center(child: Text(S.current.noPendingOrders));
             }
 
             return RefreshIndicator(

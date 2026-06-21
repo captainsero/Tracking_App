@@ -3,6 +3,7 @@ import 'package:tracking_app/core/constants/font_manager.dart';
 import 'package:tracking_app/core/constants/screen_size.dart';
 import 'package:tracking_app/core/constants/values_manager.dart';
 import 'package:tracking_app/features/home/presentation/widgets/home_order_card.dart';
+import 'package:tracking_app/generated/l10n.dart';
 
 class HomeOrderContainer extends StatelessWidget {
   const HomeOrderContainer({
@@ -34,7 +35,7 @@ class HomeOrderContainer extends StatelessWidget {
           crossAxisAlignment: .start,
           children: [
             Text(
-              "Flower order",
+              S.current.flowerOrder,
               style: Theme.of(context).textTheme.labelLarge!.copyWith(
                 color: Theme.of(context).colorScheme.onPrimary,
               ),
@@ -43,7 +44,7 @@ class HomeOrderContainer extends StatelessWidget {
             SizedBox(height: AppSize.s16),
 
             Text(
-              "Pickup address",
+              S.current.pickupAdderss,
               style: Theme.of(context).textTheme.bodySmall,
             ),
 
@@ -55,7 +56,10 @@ class HomeOrderContainer extends StatelessWidget {
 
             SizedBox(height: AppSize.s16),
 
-            Text("User address", style: Theme.of(context).textTheme.bodySmall),
+            Text(
+              S.current.userAddress,
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
 
             HomeOrderCard(
               image: userImage,
@@ -69,7 +73,7 @@ class HomeOrderContainer extends StatelessWidget {
               mainAxisAlignment: .spaceBetween,
               children: [
                 Text(
-                  "EGP $totalPrice",
+                  "${S.current.egp} $totalPrice",
                   style: Theme.of(
                     context,
                   ).textTheme.titleLarge!.copyWith(fontSize: FontSize.s14),
@@ -86,7 +90,7 @@ class HomeOrderContainer extends StatelessWidget {
                       ),
                     ),
                     onPressed: onReject,
-                    child: Text("Reject"),
+                    child: Text(S.current.reject),
                   ),
                 ),
 
@@ -95,7 +99,7 @@ class HomeOrderContainer extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {},
                     child: Text(
-                      "Accept",
+                      S.current.accept,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
