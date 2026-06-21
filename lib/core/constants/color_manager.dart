@@ -14,5 +14,6 @@ abstract class AppColors {
   static Color placeholder = const Color(0xffA6A6A6);
   static Color lightGreen = const Color(0xff0CB359);
   static Color green = const Color(0xFF4CAF50);
-  static Color lightPink = const Color(0xffF9ECF0);
+  static Color lightPink = const Color(0xFFFCE4EC);
+  static Color cardBorder = const Color(0xFFE8E8EC);
 }
