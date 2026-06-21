@@ -63,6 +63,7 @@ class OrderModel {
     store: store?.toHomeDomain(),
     user: user?.toHomeDomain(),
     shippingAddress: shippingAddress?.toHomeDomain(),
+    totalPrice: totalPrice,
   );
 
   factory OrderModel.fromJson(Map<String, dynamic> json) =>

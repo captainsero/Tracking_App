@@ -13,7 +13,7 @@ class HomeOrderContainer extends StatelessWidget {
     required this.userImage,
     required this.userName,
     required this.userAddress,
-    required this.price,
+    required this.totalPrice,
   });
   final String pickupImage;
   final String pickupName;
@@ -21,7 +21,7 @@ class HomeOrderContainer extends StatelessWidget {
   final String userImage;
   final String userName;
   final String userAddress;
-  final double price;
+  final double totalPrice;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -67,7 +67,7 @@ class HomeOrderContainer extends StatelessWidget {
               mainAxisAlignment: .spaceBetween,
               children: [
                 Text(
-                  "EGP $price",
+                  "EGP $totalPrice",
                   style: Theme.of(
                     context,
                   ).textTheme.titleLarge!.copyWith(fontSize: FontSize.s14),

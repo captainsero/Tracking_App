@@ -1,64 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tracking_app/core/constants/font_manager.dart';
 import 'package:tracking_app/core/constants/values_manager.dart';
 import 'package:tracking_app/core/router/nav_helper.dart';
 import 'package:tracking_app/core/shared_widgets/custom_buttom_navigation_bar.dart';
+import 'package:tracking_app/features/home/presentation/view_model/cubit/home_cubit.dart';
+import 'package:tracking_app/features/home/presentation/view_model/cubit/home_events.dart';
+import 'package:tracking_app/features/home/presentation/view_model/cubit/home_state.dart';
 import 'package:tracking_app/features/home/presentation/widgets/home_order_container.dart';
 
 class HomeView extends StatelessWidget {
-  HomeView({super.key});
-  final List<HomeOrderContainer> orders = [
-    HomeOrderContainer(
-      pickupImage: '',
-      pickupName: 'Flowery store',
-      pickupAddress: '20th st, Sheikh Zayed, Giza',
-      userImage: '',
-      userName: 'Nour Mohamed',
-      userAddress: '20th st, Sheikh Zayed, Giza',
-      price: 3000,
-    ),
+  const HomeView({super.key});
 
-    HomeOrderContainer(
-      pickupImage: '',
-      pickupName: 'Coffee House',
-      pickupAddress: '6 October, Giza',
-      userImage: '',
-      userName: 'Ahmed Ali',
-      userAddress: 'Dokki, Giza',
-      price: 250,
-    ),
-
-    HomeOrderContainer(
-      pickupImage: '',
-      pickupName: 'Fresh Market',
-      pickupAddress: 'Nasr City, Cairo',
-      userImage: '',
-      userName: 'Sara Mostafa',
-      userAddress: 'Heliopolis, Cairo',
-      price: 780,
-    ),
-
-    HomeOrderContainer(
-      pickupImage: '',
-      pickupName: 'Burger Town',
-      pickupAddress: 'Madinaty, Cairo',
-      userImage: '',
-      userName: 'Mohamed Adel',
-      userAddress: 'New Cairo',
-      price: 430,
-    ),
-
-    HomeOrderContainer(
-      pickupImage: '',
-      pickupName: 'Electro Shop',
-      pickupAddress: 'Mohandessin, Giza',
-      userImage: '',
-      userName: 'Youssef Samir',
-      userAddress: 'Sheikh Zayed, Giza',
-      price: 5200,
-    ),
-  ];
   @override
   Widget build(BuildContext context) {
     final String location = GoRouterState.of(context).uri.toString();
@@ -85,18 +39,49 @@ class HomeView extends StatelessWidget {
           right: AppPadding.p16,
           left: AppPadding.p16,
         ),
-        child: Center(
-          child: RefreshIndicator(
-            onRefresh: () async {
-              //TODO: call orders again
-            },
-            child: ListView.builder(
-              itemCount: orders.length,
-              itemBuilder: (context, index) {
-                return orders[index];
+        child: BlocBuilder<HomeCubit, HomeState>(
+          builder: (context, state) {
+            final orders = state.getPendingOrdersState.data;
+
+            if (state.getPendingOrdersState.isLoading == true) {
+              return const Center(child: CircularProgressIndicator());
+            }
+
+            if (state.getPendingOrdersState.errorMessage != null) {
+              return Center(
+                child: Text(state.getPendingOrdersState.errorMessage!),
+              );
+            }
+
+            if (orders == null || orders.isEmpty) {
+              return const Center(child: Text('No pending orders'));
+            }
+
+            return RefreshIndicator(
+              onRefresh: () async {
+                context.read<HomeCubit>().onEvent(GetPendingOrdersEvent());
               },
-            ),
-          ),
+
+              child: ListView.builder(
+                physics: const AlwaysScrollableScrollPhysics(),
+                itemCount: orders.length,
+                itemBuilder: (context, index) {
+                  final order = orders[index];
+                  return HomeOrderContainer(
+                    pickupImage: order.store?.image ?? '',
+                    pickupName: order.store?.name ?? '',
+                    pickupAddress: order.store?.address ?? '',
+                    userImage: order.user?.photo ?? '',
+                    userName:
+                        '${order.user?.firstName ?? ''} ${order.user?.lastName ?? ''}',
+                    userAddress:
+                        '${order.shippingAddress?.street ?? ''}, ${order.shippingAddress?.city ?? ''}',
+                    totalPrice: 0,
+                  );
+                },
+              ),
+            );
+          },
         ),
       ),
 

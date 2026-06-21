@@ -22,8 +22,16 @@ class HomeOrderCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(AppPadding.p8),
             child: CircleAvatar(
-              backgroundColor: Theme.of(context).colorScheme.primary,
               radius: RadiusSize.r20,
+              child: ClipOval(
+                child: Image.network(
+                  image,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Icon(Icons.person, size: AppSize.s20);
+                  },
+                ),
+              ),
             ),
           ),
 

@@ -7,11 +7,13 @@ class OrderEntity {
   final StoreEntity? store;
   final UserEntity? user;
   final ShippingAddressEntity? shippingAddress;
+  final double? totalPrice;
 
   OrderEntity({
     required this.id,
     required this.store,
     required this.user,
     required this.shippingAddress,
+    required this.totalPrice,
   });
 }
