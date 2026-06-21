@@ -10,8 +10,40 @@ import 'package:tracking_app/features/home/presentation/view_model/cubit/home_ev
 import 'package:tracking_app/features/home/presentation/view_model/cubit/home_state.dart';
 import 'package:tracking_app/features/home/presentation/widgets/home_order_container.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  late ScrollController controller;
+
+  @override
+  void initState() {
+    super.initState();
+
+    controller = ScrollController();
+
+    controller.addListener(() {
+      final cubit = context.read<HomeCubit>();
+
+      if (controller.position.pixels >=
+          controller.position.maxScrollExtent - 100) {
+        cubit.onEvent(GetPendingOrdersEvent());
+      }
+    });
+
+    context.read<HomeCubit>().onEvent(GetPendingOrdersEvent());
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,23 +91,43 @@ class HomeView extends StatelessWidget {
 
             return RefreshIndicator(
               onRefresh: () async {
-                context.read<HomeCubit>().onEvent(GetPendingOrdersEvent());
+                context.read<HomeCubit>().onEvent(
+                  GetPendingOrdersEvent(refresh: true),
+                );
               },
 
               child: ListView.builder(
-                physics: const AlwaysScrollableScrollPhysics(),
-                itemCount: orders.length,
+                controller: controller,
+
+                itemCount:
+                    orders.length +
+                    (context.read<HomeCubit>().isLoadingMore ? 1 : 0),
+
                 itemBuilder: (context, index) {
+                  if (index == orders.length) {
+                    return const Padding(
+                      padding: EdgeInsets.all(16),
+
+                      child: Center(child: CircularProgressIndicator()),
+                    );
+                  }
+
                   final order = orders[index];
+
                   return HomeOrderContainer(
                     pickupImage: order.store?.image ?? '',
+
                     pickupName: order.store?.name ?? '',
+
                     pickupAddress: order.store?.address ?? '',
+
                     userImage: order.user?.photo ?? '',
+
                     userName:
                         '${order.user?.firstName ?? ''} ${order.user?.lastName ?? ''}',
-                    userAddress:
-                        '${order.shippingAddress?.street ?? ''}, ${order.shippingAddress?.city ?? ''}',
+
+                    userAddress: order.shippingAddress?.city ?? '',
+
                     totalPrice: 0,
                   );
                 },

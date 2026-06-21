@@ -11,8 +11,10 @@ class HomeRepoImpl implements HomeRepoContract {
 
   HomeRepoImpl({required this.homeRemoteDataSource});
   @override
-  Future<BaseResponse<List<OrderEntity>>> getPendingOrders() async {
-    final response = await homeRemoteDataSource.getPendingOrders();
+  Future<BaseResponse<List<OrderEntity>>> getPendingOrders({
+    required int page,
+  }) async {
+    final response = await homeRemoteDataSource.getPendingOrders(page: page);
     switch (response) {
       case SuccessBaseResponse<GetOrdersResponse>():
         return SuccessBaseResponse<List<OrderEntity>>(

@@ -10,9 +10,11 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSourceContract {
 
   HomeRemoteDataSourceImpl({required this.apiClient});
   @override
-  Future<BaseResponse<GetOrdersResponse>> getPendingOrders() async {
+  Future<BaseResponse<GetOrdersResponse>> getPendingOrders({
+    required int page,
+  }) async {
     try {
-      final response = await apiClient.getPendingOrders();
+      final response = await apiClient.getPendingOrders(page: page);
       return SuccessBaseResponse<GetOrdersResponse>(data: response);
     } catch (e) {
       return ErrorBaseResponse<GetOrdersResponse>(error: e);
