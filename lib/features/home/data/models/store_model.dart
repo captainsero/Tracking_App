@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:tracking_app/features/home/domain/entities/store_entity.dart';
 
 part 'store_model.g.dart';
 
@@ -22,6 +23,9 @@ class StoreModel {
     this.phoneNumber,
     this.latLong,
   });
+
+  StoreEntity toHomeDomain() =>
+      StoreEntity(image: image, name: name, address: address);
 
   factory StoreModel.fromJson(Map<String, dynamic> json) =>
       _$StoreModelFromJson(json);

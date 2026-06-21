@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:tracking_app/features/home/domain/entities/shipping_address_entity.dart';
 
 part 'shipping_address_model.g.dart';
 
@@ -22,6 +23,9 @@ class ShippingAddressModel {
     this.lat,
     this.long,
   });
+
+  ShippingAddressEntity toHomeDomain() =>
+      ShippingAddressEntity(street: street, city: city);
 
   factory ShippingAddressModel.fromJson(Map<String, dynamic> json) =>
       _$ShippingAddressModelFromJson(json);

@@ -3,6 +3,7 @@ import 'package:tracking_app/features/home/data/models/order_item_model.dart';
 import 'package:tracking_app/features/home/data/models/shipping_address_model.dart';
 import 'package:tracking_app/features/home/data/models/store_model.dart';
 import 'package:tracking_app/features/home/data/models/user_model.dart';
+import 'package:tracking_app/features/home/domain/entities/order_entity.dart';
 
 part 'order_model.g.dart';
 
@@ -56,6 +57,13 @@ class OrderModel {
     this.shippingAddress,
     this.paidAt,
   });
+
+  OrderEntity toHomeDomain() => OrderEntity(
+    id: id,
+    store: store?.toHomeDomain(),
+    user: user?.toHomeDomain(),
+    shippingAddress: shippingAddress?.toHomeDomain(),
+  );
 
   factory OrderModel.fromJson(Map<String, dynamic> json) =>
       _$OrderModelFromJson(json);

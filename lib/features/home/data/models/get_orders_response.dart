@@ -5,7 +5,7 @@ import 'package:tracking_app/features/home/data/models/order_model.dart';
 part 'get_orders_response.g.dart';
 
 @JsonSerializable()
-class GetOrdersRequest {
+class GetOrdersResponse {
   @JsonKey(name: "message")
   final String? message;
   @JsonKey(name: "metadata")
@@ -13,10 +13,10 @@ class GetOrdersRequest {
   @JsonKey(name: "orders")
   final List<OrderModel>? orders;
 
-  GetOrdersRequest({this.message, this.metadata, this.orders});
+  GetOrdersResponse({this.message, this.metadata, this.orders});
 
-  factory GetOrdersRequest.fromJson(Map<String, dynamic> json) =>
-      _$GetOrdersRequestFromJson(json);
+  factory GetOrdersResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetOrdersResponseFromJson(json);
 
-  Map<String, dynamic> toJson() => _$GetOrdersRequestToJson(this);
+  Map<String, dynamic> toJson() => _$GetOrdersResponseToJson(this);
 }

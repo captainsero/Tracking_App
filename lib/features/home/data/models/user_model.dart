@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:tracking_app/features/home/domain/entities/user_entity.dart';
 
 part 'user_model.g.dart';
 
@@ -34,6 +35,9 @@ class UserModel {
     this.passwordChangedAt,
     this.resetCodeVerified,
   });
+
+  UserEntity toHomeDomain() =>
+      UserEntity(photo: photo, firstName: firstName, lastName: lastName);
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
