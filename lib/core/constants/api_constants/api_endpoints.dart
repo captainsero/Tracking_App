@@ -6,4 +6,5 @@ abstract class ApiEndpoints {
   // TODO: Add Api End Points
   static const String login = '$_baseUrl/drivers/signin';
   static const String logout = "$_baseUrl/drivers/logout";
+  static const String profile = "$_baseUrl/drivers/profile-data";
 }
