@@ -5,6 +5,7 @@ import 'package:tracking_app/config/di/di.dart';
 import 'package:tracking_app/core/router/route_path.dart';
 import 'package:tracking_app/features/auth/sign_up/presentation/view/success_apply_view.dart';
 import 'package:tracking_app/features/error/error_screen.dart';
+import 'package:tracking_app/features/home/presentation/view_model/cubit/home_cubit.dart';
 import 'package:tracking_app/features/onboarding/presentation/view/onboarding_page.dart';
 import 'package:tracking_app/features/profile/presentation/view/profile_view.dart';
 import 'package:tracking_app/features/profile/presentation/view_model/profile_cubit.dart';
@@ -42,7 +43,13 @@ abstract class AppRouter {
         path: RoutePath.resetPassword,
         builder: (context, state) => ResetPasswordView(),
       ),
-      GoRoute(path: RoutePath.home, builder: (context, state) => HomeView()),
+      GoRoute(
+        path: RoutePath.home,
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt.get<HomeCubit>(),
+          child: HomeView(),
+        ),
+      ),
 
       GoRoute(
         path: RoutePath.profile,

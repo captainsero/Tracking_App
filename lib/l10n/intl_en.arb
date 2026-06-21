@@ -58,8 +58,15 @@
     "fieldRequired": "This field is required",
     "continueText": "Continue",
     "enterA": "enterA",
-
     "logout": "Logout",
     "confirmLogout": "Confirm logout!!",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "floweryRider": "Flowery rider",
+    "noPendingOrders": "No pending orders",
+    "flowerOrder": "Flower order",
+    "pickupAdderss": "Pickup address",
+    "userAddress": "User address",
+    "egp": "EGP",
+    "reject": "Reject",
+    "accept": "Accept"
 }
