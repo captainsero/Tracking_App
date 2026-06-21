@@ -95,14 +95,11 @@ class _HomeViewState extends State<HomeView> {
                   GetPendingOrdersEvent(refresh: true),
                 );
               },
-
               child: ListView.builder(
                 controller: controller,
-
                 itemCount:
                     orders.length +
                     (context.read<HomeCubit>().isLoadingMore ? 1 : 0),
-
                 itemBuilder: (context, index) {
                   if (index == orders.length) {
                     return const Padding(
@@ -113,22 +110,20 @@ class _HomeViewState extends State<HomeView> {
                   }
 
                   final order = orders[index];
-
                   return HomeOrderContainer(
                     pickupImage: order.store?.image ?? '',
-
                     pickupName: order.store?.name ?? '',
-
                     pickupAddress: order.store?.address ?? '',
-
                     userImage: order.user?.photo ?? '',
-
                     userName:
                         '${order.user?.firstName ?? ''} ${order.user?.lastName ?? ''}',
-
                     userAddress: order.shippingAddress?.city ?? '',
-
                     totalPrice: 0,
+                    onReject: () {
+                      context.read<HomeCubit>().onEvent(
+                        RejectOrderEvent(orderId: order.id ?? ''),
+                      );
+                    },
                   );
                 },
               ),

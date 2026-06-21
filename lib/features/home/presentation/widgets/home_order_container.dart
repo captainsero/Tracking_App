@@ -14,6 +14,7 @@ class HomeOrderContainer extends StatelessWidget {
     required this.userName,
     required this.userAddress,
     required this.totalPrice,
+    required this.onReject,
   });
   final String pickupImage;
   final String pickupName;
@@ -22,6 +23,7 @@ class HomeOrderContainer extends StatelessWidget {
   final String userName;
   final String userAddress;
   final double totalPrice;
+  final VoidCallback onReject;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -83,7 +85,7 @@ class HomeOrderContainer extends StatelessWidget {
                         color: Theme.of(context).colorScheme.primary,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: onReject,
                     child: Text("Reject"),
                   ),
                 ),

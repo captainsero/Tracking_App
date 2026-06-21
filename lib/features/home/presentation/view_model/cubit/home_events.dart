@@ -5,3 +5,9 @@ class GetPendingOrdersEvent extends HomeEvents {
 
   GetPendingOrdersEvent({this.refresh = false});
 }
+
+class RejectOrderEvent extends HomeEvents {
+  final String orderId;
+
+  RejectOrderEvent({required this.orderId});
+}

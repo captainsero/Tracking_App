@@ -10,19 +10,19 @@ import 'package:bloc/bloc.dart';
 @injectable
 class HomeCubit extends Cubit<HomeState> {
   final GetPendingOrdersUseCase getPendingOrdersUseCase;
-
   HomeCubit({required this.getPendingOrdersUseCase}) : super(HomeState());
 
   int currentPage = 1;
-
   bool isLoadingMore = false;
-
   List<OrderEntity> allOrders = [];
 
   void onEvent(HomeEvents event) {
     switch (event) {
       case GetPendingOrdersEvent():
         _getPendingOrders(refresh: event.refresh);
+
+      case RejectOrderEvent():
+        _rejectOrder(event.orderId);
     }
   }
 
@@ -41,7 +41,6 @@ class HomeCubit extends Cubit<HomeState> {
     }
 
     final response = await getPendingOrdersUseCase(page: currentPage);
-
     final handler = ResponseToStateMapper.handle(response);
 
     if (handler.data != null) {
@@ -58,6 +57,18 @@ class HomeCubit extends Cubit<HomeState> {
           isLoading: false,
           data: List<OrderEntity>.from(allOrders),
           errorMessage: handler.errorMessage,
+        ),
+      ),
+    );
+  }
+
+  void _rejectOrder(String orderId) {
+    allOrders = allOrders.where((order) => order.id != orderId).toList();
+
+    emit(
+      state.copyWith(
+        getPendingOrdersState: BaseState(
+          data: List<OrderEntity>.from(allOrders),
         ),
       ),
     );
