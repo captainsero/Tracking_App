@@ -38,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Request timed out. Please check your internet connection."),
         "continueText": MessageLookupByLibrary.simpleMessage("Continue"),
         "country": MessageLookupByLibrary.simpleMessage("Country"),
+        "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emailIsRequired":
             MessageLookupByLibrary.simpleMessage("Email is required"),
@@ -79,6 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "invalidCode": MessageLookupByLibrary.simpleMessage("Invalid code"),
         "invalidIdNumber": MessageLookupByLibrary.simpleMessage(
             "Enter a valid 14-digit ID number"),
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "male": MessageLookupByLibrary.simpleMessage("Male"),
         "mustBeAtLeast3Characters": MessageLookupByLibrary.simpleMessage(

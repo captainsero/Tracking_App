@@ -61,5 +61,7 @@
 
     "logout": "Logout",
     "confirmLogout": "Confirm logout!!",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "language": "Language",
+    "editProfile": "Edit profile"
 }
