@@ -59,11 +59,11 @@ class OrderModel {
   });
 
   OrderEntity toHomeDomain() => OrderEntity(
-    id: id,
+    id: id ?? '',
     store: store?.toHomeDomain(),
     user: user?.toHomeDomain(),
     shippingAddress: shippingAddress?.toHomeDomain(),
-    totalPrice: totalPrice,
+    totalPrice: totalPrice ?? 0,
   );
 
   factory OrderModel.fromJson(Map<String, dynamic> json) =>

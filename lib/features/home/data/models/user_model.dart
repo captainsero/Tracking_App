@@ -36,8 +36,11 @@ class UserModel {
     this.resetCodeVerified,
   });
 
-  UserEntity toHomeDomain() =>
-      UserEntity(photo: photo, firstName: firstName, lastName: lastName);
+  UserEntity toHomeDomain() => UserEntity(
+    photo: photo ?? '',
+    firstName: firstName ?? '',
+    lastName: lastName ?? '',
+  );
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);

@@ -4,19 +4,34 @@ import 'package:tracking_app/features/home/domain/entities/order_entity.dart';
 
 class HomeState extends Equatable {
   final BaseState<List<OrderEntity>> getPendingOrdersState;
+  final bool isLoadingMore;
+  final bool hasReachedMax;
 
-  HomeState({BaseState<List<OrderEntity>>? getPendingOrdersState})
-    : getPendingOrdersState =
-          getPendingOrdersState ??
-          BaseState<List<OrderEntity>>(isLoading: false);
+  const HomeState({
+    this.getPendingOrdersState = const BaseState<List<OrderEntity>>(
+      isLoading: false,
+    ),
+    this.isLoadingMore = false,
+    this.hasReachedMax = false,
+  });
 
-  HomeState copyWith({BaseState<List<OrderEntity>>? getPendingOrdersState}) {
+  HomeState copyWith({
+    BaseState<List<OrderEntity>>? getPendingOrdersState,
+    bool? isLoadingMore,
+    bool? hasReachedMax,
+  }) {
     return HomeState(
       getPendingOrdersState:
           getPendingOrdersState ?? this.getPendingOrdersState,
+      isLoadingMore: isLoadingMore ?? this.isLoadingMore,
+      hasReachedMax: hasReachedMax ?? this.hasReachedMax,
     );
   }
 
   @override
-  List<Object?> get props => [getPendingOrdersState];
+  List<Object?> get props => [
+    getPendingOrdersState,
+    isLoadingMore,
+    hasReachedMax,
+  ];
 }

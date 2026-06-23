@@ -25,7 +25,7 @@ class StoreModel {
   });
 
   StoreEntity toHomeDomain() =>
-      StoreEntity(image: image, name: name, address: address);
+      StoreEntity(image: image ?? '', name: name ?? '', address: address ?? '');
 
   factory StoreModel.fromJson(Map<String, dynamic> json) =>
       _$StoreModelFromJson(json);

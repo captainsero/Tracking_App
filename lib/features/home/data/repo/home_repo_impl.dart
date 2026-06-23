@@ -18,9 +18,11 @@ class HomeRepoImpl implements HomeRepoContract {
     switch (response) {
       case SuccessBaseResponse<GetOrdersResponse>():
         return SuccessBaseResponse<List<OrderEntity>>(
-          data: response.data.orders!
-              .map((order) => order.toHomeDomain())
-              .toList(),
+          data:
+              response.data.orders
+                  ?.map((order) => order.toHomeDomain())
+                  .toList() ??
+              [],
         );
       case ErrorBaseResponse<GetOrdersResponse>():
         return ErrorBaseResponse<List<OrderEntity>>(error: response.error);

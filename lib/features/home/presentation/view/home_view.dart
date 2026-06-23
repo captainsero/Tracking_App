@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -88,15 +90,16 @@ class _HomeViewState extends State<HomeView> {
 
             return RefreshIndicator(
               onRefresh: () async {
+                final completer = Completer<void>();
                 context.read<HomeCubit>().onEvent(
-                  GetPendingOrdersEvent(refresh: true),
+                  GetPendingOrdersEvent(refresh: true, completer: completer),
                 );
+
+                return completer.future;
               },
               child: ListView.builder(
                 controller: controller,
-                itemCount:
-                    orders.length +
-                    (context.read<HomeCubit>().isLoadingMore ? 1 : 0),
+                itemCount: orders.length + (state.isLoadingMore ? 1 : 0),
                 itemBuilder: (context, index) {
                   if (index == orders.length) {
                     return const Padding(
@@ -115,10 +118,10 @@ class _HomeViewState extends State<HomeView> {
                     userName:
                         '${order.user?.firstName ?? ''} ${order.user?.lastName ?? ''}',
                     userAddress: order.shippingAddress?.city ?? '',
-                    totalPrice: 0,
+                    totalPrice: order.totalPrice,
                     onReject: () {
                       context.read<HomeCubit>().onEvent(
-                        RejectOrderEvent(orderId: order.id ?? ''),
+                        RejectOrderEvent(orderId: order.id),
                       );
                     },
                   );

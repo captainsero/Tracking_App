@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:injectable/injectable.dart';
 import 'package:tracking_app/config/base_state/base_state.dart';
 import 'package:tracking_app/config/handler/response_to_state_mapper.dart';
@@ -12,63 +14,85 @@ class HomeCubit extends Cubit<HomeState> {
   final GetPendingOrdersUseCase getPendingOrdersUseCase;
   HomeCubit({required this.getPendingOrdersUseCase}) : super(HomeState());
 
-  int currentPage = 1;
-  bool isLoadingMore = false;
-  List<OrderEntity> allOrders = [];
+  int _currentPage = 1;
+  List<OrderEntity> _allOrders = [];
 
   void onEvent(HomeEvents event) {
     switch (event) {
       case GetPendingOrdersEvent():
-        _getPendingOrders(refresh: event.refresh);
+        _getPendingOrders(refresh: event.refresh, completer: event.completer);
 
       case RejectOrderEvent():
         _rejectOrder(event.orderId);
     }
   }
 
-  Future<void> _getPendingOrders({bool refresh = false}) async {
-    if (isLoadingMore) return;
+  Future<void> _getPendingOrders({
+    bool refresh = false,
+    Completer<void>? completer,
+  }) async {
+    if (state.isLoadingMore || (!refresh && state.hasReachedMax)) return;
+    try {
+      if (refresh) {
+        _currentPage = 1;
+        emit(state.copyWith(hasReachedMax: false));
+      }
 
-    isLoadingMore = true;
+      if (_currentPage == 1 && !refresh) {
+        emit(state.copyWith(getPendingOrdersState: BaseState(isLoading: true)));
+      } else if (_currentPage > 1) {
+        emit(state.copyWith(isLoadingMore: true));
+      }
 
-    if (refresh) {
-      currentPage = 1;
-      allOrders.clear();
-    }
+      final response = await getPendingOrdersUseCase(page: _currentPage);
+      final handler = ResponseToStateMapper.handle(response);
 
-    if (currentPage == 1) {
-      emit(state.copyWith(getPendingOrdersState: BaseState(isLoading: true)));
-    }
+      bool reachedMax = false;
 
-    final response = await getPendingOrdersUseCase(page: currentPage);
-    final handler = ResponseToStateMapper.handle(response);
+      if (handler.data != null) {
+        final newOrders = handler.data as List<OrderEntity>;
+        if (refresh) {
+          _allOrders.clear();
+        }
 
-    if (handler.data != null) {
-      allOrders = [...allOrders, ...(handler.data as List<OrderEntity>)];
+        if (newOrders.isEmpty) {
+          reachedMax = true;
+        } else {
+          _allOrders = [..._allOrders, ...newOrders];
+          _currentPage++;
+        }
+      } else {
+        reachedMax = true;
+      }
 
-      currentPage++;
-    }
-
-    isLoadingMore = false;
-
-    emit(
-      state.copyWith(
-        getPendingOrdersState: BaseState(
-          isLoading: false,
-          data: List<OrderEntity>.from(allOrders),
-          errorMessage: handler.errorMessage,
+      emit(
+        state.copyWith(
+          getPendingOrdersState: BaseState(
+            isLoading: handler.isLoading,
+            data: List<OrderEntity>.from(_allOrders),
+            errorMessage: handler.errorMessage,
+          ),
+          isLoadingMore: false,
+          hasReachedMax: reachedMax,
         ),
-      ),
-    );
+      );
+    } finally {
+      if (state.isLoadingMore) {
+        emit(state.copyWith(isLoadingMore: false));
+      }
+      if (completer != null && !completer.isCompleted) {
+        completer.complete();
+      }
+    }
   }
 
   void _rejectOrder(String orderId) {
-    allOrders = allOrders.where((order) => order.id != orderId).toList();
+    _allOrders = _allOrders.where((order) => order.id != orderId).toList();
 
     emit(
       state.copyWith(
         getPendingOrdersState: BaseState(
-          data: List<OrderEntity>.from(allOrders),
+          data: List<OrderEntity>.from(_allOrders),
         ),
       ),
     );

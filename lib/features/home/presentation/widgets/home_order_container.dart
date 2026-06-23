@@ -73,7 +73,7 @@ class HomeOrderContainer extends StatelessWidget {
               mainAxisAlignment: .spaceBetween,
               children: [
                 Text(
-                  "${S.current.egp} $totalPrice",
+                  "${S.current.egp} ${totalPrice.toStringAsFixed(0)}",
                   style: Theme.of(
                     context,
                   ).textTheme.titleLarge!.copyWith(fontSize: FontSize.s14),

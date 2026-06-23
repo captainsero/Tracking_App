@@ -25,7 +25,7 @@ class ShippingAddressModel {
   });
 
   ShippingAddressEntity toHomeDomain() =>
-      ShippingAddressEntity(street: street, city: city);
+      ShippingAddressEntity(street: street ?? '', city: city ?? '');
 
   factory ShippingAddressModel.fromJson(Map<String, dynamic> json) =>
       _$ShippingAddressModelFromJson(json);
