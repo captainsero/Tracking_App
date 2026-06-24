@@ -38,7 +38,6 @@ class EditProfileRepositoryImpl implements EditProfileRepository {
     } catch (e) {
       return ErrorBaseResponse<EditProfileResponseEntity>(
         error: e,
-        errorMessage: e.toString(),
       );
     }
   }

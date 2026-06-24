@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "accept": MessageLookupByLibrary.simpleMessage("Accept"),
         "apply": MessageLookupByLibrary.simpleMessage("Apply"),
         "applySubtitle": MessageLookupByLibrary.simpleMessage(
             "You want to be a delivery man?\nJoin our team"),
@@ -38,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Request timed out. Please check your internet connection."),
         "continueText": MessageLookupByLibrary.simpleMessage("Continue"),
         "country": MessageLookupByLibrary.simpleMessage("Country"),
+        "egp": MessageLookupByLibrary.simpleMessage("EGP"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emailIsRequired":
             MessageLookupByLibrary.simpleMessage("Email is required"),
@@ -70,6 +72,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("This field is required"),
         "firstLegalName":
             MessageLookupByLibrary.simpleMessage("First legal name"),
+        "flowerOrder": MessageLookupByLibrary.simpleMessage("Flower order"),
+        "floweryRider": MessageLookupByLibrary.simpleMessage("Flowery rider"),
         "gender": MessageLookupByLibrary.simpleMessage("Gender"),
         "goToHome": MessageLookupByLibrary.simpleMessage("goToHome"),
         "idImage": MessageLookupByLibrary.simpleMessage("ID image"),
@@ -85,6 +89,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Must be at least 3 characters"),
         "networkError": MessageLookupByLibrary.simpleMessage(
             "Network error. Please check your connection."),
+        "noPendingOrders":
+            MessageLookupByLibrary.simpleMessage("No pending orders"),
         "noValueKeyFound":
             MessageLookupByLibrary.simpleMessage("No value found for key: "),
         "notFound": MessageLookupByLibrary.simpleMessage(
@@ -101,6 +107,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "paswordNotMatched":
             MessageLookupByLibrary.simpleMessage("Passwords do not match"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
+        "pickupAdderss": MessageLookupByLibrary.simpleMessage("Pickup address"),
+        "reject": MessageLookupByLibrary.simpleMessage("Reject"),
         "requestTimeout": MessageLookupByLibrary.simpleMessage(
             "Request timed out. Please try again."),
         "secondLegalName":
@@ -114,6 +122,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Upload ID image"),
         "uploadLicensePhoto":
             MessageLookupByLibrary.simpleMessage("Upload license photo"),
+        "userAddress": MessageLookupByLibrary.simpleMessage("User address"),
         "vehicleLicense":
             MessageLookupByLibrary.simpleMessage("Vehicle license"),
         "vehicleNumber": MessageLookupByLibrary.simpleMessage("Vehicle number"),

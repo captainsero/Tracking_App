@@ -109,7 +109,7 @@ class _SignUpPhoneFieldState extends State<SignUpPhoneField> {
           ),
           padding: const EdgeInsets.symmetric(horizontal: AppPadding.p8),
           decoration: BoxDecoration(
-            color: AppColors.hintColor.withOpacity(0.1),
+            color: AppColors.hintColor.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(AppSize.s6),
           ),
           child: Row(
@@ -134,8 +134,8 @@ class _SignUpPhoneFieldState extends State<SignUpPhoneField> {
           horizontal: AppPadding.p16,
           vertical: AppPadding.p16,
         ),
-        border: _border(AppColors.hintColor.withOpacity(0.4)),
-        enabledBorder: _border(AppColors.hintColor.withOpacity(0.4)),
+        border: _border(AppColors.hintColor.withValues(alpha: 0.4)),
+        enabledBorder: _border(AppColors.hintColor.withValues(alpha: 0.4)),
         focusedBorder: _border(AppColors.primary, width: AppSize.s1_5),
         errorBorder: _border(AppColors.error),
         focusedErrorBorder: _border(AppColors.error, width: AppSize.s1_5),
