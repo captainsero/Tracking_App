@@ -4,13 +4,13 @@ part 'edit_profile_response_model.g.dart';
 
 @JsonSerializable()
 class EditProfileResponseModel {
+  @JsonKey(name: 'message')
   final String message;
+
+  @JsonKey(name: 'driver')
   final DriverModel driver;
 
-  EditProfileResponseModel({
-    required this.message,
-    required this.driver,
-  });
+  EditProfileResponseModel({required this.message, required this.driver});
 
   factory EditProfileResponseModel.fromJson(Map<String, dynamic> json) =>
       _$EditProfileResponseModelFromJson(json);
@@ -22,22 +22,35 @@ class EditProfileResponseModel {
 class DriverModel {
   @JsonKey(name: '_id')
   final String id;
+  @JsonKey(name: 'country')
   final String country;
+  @JsonKey(name: 'firstName')
   final String firstName;
+  @JsonKey(name: 'lastName')
   final String lastName;
+  @JsonKey(name: 'vehicleType')
   final String vehicleType;
+  @JsonKey(name: 'vehicleNumber')
   final String vehicleNumber;
+  @JsonKey(name: 'vehicleLicense')
   final String vehicleLicense;
   @JsonKey(name: 'NID')
   final String nid;
   @JsonKey(name: 'NIDImg')
   final String nidImg;
+  @JsonKey(name: 'email')
   final String email;
+  @JsonKey(name: 'password')
   final String password;
+  @JsonKey(name: 'gender')
   final String gender;
+  @JsonKey(name: 'phone')
   final String phone;
+  @JsonKey(name: 'photo')
   final String photo;
+  @JsonKey(name: 'role')
   final String role;
+  @JsonKey(name: 'createdAt')
   final String createdAt;
 
   DriverModel({

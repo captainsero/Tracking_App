@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'edit_profile_request_model.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 class EditProfileRequestModel {
   final String? firstName;
   final String? lastName;
@@ -12,9 +12,7 @@ class EditProfileRequestModel {
   final String? vehicleType;
   final String? vehicleNumber;
   final String? vehicleLicense;
-  @JsonKey(name: 'NID')
   final String? nid;
-  @JsonKey(name: 'NIDImg')
   final String? nidImg;
 
   EditProfileRequestModel({

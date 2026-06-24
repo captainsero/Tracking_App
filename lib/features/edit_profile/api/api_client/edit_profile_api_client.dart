@@ -7,12 +7,12 @@ import 'package:tracking_app/features/edit_profile/data/models/edit_profile_resp
 
 part 'edit_profile_api_client.g.dart';
 
-@RestApi(baseUrl: ApiEndpoints.editProfile)
+@RestApi()
 @lazySingleton
 abstract class EditProfileApiClient {
   @factoryMethod
   factory EditProfileApiClient(Dio dio) = _EditProfileApiClient;
 
-  @POST(ApiEndpoints.editProfile)
+  @PUT(ApiEndpoints.editProfile)
   Future<EditProfileResponseModel> editProfile(@Body() EditProfileRequestModel request);
 }
