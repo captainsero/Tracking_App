@@ -4,7 +4,6 @@ import 'package:mockito/mockito.dart';
 import 'package:tracking_app/config/base_response/base_response.dart';
 import 'package:tracking_app/features/profile/data/data_sources/profile_remote_data_source_contract.dart';
 import 'package:tracking_app/features/profile/data/models/profile_data_model.dart';
-import 'package:tracking_app/features/profile/data/models/profile_model_mapper.dart';
 import 'package:tracking_app/features/profile/data/repo/profile_repo_impl.dart';
 import 'package:tracking_app/features/profile/domain/entities/profile_data_entity.dart';
 
@@ -150,13 +149,8 @@ void main() {
         expect(successResult.data.firstName, tProfileDataEntity.firstName);
         expect(successResult.data.lastName, tProfileDataEntity.lastName);
         expect(successResult.data.email, tProfileDataEntity.email);
-        expect(successResult.data.gender, tProfileDataEntity.gender);
         expect(successResult.data.phone, tProfileDataEntity.phone);
         expect(successResult.data.photo, tProfileDataEntity.photo);
-        expect(successResult.data.role, tProfileDataEntity.role);
-        expect(successResult.data.wishlist, tProfileDataEntity.wishlist);
-        expect(successResult.data.addresses, tProfileDataEntity.addresses);
-        expect(successResult.data.createdAt, tProfileDataEntity.createdAt);
 
         verify(mockDataSource.getProfileData()).called(1);
         verifyNoMoreInteractions(mockDataSource);

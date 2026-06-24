@@ -24,13 +24,8 @@ void main() {
           firstName: '',
           lastName: '',
           email: '',
-          gender: '',
           phone: '',
           photo: '',
-          role: '',
-          wishlist: const [],
-          addresses: const [],
-          createdAt: '',
         ),
       ),
     );
