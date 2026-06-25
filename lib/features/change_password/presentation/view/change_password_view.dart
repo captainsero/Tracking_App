@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tracking_app/core/constants/color_manager.dart';
 import 'package:tracking_app/core/constants/screen_size.dart';
 import 'package:tracking_app/config/validators/text_field_validator.dart';
 import 'package:tracking_app/features/change_password/presentation/view_model/change_password_cubit.dart';
@@ -60,7 +59,9 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TextFormField(
-                          cursorColor: AppColors.black,
+                          cursorColor: Theme.of(
+                            context,
+                          ).colorScheme.onSecondary,
                           controller: _currentPasswordController,
                           obscureText: true,
                           decoration: InputDecoration(
@@ -91,7 +92,7 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
                 ),
 
                 TextFormField(
-                  cursorColor: AppColors.black,
+                  cursorColor: Theme.of(context).colorScheme.onSecondary,
                   controller: _newPasswordController,
                   obscureText: true,
                   decoration: InputDecoration(
@@ -104,7 +105,7 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
                 ),
 
                 TextFormField(
-                  cursorColor: AppColors.black,
+                  cursorColor: Theme.of(context).colorScheme.onSecondary,
                   controller: _confirmPasswordController,
                   obscureText: true,
                   decoration: InputDecoration(
@@ -130,7 +131,9 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(S.of(context).applySuccess),
-                          backgroundColor: AppColors.green,
+                          backgroundColor: Theme.of(
+                            context,
+                          ).colorScheme.primary,
                         ),
                       );
                       Navigator.pop(context);
