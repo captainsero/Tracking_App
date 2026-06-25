@@ -6,6 +6,9 @@ import 'package:go_router/go_router.dart';
 import 'package:tracking_app/core/constants/color_manager.dart';
 import 'package:tracking_app/core/router/route_path.dart';
 import 'package:tracking_app/features/auth/login/presentation/view/widgets/Custom%20toast.dart';
+import 'package:tracking_app/features/edit_profile/presentation/view/widgets/custom_label_field.dart';
+import 'package:tracking_app/features/edit_profile/presentation/view/widgets/profile_avatar.dart';
+import 'package:tracking_app/features/edit_profile/presentation/view/widgets/save_button.dart';
 import 'package:tracking_app/features/edit_profile/presentation/view_model/cubit/edit_profile_cubit.dart';
 import 'package:tracking_app/features/edit_profile/presentation/view_model/cubit/edit_profile_events.dart';
 import 'package:tracking_app/features/edit_profile/presentation/view_model/cubit/edit_profile_states.dart';
@@ -18,7 +21,6 @@ class EditProfileBody extends StatelessWidget {
     final cubit = context.read<EditProfileCubit>();
 
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
@@ -83,7 +85,7 @@ class EditProfileBody extends StatelessWidget {
                 children: [
                   // ── Avatar ──────────────────────────────────────────────
                   Center(
-                    child: _ProfileAvatar(
+                    child: ProfileAvatar(
                       imagePath: state.selectedImagePath,
                       onTap: () =>
                           cubit.doIntent(EditProfileEvents.pickImageEvent()),
@@ -91,80 +93,63 @@ class EditProfileBody extends StatelessWidget {
                   ),
                   const SizedBox(height: 28),
 
-            
-                  // First & Last name row
+                  // ── First & Last name row ────────────────────────────────
                   Row(
                     children: [
                       Expanded(
-                        child: _LabeledField(
+                        child: CustomLabelField(
                           label: 'First name',
-                          child: _FieldBox(
-                            icon: Icons.person_outline_rounded,
-                            controller: cubit.firstNameController,
-                            hint: 'First name',
-                            validator: (v) {
-                              if (v == null || v.trim().isEmpty) {
-                                return 'Required';
-                              }
-                              return null;
-                            },
-                          ),
+                          controller: cubit.firstNameController,
+                          icon: Icons.person_outline_rounded,
+                          hint: 'First name',
+                          validator: (v) {
+                            if (v == null || v.trim().isEmpty) {
+                              return 'Required';
+                            }
+                            return null;
+                          },
                         ),
                       ),
                       const SizedBox(width: 12),
                       Expanded(
-                        child: _LabeledField(
+                        child: CustomLabelField(
                           label: 'Last name',
-                          child: _FieldBox(
-                            icon: Icons.person_outline_rounded,
-                            controller: cubit.lastNameController,
-                            hint: 'Last name',
-                            validator: (v) {
-                              if (v == null || v.trim().isEmpty) {
-                                return 'Required';
-                              }
-                              return null;
-                            },
-                          ),
+                          controller: cubit.lastNameController,
+                          icon: Icons.person_outline_rounded,
+                          hint: 'Last name',
+                          validator: (v) {
+                            if (v == null || v.trim().isEmpty) {
+                              return 'Required';
+                            }
+                            return null;
+                          },
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 16),
 
-                  // _LabeledField(
-                  //   label: 'Email',
-                  //   child: _FieldBox(
-                  //     icon: Icons.mail_outline_rounded,
-                  //     controller: cubit.emailController,
-                  //     hint: 'Email address',
-                  //     readOnly: true,
-                  //   ),
-                  // ),
-                  // const SizedBox(height: 12),
-
-                  _LabeledField(
+                  // ── Phone number ─────────────────────────────────────────
+                  CustomLabelField(
                     label: 'Phone number',
-                    child: _FieldBox(
-                      icon: Icons.phone_outlined,
-                      controller: cubit.phoneController,
-                      hint: 'Phone number',
-                      keyboardType: TextInputType.phone,
-                      validator: (v) {
-                        if (v == null || v.trim().isEmpty) {
-                          return 'Phone number is required';
-                        }
-                        return null;
-                      },
-                    ),
+                    controller: cubit.phoneController,
+                    icon: Icons.phone_outlined,
+                    hint: 'Phone number',
+                    keyboardType: TextInputType.phone,
+                    validator: (v) {
+                      if (v == null || v.trim().isEmpty) {
+                        return 'Phone number is required';
+                      }
+                      return null;
+                    },
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 16),
 
+                  // ── Password ─────────────────────────────────────────────
                   _LabeledField(
                     label: 'Password',
                     child: _PasswordFieldBox(
-                      onChangeTap: () =>
-                          context.push(RoutePath.forgetPassword),
+                      onChangeTap: () => context.push(RoutePath.forgetPassword),
                     ),
                   ),
                   const SizedBox(height: 24),
@@ -173,18 +158,8 @@ class EditProfileBody extends StatelessWidget {
                   Divider(color: Colors.grey.shade200, thickness: 0.5),
                   const SizedBox(height: 20),
 
-                  // // ── Gender ───────────────────────────────────────────────
-                  // _SectionLabel('Gender'),
-                  // const SizedBox(height: 10),
-                  // _GenderToggle(
-                  //   selectedGender: state.selectedGender,
-                  //   onChanged: (g) =>
-                  //       cubit.doIntent(EditProfileEvents.selectGenderEvent(g)),
-                  // ),
-                  // const SizedBox(height: 32),
-
                   // ── Save Button ──────────────────────────────────────────
-                  _SaveButton(
+                  SaveButton(
                     isLoading: state.updateProfileState.isLoading == true,
                     onPressed: () {
                       FocusScope.of(context).unfocus();
@@ -193,7 +168,6 @@ class EditProfileBody extends StatelessWidget {
                       }
                     },
                   ),
-
                   const SizedBox(height: 24),
                 ],
               ),
@@ -204,99 +178,6 @@ class EditProfileBody extends StatelessWidget {
     );
   }
 }
-
-// ─────────────────────────── Sub-Widgets ────────────────────────────────────
-
-/// Unchanged — kept exactly as original
-class _ProfileAvatar extends StatelessWidget {
-  const _ProfileAvatar({required this.imagePath, required this.onTap});
-
-  final String? imagePath;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          Container(
-            width: 110,
-            height: 110,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: AppColors.lightPink,
-              border: Border.all(color: AppColors.primary, width: 2.5),
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors.primary.withValues(alpha: 0.18),
-                  blurRadius: 20,
-                  offset: const Offset(0, 6),
-                ),
-              ],
-            ),
-            child: ClipOval(
-              child: imagePath != null
-                  ? Image.file(File(imagePath!), fit: BoxFit.cover)
-                  : Icon(
-                      Icons.person_rounded,
-                      size: 56,
-                      color: AppColors.primary,
-                    ),
-            ),
-          ),
-          Positioned(
-            bottom: 0,
-            right: 0,
-            child: GestureDetector(
-              onTap: onTap,
-              child: Container(
-                width: 34,
-                height: 34,
-                decoration: BoxDecoration(
-                  color: AppColors.primary,
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.white, width: 2),
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.primary.withValues(alpha: 0.35),
-                      blurRadius: 8,
-                      offset: const Offset(0, 3),
-                    ),
-                  ],
-                ),
-                child: const Icon(
-                  Icons.camera_alt_rounded,
-                  color: Colors.white,
-                  size: 17,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// class _SectionLabel extends StatelessWidget {
-//   const _SectionLabel(this.text);
-//   final String text;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Text(
-//       text.toUpperCase(),
-//       style: TextStyle(
-//         fontSize: 11,
-//         fontWeight: FontWeight.w500,
-//         color: Colors.grey.shade500,
-//         letterSpacing: 0.6,
-//         fontFamily: 'Inter',
-//       ),
-//     );
-//   }
-// }
 
 class _LabeledField extends StatelessWidget {
   const _LabeledField({required this.label, required this.child});
@@ -325,66 +206,7 @@ class _LabeledField extends StatelessWidget {
   }
 }
 
-class _FieldBox extends StatelessWidget {
-  const _FieldBox({
-    required this.icon,
-    required this.controller,
-    required this.hint,
-    this.keyboardType,
-    this.validator,
-  }) : readOnly = false;
 
-  final IconData icon;
-  final TextEditingController controller;
-  final String hint;
-  final TextInputType? keyboardType;
-  final bool readOnly;
-  final FormFieldValidator<String>? validator;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      controller: controller,
-      keyboardType: keyboardType,
-      readOnly: readOnly,
-      validator: validator,
-      style: TextStyle(
-        fontSize: 14,
-        color: readOnly ? Colors.grey.shade500 : Colors.black87,
-        fontFamily: 'Inter',
-      ),
-      decoration: InputDecoration(
-        hintText: hint,
-        prefixIcon: Icon(icon, color: AppColors.primary, size: 17),
-        filled: true,
-        fillColor: const Color(0xFFF7F7F7),
-        hintStyle: TextStyle(
-          color: Colors.grey.shade400,
-          fontSize: 14,
-          fontFamily: 'Inter',
-        ),
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 14, vertical: 11),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: Colors.grey.shade200, width: 0.5),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: AppColors.primary, width: 1.2),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: AppColors.error, width: 0.5),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: AppColors.error, width: 1.2),
-        ),
-      ),
-    );
-  }
-}
 
 class _PasswordFieldBox extends StatelessWidget {
   const _PasswordFieldBox({required this.onChangeTap});
@@ -431,139 +253,5 @@ class _PasswordFieldBox extends StatelessWidget {
   }
 }
 
-class _GenderToggle extends StatelessWidget {
-  const _GenderToggle({
-    required this.selectedGender,
-    required this.onChanged,
-  });
 
-  final String? selectedGender;
-  final ValueChanged<String> onChanged;
-
-  @override
-  Widget build(BuildContext context) {
-    final isFemale = selectedGender == 'female';
-    final isMale = selectedGender == 'male' || selectedGender == null;
-
-    return Container(
-      decoration: BoxDecoration(
-        color: const Color(0xFFF7F7F7),
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.grey.shade200, width: 0.5),
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(8),
-        child: Row(
-          children: [
-            Expanded(
-              child: GestureDetector(
-                onTap: () => onChanged('female'),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  decoration: BoxDecoration(
-                    color: isFemale ? AppColors.primary : Colors.transparent,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.female_rounded,
-                        size: 16,
-                        color: isFemale ? Colors.white : Colors.grey.shade500,
-                      ),
-                      const SizedBox(width: 6),
-                      Text(
-                        'Female',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontFamily: 'Inter',
-                          color:
-                              isFemale ? Colors.white : Colors.grey.shade500,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Container(width: 0.5, color: Colors.grey.shade200),
-            Expanded(
-              child: GestureDetector(
-                onTap: () => onChanged('male'),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  decoration: BoxDecoration(
-                    color: isMale ? AppColors.primary : Colors.transparent,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.male_rounded,
-                        size: 16,
-                        color: isMale ? Colors.white : Colors.grey.shade500,
-                      ),
-                      const SizedBox(width: 6),
-                      Text(
-                        'Male',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontFamily: 'Inter',
-                          color: isMale ? Colors.white : Colors.grey.shade500,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _SaveButton extends StatelessWidget {
-  const _SaveButton({required this.isLoading, required this.onPressed});
-
-  final bool isLoading;
-  final VoidCallback onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: 48,
-      child: ElevatedButton(
-        onPressed: isLoading ? null : onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primary,
-          disabledBackgroundColor: AppColors.primary.withValues(alpha: 0.6),
-          elevation: 0,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-        ),
-        child: isLoading
-            ? const SizedBox(
-                width: 20,
-                height: 20,
-                child: CircularProgressIndicator(
-                  strokeWidth: 2.5,
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                ),
-              )
-            : const Text(
-                'Save Changes',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: 'Inter',
-                ),
-              ),
-      ),
-    );
-  }
-}
 
