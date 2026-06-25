@@ -4,8 +4,8 @@ import 'package:mockito/mockito.dart';
 import 'package:tracking_app/config/base_response/base_response.dart';
 import 'package:tracking_app/features/edit_profile/data/datasources/edit_profile_remote_data_source_contract.dart';
 import 'package:tracking_app/features/edit_profile/data/models/edit_profile_response_model.dart';
-import 'package:tracking_app/features/edit_profile/data/models/edit_profile_model_mapper.dart';
 import 'package:tracking_app/features/edit_profile/data/repositories/edit_profile_repository_impl.dart';
+import 'package:tracking_app/features/edit_profile/domain/entities/edit_profile_request_entity.dart';
 import 'package:tracking_app/features/edit_profile/domain/entities/edit_profile_response_entity.dart';
 
 import 'edit_profile_repository_impl_test.mocks.dart';
@@ -76,9 +76,11 @@ void main() {
 
   Future<BaseResponse<EditProfileResponseEntity>> callRepo() =>
       repository.editProfile(
-        firstName: tFirstName,
-        lastName: tLastName,
-        phone: tPhone,
+        entity: const EditProfileRequestEntity(
+          firstName: tFirstName,
+          lastName: tLastName,
+          phone: tPhone,
+        ),
       );
 
   // ── Test Suite ─────────────────────────────────────────────────────────────
@@ -133,7 +135,15 @@ void main() {
           final entity =
               (result as SuccessBaseResponse<EditProfileResponseEntity>).data;
 
-          expect(entity, equals(tResponseModel.toEntity()));
+          expect(
+            entity,
+            equals(
+              EditProfileResponseEntity(
+                message: tResponseModel.message,
+                driver: tResponseModel.driver.toDriverEntity(),
+              ),
+            ),
+          );
         },
       );
 
@@ -302,9 +312,11 @@ void main() {
           );
 
           final result = await repository.editProfile(
-            firstName: null,
-            lastName: tLastName,
-            phone: tPhone,
+            entity: const EditProfileRequestEntity(
+              firstName: null,
+              lastName: tLastName,
+              phone: tPhone,
+            ),
           );
 
           expect(result, isA<SuccessBaseResponse<EditProfileResponseEntity>>());
@@ -322,9 +334,11 @@ void main() {
           );
 
           final result = await repository.editProfile(
-            firstName: null,
-            lastName: null,
-            phone: null,
+            entity: const EditProfileRequestEntity(
+              firstName: null,
+              lastName: null,
+              phone: null,
+            ),
           );
 
           expect(result, isA<SuccessBaseResponse<EditProfileResponseEntity>>());

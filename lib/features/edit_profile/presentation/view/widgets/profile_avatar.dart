@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:tracking_app/core/constants/color_manager.dart';
 
 class ProfileAvatar extends StatelessWidget {
-  const ProfileAvatar({required this.imagePath, required this.onTap});
+  const ProfileAvatar({super.key, required this.imagePath, required this.onTap});
 
   final String? imagePath;
   final VoidCallback onTap;

@@ -1,85 +1,114 @@
 import 'package:flutter/material.dart';
 import 'package:tracking_app/core/constants/color_manager.dart';
 
+
 class GenderToggle extends StatelessWidget {
-  const GenderToggle({required this.selectedGender, required this.onChanged});
+  const GenderToggle({
+    super.key,
+    required this.selectedGender,
+    required this.onChanged,
+  });
 
   final String? selectedGender;
   final ValueChanged<String> onChanged;
 
   @override
   Widget build(BuildContext context) {
-    final isFemale = selectedGender == 'female';
-    final isMale = selectedGender == 'male' || selectedGender == null;
+    return Row(
+      children: [
+        Expanded(
+          child: _GenderRadioOption(
+            value: 'male',
+            label: 'Male',
+            icon: Icons.male_rounded,
+            groupValue: selectedGender,
+            onChanged: onChanged,
+          ),
+        ),
+        const SizedBox(width: 12),
+        Expanded(
+          child: _GenderRadioOption(
+            value: 'female',
+            label: 'Female',
+            icon: Icons.female_rounded,
+            groupValue: selectedGender,
+            onChanged: onChanged,
+          ),
+        ),
+      ],
+    );
+  }
+}
 
-    return Container(
-      decoration: BoxDecoration(
-        color: const Color(0xFFF7F7F7),
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.grey.shade200, width: 0.5),
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(8),
+class _GenderRadioOption extends StatelessWidget {
+  const _GenderRadioOption({
+    required this.value,
+    required this.label,
+    required this.icon,
+    required this.groupValue,
+    required this.onChanged,
+  });
+
+  final String value;
+  final String label;
+  final IconData icon;
+  final String? groupValue;
+  final ValueChanged<String> onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    final bool isSelected = groupValue == value;
+
+    return GestureDetector(
+      onTap: () => onChanged(value),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeInOut,
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        decoration: BoxDecoration(
+          color: isSelected
+              ? AppColors.primary.withValues(alpha: 0.07)
+              : const Color(0xFFF7F7F7),
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(
+            color: isSelected ? AppColors.primary : Colors.grey.shade200,
+            width: isSelected ? 1.5 : 0.5,
+          ),
+        ),
         child: Row(
           children: [
-            Expanded(
-              child: GestureDetector(
-                onTap: () => onChanged('female'),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  decoration: BoxDecoration(
-                    color: isFemale ? AppColors.primary : Colors.transparent,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.female_rounded,
-                        size: 16,
-                        color: isFemale ? Colors.white : Colors.grey.shade500,
-                      ),
-                      const SizedBox(width: 6),
-                      Text(
-                        'Female',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontFamily: 'Inter',
-                          color: isFemale ? Colors.white : Colors.grey.shade500,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+            // Radio button
+            SizedBox(
+              width: 20,
+              height: 20,
+              child: Radio<String>(
+                value: value,
+                groupValue: groupValue,
+                onChanged: (v) => onChanged(v!),
+                activeColor: AppColors.primary,
+                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                visualDensity: VisualDensity.compact,
               ),
             ),
-            Container(width: 0.5, color: Colors.grey.shade200),
+            const SizedBox(width: 6),
+            // Gender icon
+            Icon(
+              icon,
+              size: 16,
+              color: isSelected ? AppColors.primary : Colors.grey.shade500,
+            ),
+            const SizedBox(width: 4),
+            // Label
             Expanded(
-              child: GestureDetector(
-                onTap: () => onChanged('male'),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  decoration: BoxDecoration(
-                    color: isMale ? AppColors.primary : Colors.transparent,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.male_rounded,
-                        size: 16,
-                        color: isMale ? Colors.white : Colors.grey.shade500,
-                      ),
-                      const SizedBox(width: 6),
-                      Text(
-                        'Male',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontFamily: 'Inter',
-                          color: isMale ? Colors.white : Colors.grey.shade500,
-                        ),
-                      ),
-                    ],
-                  ),
+              child: Text(
+                label,
+                style: TextStyle(
+                  fontSize: 14,
+                  fontFamily: 'Inter',
+                  fontWeight:
+                      isSelected ? FontWeight.w600 : FontWeight.normal,
+                  color:
+                      isSelected ? AppColors.primary : Colors.grey.shade600,
                 ),
               ),
             ),

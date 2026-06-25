@@ -6,8 +6,10 @@
 import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i7;
+import 'package:mockito/src/dummies.dart' as _i8;
 import 'package:tracking_app/config/base_response/base_response.dart' as _i5;
+import 'package:tracking_app/features/edit_profile/domain/entities/edit_profile_request_entity.dart'
+    as _i7;
 import 'package:tracking_app/features/edit_profile/domain/entities/edit_profile_response_entity.dart'
     as _i6;
 import 'package:tracking_app/features/edit_profile/domain/repositories/edit_profile_repository.dart'
@@ -58,30 +60,17 @@ class MockEditProfileUseCase extends _i1.Mock
 
   @override
   _i4.Future<_i5.BaseResponse<_i6.EditProfileResponseEntity>> call({
-    required String? firstName,
-    required String? lastName,
-    required String? phone,
+    required _i7.EditProfileRequestEntity? entity,
   }) =>
       (super.noSuchMethod(
-            Invocation.method(#call, [], {
-              #firstName: firstName,
-              #lastName: lastName,
-              #phone: phone,
-            }),
+            Invocation.method(#call, [], {#entity: entity}),
             returnValue:
                 _i4.Future<
                   _i5.BaseResponse<_i6.EditProfileResponseEntity>
                 >.value(
-                  _i7.dummyValue<
+                  _i8.dummyValue<
                     _i5.BaseResponse<_i6.EditProfileResponseEntity>
-                  >(
-                    this,
-                    Invocation.method(#call, [], {
-                      #firstName: firstName,
-                      #lastName: lastName,
-                      #phone: phone,
-                    }),
-                  ),
+                  >(this, Invocation.method(#call, [], {#entity: entity})),
                 ),
           )
           as _i4.Future<_i5.BaseResponse<_i6.EditProfileResponseEntity>>);

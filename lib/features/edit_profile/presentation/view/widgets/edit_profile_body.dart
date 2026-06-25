@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -7,6 +5,7 @@ import 'package:tracking_app/core/constants/color_manager.dart';
 import 'package:tracking_app/core/router/route_path.dart';
 import 'package:tracking_app/features/auth/login/presentation/view/widgets/Custom%20toast.dart';
 import 'package:tracking_app/features/edit_profile/presentation/view/widgets/custom_label_field.dart';
+import 'package:tracking_app/features/edit_profile/presentation/view/widgets/gender_toggle.dart';
 import 'package:tracking_app/features/edit_profile/presentation/view/widgets/profile_avatar.dart';
 import 'package:tracking_app/features/edit_profile/presentation/view/widgets/save_button.dart';
 import 'package:tracking_app/features/edit_profile/presentation/view_model/cubit/edit_profile_cubit.dart';
@@ -100,14 +99,8 @@ class EditProfileBody extends StatelessWidget {
                         child: CustomLabelField(
                           label: 'First name',
                           controller: cubit.firstNameController,
-                          icon: Icons.person_outline_rounded,
+                          // icon: Icons.person_outline_rounded,
                           hint: 'First name',
-                          validator: (v) {
-                            if (v == null || v.trim().isEmpty) {
-                              return 'Required';
-                            }
-                            return null;
-                          },
                         ),
                       ),
                       const SizedBox(width: 12),
@@ -115,14 +108,8 @@ class EditProfileBody extends StatelessWidget {
                         child: CustomLabelField(
                           label: 'Last name',
                           controller: cubit.lastNameController,
-                          icon: Icons.person_outline_rounded,
+                          // icon: Icons.person_outline_rounded,
                           hint: 'Last name',
-                          validator: (v) {
-                            if (v == null || v.trim().isEmpty) {
-                              return 'Required';
-                            }
-                            return null;
-                          },
                         ),
                       ),
                     ],
@@ -133,24 +120,22 @@ class EditProfileBody extends StatelessWidget {
                   CustomLabelField(
                     label: 'Phone number',
                     controller: cubit.phoneController,
-                    icon: Icons.phone_outlined,
+                    // icon: Icons.phone_outlined,
                     hint: 'Phone number',
                     keyboardType: TextInputType.phone,
-                    validator: (v) {
-                      if (v == null || v.trim().isEmpty) {
-                        return 'Phone number is required';
-                      }
-                      return null;
-                    },
+                  ),
+                  const SizedBox(height: 16),
+
+                  // ── Gender ───────────────────────────────────────────────
+                  GenderToggle(
+                    selectedGender: state.selectedGender,
+                    onChanged: cubit.selectGender,
                   ),
                   const SizedBox(height: 16),
 
                   // ── Password ─────────────────────────────────────────────
-                  _LabeledField(
-                    label: 'Password',
-                    child: _PasswordFieldBox(
-                      onChangeTap: () => context.push(RoutePath.forgetPassword),
-                    ),
+                  _PasswordFieldBox(
+                    onChangeTap: () => context.push(RoutePath.forgetPassword),
                   ),
                   const SizedBox(height: 24),
 
@@ -163,9 +148,7 @@ class EditProfileBody extends StatelessWidget {
                     isLoading: state.updateProfileState.isLoading == true,
                     onPressed: () {
                       FocusScope.of(context).unfocus();
-                      if (cubit.formKey.currentState!.validate()) {
-                        cubit.doIntent(EditProfileEvents.updateProfileEvent());
-                      }
+                      cubit.doIntent(EditProfileEvents.updateProfileEvent());
                     },
                   ),
                   const SizedBox(height: 24),
@@ -190,7 +173,7 @@ class _LabeledField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 2, bottom: 4),
+          padding: const EdgeInsets.only(left: 2, bottom: 6),
           child: Text(
             label,
             style: TextStyle(
@@ -205,8 +188,6 @@ class _LabeledField extends StatelessWidget {
     );
   }
 }
-
-
 
 class _PasswordFieldBox extends StatelessWidget {
   const _PasswordFieldBox({required this.onChangeTap});
@@ -252,6 +233,3 @@ class _PasswordFieldBox extends StatelessWidget {
     );
   }
 }
-
-
-

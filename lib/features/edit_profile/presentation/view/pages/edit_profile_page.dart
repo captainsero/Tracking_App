@@ -26,7 +26,7 @@ class EditProfilePage extends StatelessWidget {
         ..initFields(
           firstName: firstName,
           lastName: lastName,
-          phone: phone,
+          phone: phone, gender: '',
         ),
       child: const EditProfileBody(),
     );

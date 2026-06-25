@@ -4,6 +4,8 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tracking_app/config/base_response/base_response.dart';
 import 'package:tracking_app/config/base_state/base_state.dart';
+import 'package:tracking_app/features/edit_profile/data/models/edit_profile_response_model.dart';
+import 'package:tracking_app/features/edit_profile/domain/entities/edit_profile_request_entity.dart';
 import 'package:tracking_app/features/edit_profile/domain/entities/edit_profile_response_entity.dart';
 import 'package:tracking_app/features/edit_profile/domain/use_cases/edit_profile_use_case.dart';
 import 'package:tracking_app/features/edit_profile/presentation/view_model/cubit/edit_profile_cubit.dart';
@@ -111,6 +113,7 @@ void main() {
           firstName: tFirstName,
           lastName: tLastName,
           phone: tPhone,
+          gender: 'male',
         );
 
         expect(cubit.firstNameController.text, tFirstName);
@@ -127,9 +130,7 @@ void main() {
           cubit.doIntent(EditProfileEvents.updateProfileEvent());
 
           verifyNever(mockUseCase.call(
-            firstName: anyNamed('firstName'),
-            lastName: anyNamed('lastName'),
-            phone: anyNamed('phone'),
+            entity: anyNamed('entity'),
           ));
           expect(cubit.state, equals(EditProfileStates()));
         },
@@ -140,9 +141,7 @@ void main() {
         build: () {
           when(
             mockUseCase.call(
-              firstName: anyNamed('firstName'),
-              lastName: anyNamed('lastName'),
-              phone: anyNamed('phone'),
+              entity: anyNamed('entity'),
             ),
           ).thenAnswer(
             (_) async => SuccessBaseResponse<EditProfileResponseEntity>(
@@ -175,9 +174,7 @@ void main() {
         build: () {
           when(
             mockUseCase.call(
-              firstName: anyNamed('firstName'),
-              lastName: anyNamed('lastName'),
-              phone: anyNamed('phone'),
+              entity: anyNamed('entity'),
             ),
           ).thenAnswer(
             (_) async => ErrorBaseResponse<EditProfileResponseEntity>(
@@ -211,9 +208,7 @@ void main() {
         build: () {
           when(
             mockUseCase.call(
-              firstName: anyNamed('firstName'),
-              lastName: anyNamed('lastName'),
-              phone: anyNamed('phone'),
+              entity: anyNamed('entity'),
             ),
           ).thenAnswer(
             (_) async => SuccessBaseResponse<EditProfileResponseEntity>(
@@ -229,9 +224,12 @@ void main() {
         verify: (c) {
           verify(
             mockUseCase.call(
-              firstName: tFirstName,
-              lastName: tLastName,
-              phone: tPhone,
+              entity: const EditProfileRequestEntity(
+                firstName: tFirstName,
+                lastName: tLastName,
+                phone: tPhone,
+                gender: null,
+              ),
             ),
           ).called(1);
         },
@@ -242,9 +240,7 @@ void main() {
         build: () {
           when(
             mockUseCase.call(
-              firstName: anyNamed('firstName'),
-              lastName: anyNamed('lastName'),
-              phone: anyNamed('phone'),
+              entity: anyNamed('entity'),
             ),
           ).thenAnswer(
             (_) async => SuccessBaseResponse<EditProfileResponseEntity>(
@@ -260,9 +256,12 @@ void main() {
         verify: (c) {
           verify(
             mockUseCase.call(
-              firstName: tFirstName,
-              lastName: null,
-              phone: tPhone,
+              entity: const EditProfileRequestEntity(
+                firstName: tFirstName,
+                lastName: null,
+                phone: tPhone,
+                gender: null,
+              ),
             ),
           ).called(1);
         },
@@ -274,9 +273,7 @@ void main() {
           fillControllers();
           when(
             mockUseCase.call(
-              firstName: anyNamed('firstName'),
-              lastName: anyNamed('lastName'),
-              phone: anyNamed('phone'),
+              entity: anyNamed('entity'),
             ),
           ).thenAnswer(
             (_) async => SuccessBaseResponse<EditProfileResponseEntity>(
@@ -289,9 +286,7 @@ void main() {
 
           verify(
             mockUseCase.call(
-              firstName: anyNamed('firstName'),
-              lastName: anyNamed('lastName'),
-              phone: anyNamed('phone'),
+              entity: anyNamed('entity'),
             ),
           ).called(1);
           verifyNoMoreInteractions(mockUseCase);

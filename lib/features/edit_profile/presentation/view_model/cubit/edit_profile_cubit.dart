@@ -4,6 +4,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
 import 'package:tracking_app/config/base_state/base_state.dart';
 import 'package:tracking_app/config/handler/response_to_state_mapper.dart';
+import 'package:tracking_app/features/edit_profile/domain/entities/edit_profile_request_entity.dart';
 import 'package:tracking_app/features/edit_profile/domain/entities/edit_profile_response_entity.dart';
 import 'package:tracking_app/features/edit_profile/domain/use_cases/edit_profile_use_case.dart';
 
@@ -12,7 +13,7 @@ import 'edit_profile_states.dart';
 
 @injectable
 class EditProfileCubit extends Cubit<EditProfileStates> {
-  EditProfileCubit(this._editProfileUseCase) : super(EditProfileStates());
+  EditProfileCubit(this._editProfileUseCase) : super(const EditProfileStates());
 
   final EditProfileUseCase _editProfileUseCase;
   final _imagePicker = ImagePicker();
@@ -27,10 +28,17 @@ class EditProfileCubit extends Cubit<EditProfileStates> {
     required String firstName,
     required String lastName,
     required String phone,
+    required String gender,
   }) {
     firstNameController.text = firstName;
     lastNameController.text = lastName;
     phoneController.text = phone;
+    emit(state.copyWith(selectedGender: gender));
+  }
+
+  /// Called when the user taps a gender radio button.
+  void selectGender(String gender) {
+    emit(state.copyWith(selectedGender: gender));
   }
 
   void doIntent(EditProfileEvents event) {
@@ -38,9 +46,16 @@ class EditProfileCubit extends Cubit<EditProfileStates> {
   }
 
   Future<void> _updateProfile() async {
-    if (firstNameController.text.trim().isEmpty &&
-        lastNameController.text.trim().isEmpty &&
-        phoneController.text.trim().isEmpty) {
+    final firstName = firstNameController.text.trim();
+    final lastName = lastNameController.text.trim();
+    final phone = phoneController.text.trim();
+    final gender = state.selectedGender;
+
+    // At least one field must have a value.
+    if (firstName.isEmpty &&
+        lastName.isEmpty &&
+        phone.isEmpty &&
+        gender == null) {
       return;
     }
 
@@ -52,27 +67,20 @@ class EditProfileCubit extends Cubit<EditProfileStates> {
       ),
     );
 
-    final result = await _editProfileUseCase.call(
-      firstName: firstNameController.text.trim().isEmpty
-          ? null
-          : firstNameController.text.trim(),
-      lastName: lastNameController.text.trim().isEmpty
-          ? null
-          : lastNameController.text.trim(),
-      phone: phoneController.text.trim().isEmpty
-          ? null
-          : phoneController.text.trim(),
+    final entity = EditProfileRequestEntity(
+      firstName: firstName.isEmpty ? null : firstName,
+      lastName: lastName.isEmpty ? null : lastName,
+      phone: phone.isEmpty ? null : phone,
+      gender: gender,
     );
 
-    final handeker = ResponseToStateMapper.handle(result);
+    final result = await _editProfileUseCase.call(entity: entity);
 
     emit(
       state.copyWith(
-        updateProfileState: handeker,
+        updateProfileState: ResponseToStateMapper.handle(result),
       ),
     );
-
-    
   }
 
   Future<void> _pickImage() async {
