@@ -6,6 +6,7 @@ abstract class RoutePath {
   static const String forgetPassword = '/forgetPassword';
   static const String verificationCodeView = '/VerificationCodeView';
   static const String resetPassword = '/ResetPassword';
+  static const String changePassword = '/changePassword';
   static const String home = '/home';
   static const String profile = '/profile';
   static const String orders = '/orders';
