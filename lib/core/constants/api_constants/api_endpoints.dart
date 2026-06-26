@@ -6,4 +6,5 @@ abstract class ApiEndpoints {
   static const String login = '$_baseUrl/drivers/signin';
   static const String logout = "$_baseUrl/drivers/logout";
   static const String pendingOrders = "$_baseUrl/orders/pending-orders";
+  static const String editProfile = "$_baseUrl/drivers/editProfile";
 }

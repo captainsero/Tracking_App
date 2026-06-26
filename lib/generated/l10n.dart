@@ -669,6 +669,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Flowery rider`
+  String get floweryRider {
+    return Intl.message(
+      'Flowery rider',
+      name: 'floweryRider',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No pending orders`
+  String get noPendingOrders {
+    return Intl.message(
+      'No pending orders',
+      name: 'noPendingOrders',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Flower order`
+  String get flowerOrder {
+    return Intl.message(
+      'Flower order',
+      name: 'flowerOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pickup address`
+  String get pickupAdderss {
+    return Intl.message(
+      'Pickup address',
+      name: 'pickupAdderss',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User address`
+  String get userAddress {
+    return Intl.message(
+      'User address',
+      name: 'userAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `EGP`
+  String get egp {
+    return Intl.message(
+      'EGP',
+      name: 'egp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reject`
+  String get reject {
+    return Intl.message(
+      'Reject',
+      name: 'reject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Accept`
+  String get accept {
+    return Intl.message(
+      'Accept',
+      name: 'accept',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
