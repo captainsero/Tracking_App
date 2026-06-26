@@ -10,4 +10,6 @@ abstract class RoutePath {
   static const String profile = '/profile';
   static const String orders = '/orders';
   static const String onboarding = '/onboarding';
+  static const String successApply = '/successApply';
+  static const String profileEdit = '/profileEdit';
 }

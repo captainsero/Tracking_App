@@ -20,6 +20,9 @@
     "error": "Error",
     "oopsSomthingWentWrong": "Oops! Something went wrong.",
     "goToHome": "goToHome",
+    "onBoardingWelcomeText": "Welcome to Elevate Tracking App",
+    "onBoardingLogin": "Login",
+    "onBoardingApplyNow": "Apply Now",
     "apply": "Apply",
     "welcome": "Welcome!!",
     "applySubtitle": "You want to be a delivery man?\nJoin our team",
@@ -54,9 +57,16 @@
     "male": "Male",
     "fieldRequired": "This field is required",
     "continueText": "Continue",
-    "enterA": "enterA"
-
+    "enterA": "enterA",
     "logout": "Logout",
     "confirmLogout": "Confirm logout!!",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "floweryRider": "Flowery rider",
+    "noPendingOrders": "No pending orders",
+    "flowerOrder": "Flower order",
+    "pickupAdderss": "Pickup address",
+    "userAddress": "User address",
+    "egp": "EGP",
+    "reject": "Reject",
+    "accept": "Accept"
 }
