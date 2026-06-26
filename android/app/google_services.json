@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "685078061318",
+    "project_id": "track-app-d33ab",
+    "storage_bucket": "track-app-d33ab.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:685078061318:android:a3a010a39343d073de3e87",
+        "android_client_info": {
+          "package_name": "com.comapny.tracking_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMpJ9T50h9c9rMqUYaB7zxqZ2-FPYOxRo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:685078061318:android:6c31bcde27a418ddde3e87",
+        "android_client_info": {
+          "package_name": "com.company.flower_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMpJ9T50h9c9rMqUYaB7zxqZ2-FPYOxRo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
