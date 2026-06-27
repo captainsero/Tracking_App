@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tracking_app/core/constants/font_manager.dart';
 import 'package:tracking_app/core/constants/screen_size.dart';
 import 'package:tracking_app/core/constants/values_manager.dart';
+import 'package:tracking_app/core/router/route_path.dart';
 import 'package:tracking_app/features/home/presentation/widgets/home_order_card.dart';
 import 'package:tracking_app/generated/l10n.dart';
 
 class HomeOrderContainer extends StatelessWidget {
   const HomeOrderContainer({
     super.key,
+    required this.orderId,
     required this.pickupImage,
     required this.pickupName,
     required this.pickupAddress,
@@ -17,6 +20,7 @@ class HomeOrderContainer extends StatelessWidget {
     required this.totalPrice,
     required this.onReject,
   });
+  final String orderId;
   final String pickupImage;
   final String pickupName;
   final String pickupAddress;
@@ -97,7 +101,11 @@ class HomeOrderContainer extends StatelessWidget {
                 SizedBox(
                   width: ScreenSize.width / 3,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.go(RoutePath.orderDetails,
+                      //  extra: orderId
+                       );
+                    },
                     child: Text(
                       S.current.accept,
                       style: TextStyle(fontWeight: FontWeight.bold),

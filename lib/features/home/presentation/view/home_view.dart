@@ -111,6 +111,7 @@ class _HomeViewState extends State<HomeView> {
 
                   final order = orders[index];
                   return HomeOrderContainer(
+                    orderId: order.id,
                     pickupImage: order.store?.image ?? '',
                     pickupName: order.store?.name ?? '',
                     pickupAddress: order.store?.address ?? '',

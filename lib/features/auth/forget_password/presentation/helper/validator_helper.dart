@@ -24,5 +24,11 @@ String? validationMessage(ValidationError? error) {
       return 'Name must be at least 3 characters';
     case ValidationError.nameOnlyLetters:
       return 'Name must contain letters only';
+    case ValidationError.idNumberRequired:
+      // TODO: Handle this case.
+      throw UnimplementedError();
+    case ValidationError.enterIdNumber:
+      // TODO: Handle this case.
+      throw UnimplementedError();
   }
 }

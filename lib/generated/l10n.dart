@@ -260,6 +260,266 @@ class S {
     );
   }
 
+  /// `Email is required`
+  String get emailEmpty {
+    return Intl.message(
+      'Email is required',
+      name: 'emailEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid email address`
+  String get emailInvalid {
+    return Intl.message(
+      'Please enter a valid email address',
+      name: 'emailInvalid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password is required`
+  String get passwordEmpty {
+    return Intl.message(
+      'Password is required',
+      name: 'passwordEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must be at least 8 characters`
+  String get passwordTooShort {
+    return Intl.message(
+      'Password must be at least 8 characters',
+      name: 'passwordTooShort',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must contain at least one uppercase letter and one number`
+  String get passwordWeak {
+    return Intl.message(
+      'Password must contain at least one uppercase letter and one number',
+      name: 'passwordWeak',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please confirm your password`
+  String get confirmPasswordEmpty {
+    return Intl.message(
+      'Please confirm your password',
+      name: 'confirmPasswordEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Passwords do not match`
+  String get confirmPasswordMismatch {
+    return Intl.message(
+      'Passwords do not match',
+      name: 'confirmPasswordMismatch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verification code is required`
+  String get otpEmpty {
+    return Intl.message(
+      'Verification code is required',
+      name: 'otpEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Code must be 6 digits`
+  String get otpInvalidLength {
+    return Intl.message(
+      'Code must be 6 digits',
+      name: 'otpInvalidLength',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid verification code`
+  String get otpInvalid {
+    return Intl.message(
+      'Invalid verification code',
+      name: 'otpInvalid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your Email`
+  String get enterYourEmail {
+    return Intl.message(
+      'Enter your Email',
+      name: 'enterYourEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter a Valid email`
+  String get enterAValidEmail {
+    return Intl.message(
+      'Enter a Valid email',
+      name: 'enterAValidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password is required`
+  String get passwordIsRequired {
+    return Intl.message(
+      'Password is required',
+      name: 'passwordIsRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must be at least 8 characters and include upper, lower, number and special character`
+  String get passwordMustBe {
+    return Intl.message(
+      'Password must be at least 8 characters and include upper, lower, number and special character',
+      name: 'passwordMustBe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please confirm your password`
+  String get pleaseConfirmPassword {
+    return Intl.message(
+      'Please confirm your password',
+      name: 'pleaseConfirmPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password do not match`
+  String get passwordDoNotMatch {
+    return Intl.message(
+      'Password do not match',
+      name: 'passwordDoNotMatch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forget Password`
+  String get forgetPassword {
+    return Intl.message(
+      'Forget Password',
+      name: 'forgetPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your email associated to your account`
+  String get forgetPasswordDis {
+    return Intl.message(
+      'Please enter your email associated to your account',
+      name: 'forgetPasswordDis',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue`
+  String get continueButton {
+    return Intl.message(
+      'Continue',
+      name: 'continueButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email verification`
+  String get emailVerification {
+    return Intl.message(
+      'Email verification',
+      name: 'emailVerification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your code that send to your email adress`
+  String get emailVerificationDis {
+    return Intl.message(
+      'Please enter your code that send to your email adress',
+      name: 'emailVerificationDis',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Didn't recieve code? `
+  String get didnotReceiveCode {
+    return Intl.message(
+      'Didn\'t recieve code? ',
+      name: 'didnotReceiveCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resend`
+  String get resend {
+    return Intl.message(
+      'Resend',
+      name: 'resend',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reset Password`
+  String get resetPassword {
+    return Intl.message(
+      'Reset Password',
+      name: 'resetPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must not be empty and must contain 6 characters with upper case letter and one number at least`
+  String get resetPasswordDis {
+    return Intl.message(
+      'Password must not be empty and must contain 6 characters with upper case letter and one number at least',
+      name: 'resetPasswordDis',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your passwrod`
+  String get enterYourPassword {
+    return Intl.message(
+      'Enter your passwrod',
+      name: 'enterYourPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Welcome to Elevate Tracking App`
   String get onBoardingWelcomeText {
     return Intl.message(
@@ -685,6 +945,106 @@ class S {
     return Intl.message(
       'Edit profile',
       name: 'editProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Current password`
+  String get currentPassword {
+    return Intl.message(
+      'Current password',
+      name: 'currentPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New password`
+  String get newPassword {
+    return Intl.message(
+      'New password',
+      name: 'newPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Flowery rider`
+  String get floweryRider {
+    return Intl.message(
+      'Flowery rider',
+      name: 'floweryRider',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No pending orders`
+  String get noPendingOrders {
+    return Intl.message(
+      'No pending orders',
+      name: 'noPendingOrders',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Flower order`
+  String get flowerOrder {
+    return Intl.message(
+      'Flower order',
+      name: 'flowerOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pickup address`
+  String get pickupAdderss {
+    return Intl.message(
+      'Pickup address',
+      name: 'pickupAdderss',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User address`
+  String get userAddress {
+    return Intl.message(
+      'User address',
+      name: 'userAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `EGP`
+  String get egp {
+    return Intl.message(
+      'EGP',
+      name: 'egp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reject`
+  String get reject {
+    return Intl.message(
+      'Reject',
+      name: 'reject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Accept`
+  String get accept {
+    return Intl.message(
+      'Accept',
+      name: 'accept',
       desc: '',
       args: [],
     );

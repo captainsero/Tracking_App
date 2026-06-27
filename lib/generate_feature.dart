@@ -1,146 +1,121 @@
-// ignore_for_file: avoid_print
-
 import 'dart:io';
 
 void main(List<String> args) {
-  if (args.isEmpty || args[0].trim().isEmpty) {
-    print('Usage: dart generate_feature.dart <feature_name>');
+  if (args.isEmpty || args.first.trim().isEmpty) {
+    stderr.writeln('Usage: dart generate_feature.dart <feature_name>');
     exit(1);
   }
-  var featureName = args[0].trim();
-  final featuresDir = Directory('lib/features');
-  if (!featuresDir.existsSync()) {
-    featuresDir.createSync(recursive: true);
-  }
+
+  final featureName = args.first.trim().toLowerCase();
+  final featureClass = _toPascalCase(featureName);
+
   final baseDir = Directory('lib/features/$featureName');
+
   if (baseDir.existsSync()) {
-    print('Feature "$featureName" already exists.');
+    stdout.writeln('Feature "$featureName" already exists.');
     return;
   }
-  // Create main feature directories
-  final dirs = [
-    baseDir.path,
-    '${baseDir.path}/api',
+
+  final directories = [
+    // API
     '${baseDir.path}/api/api_client',
-    '${baseDir.path}/api/datasources',
-    '${baseDir.path}/data',
-    '${baseDir.path}/data/datasources',
+    '${baseDir.path}/api/data_sources',
+
+    // DATA
+    '${baseDir.path}/data/data_sources',
     '${baseDir.path}/data/models',
-    '${baseDir.path}/data/repositories',
-    '${baseDir.path}/domain',
+    '${baseDir.path}/data/repo',
+
+    // DOMAIN
     '${baseDir.path}/domain/entities',
-    '${baseDir.path}/domain/repositories',
+    '${baseDir.path}/domain/repo',
     '${baseDir.path}/domain/use_cases',
-    '${baseDir.path}/presentation',
+
+    // PRESENTATION
     '${baseDir.path}/presentation/view',
-    '${baseDir.path}/presentation/view/pages',
-    '${baseDir.path}/presentation/view/widgets',
     '${baseDir.path}/presentation/view_model',
-    '${baseDir.path}/presentation/view_model/cubit',
+    '${baseDir.path}/presentation/widgets',
   ];
-  for (final dir in dirs) {
-    Directory(dir).createSync(recursive: true);
+
+  for (final path in directories) {
+    Directory(path).createSync(recursive: true);
   }
 
-  // Create api_client and datasources files in each layer
-  final layers = ['api', 'data', 'domain', 'presentation'];
-  for (final layer in layers) {
-    final apiClientDir = Directory('${baseDir.path}/$layer/api_client');
-    final datasourcesDir = Directory('${baseDir.path}/$layer/datasources');
-    final cubitDir = Directory('${baseDir.path}/$layer/view_model/cubit');
-    final widgetDir = Directory('${baseDir.path}/$layer/view/widgets');
-    final repositoryDir = Directory('${baseDir.path}/$layer/repositories');
-    if (apiClientDir.existsSync()) {
-      File(
-        '${apiClientDir.path}/${featureName}_api_client.dart',
-      ).writeAsStringSync(
-        '// TODO: $layer ${_capitalize(featureName)}ApiClient\n',
-      );
-    }
-    if (datasourcesDir.existsSync()) {
-      if (layer == 'api') {
-        File(
-          '${datasourcesDir.path}/${featureName}_local_data_source_impl.dart',
-        ).writeAsStringSync(
-          '// TODO: $layer ${_capitalize(featureName)}LocalDataSourceImpl\n',
-        );
-        File(
-          '${datasourcesDir.path}/${featureName}_remote_data_source_impl.dart',
-        ).writeAsStringSync(
-          '// TODO: $layer ${_capitalize(featureName)}RemoteDataSourceImpl\n',
-        );
-      } else if (layer == 'data') {
-        File(
-          '${datasourcesDir.path}/${featureName}_local_data_source_contract.dart',
-        ).writeAsStringSync(
-          '// TODO: $layer ${_capitalize(featureName)}LocalDataSourceContract\n',
-        );
-        File(
-          '${datasourcesDir.path}/${featureName}_remote_data_source_contract.dart',
-        ).writeAsStringSync(
-          '// TODO: $layer ${_capitalize(featureName)}RemoteDataSourceContract\n',
-        );
-      }
-    }
-    if (cubitDir.existsSync()) {
-      File(
-        '${cubitDir.path}/${featureName}_cubit.dart',
-      ).writeAsStringSync('// TODO: $layer ${_capitalize(featureName)}Cubit\n');
-      File('${cubitDir.path}/${featureName}_states.dart').writeAsStringSync(
-        '// TODO: $layer ${_capitalize(featureName)}States\n',
-      );
-      File('${cubitDir.path}/${featureName}_events.dart').writeAsStringSync(
-        '// TODO: $layer ${_capitalize(featureName)}Events\n',
-      );
-    }
-    if (widgetDir.existsSync()) {
-      File(
-        '${widgetDir.path}/${featureName}_body.dart',
-      ).writeAsStringSync('// TODO: $layer ${_capitalize(featureName)}Body\n');
-    }
-    if (repositoryDir.existsSync()) {
-      if (layer == 'domain') {
-        File(
-          '${repositoryDir.path}/${featureName}_repository.dart',
-        ).writeAsStringSync(
-          '// TODO: $layer ${_capitalize(featureName)}Repository\n',
-        );
-      } else {
-        File(
-          '${repositoryDir.path}/${featureName}_repository_impl.dart',
-        ).writeAsStringSync(
-          '// TODO: $layer ${_capitalize(featureName)}RepositoryImpl\n',
-        );
-      }
-    }
+  final files = <String, String>{
+    // API
+    '${baseDir.path}/api/api_client/${featureName}_api_client.dart':
+        '// TODO: ${featureClass}ApiClient',
+
+    '${baseDir.path}/api/data_sources/${featureName}_local_data_source_impl.dart':
+        '// TODO: ${featureClass}LocalDataSourceImpl',
+
+    '${baseDir.path}/api/data_sources/${featureName}_remote_data_source_impl.dart':
+        '// TODO: ${featureClass}RemoteDataSourceImpl',
+
+    // DATA
+    '${baseDir.path}/data/data_sources/${featureName}_local_data_source_contract.dart':
+        '// TODO: ${featureClass}LocalDataSourceContract',
+
+    '${baseDir.path}/data/data_sources/${featureName}_remote_data_source_contract.dart':
+        '// TODO: ${featureClass}RemoteDataSourceContract',
+
+    '${baseDir.path}/data/repo/${featureName}_repo_impl.dart':
+        '// TODO: ${featureClass}RepoImpl',
+
+    // DOMAIN
+    '${baseDir.path}/domain/repo/${featureName}_repo.dart':
+        '// TODO: ${featureClass}Repo',
+
+    // PRESENTATION
+    '${baseDir.path}/presentation/view/${featureName}_view.dart': _generateView(
+      featureClass,
+    ),
+
+    '${baseDir.path}/presentation/view_model/${featureName}_cubit.dart':
+        '// TODO: ${featureClass}Cubit',
+
+    '${baseDir.path}/presentation/view_model/${featureName}_event.dart':
+        '// TODO: ${featureClass}Event',
+
+    '${baseDir.path}/presentation/view_model/${featureName}_state.dart':
+        '// TODO: ${featureClass}State',
+
+    '${baseDir.path}/presentation/widgets/${featureName}_body.dart':
+        '// TODO: ${featureClass}Body',
+  };
+
+  for (final entry in files.entries) {
+    File(entry.key).writeAsStringSync('${entry.value}\n');
   }
 
-  // Create a sample page file
-  final pageFile = File(
-    '${baseDir.path}/presentation/view/pages/${featureName}_page.dart',
-  );
-  featureName = featureName.contains('_')
-      ? featureName.split('_').map((e) => _capitalize(e)).join()
-      : featureName;
-  pageFile.writeAsStringSync('''
+  stdout.writeln('✅ Feature "$featureName" created successfully');
+}
+
+String _toPascalCase(String value) {
+  return value
+      .split('_')
+      .where((e) => e.isNotEmpty)
+      .map((e) => e[0].toUpperCase() + e.substring(1))
+      .join();
+}
+
+String _generateView(String className) {
+  return '''
 import 'package:flutter/material.dart';
-    
-class ${_capitalize(featureName)}Page extends StatelessWidget {
-  const ${_capitalize(featureName)}Page({super.key});
+
+class ${className}View extends StatelessWidget {
+  const ${className}View({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(child: Text('$featureName page')),
+    return const Scaffold(
+      body: Center(
+        child: Text('$className View'),
+      ),
     );
   }
 }
-''');
-  print('Feature "$featureName" structure created in lib/features/$featureName/');
-}
-
-String _capitalize(String s) {
-  if (s.isEmpty) return s;
-  return s[0].toUpperCase() + s.substring(1);
+''';
 }
 
 // To run this script, use the command:

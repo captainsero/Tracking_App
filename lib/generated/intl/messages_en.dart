@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "accept": MessageLookupByLibrary.simpleMessage("Accept"),
         "apply": MessageLookupByLibrary.simpleMessage("Apply"),
         "applySubtitle": MessageLookupByLibrary.simpleMessage(
             "You want to be a delivery man?\nJoin our team"),
@@ -34,15 +35,34 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm logout!!"),
         "confirmPassword": MessageLookupByLibrary.simpleMessage(
             "Please confirm your password"),
+        "confirmPasswordEmpty": MessageLookupByLibrary.simpleMessage(
+            "Please confirm your password"),
+        "confirmPasswordMismatch":
+            MessageLookupByLibrary.simpleMessage("Passwords do not match"),
         "connectionTimeout": MessageLookupByLibrary.simpleMessage(
             "Request timed out. Please check your internet connection."),
+        "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
         "continueText": MessageLookupByLibrary.simpleMessage("Continue"),
         "country": MessageLookupByLibrary.simpleMessage("Country"),
+        "currentPassword":
+            MessageLookupByLibrary.simpleMessage("Current password"),
+        "didnotReceiveCode":
+            MessageLookupByLibrary.simpleMessage("Didn\'t recieve code? "),
         "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
+        "egp": MessageLookupByLibrary.simpleMessage("EGP"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "emailEmpty": MessageLookupByLibrary.simpleMessage("Email is required"),
+        "emailInvalid": MessageLookupByLibrary.simpleMessage(
+            "Please enter a valid email address"),
         "emailIsRequired":
             MessageLookupByLibrary.simpleMessage("Email is required"),
+        "emailVerification":
+            MessageLookupByLibrary.simpleMessage("Email verification"),
+        "emailVerificationDis": MessageLookupByLibrary.simpleMessage(
+            "Please enter your code that send to your email adress"),
         "enterA": MessageLookupByLibrary.simpleMessage("enterA"),
+        "enterAValidEmail":
+            MessageLookupByLibrary.simpleMessage("Enter a Valid email"),
         "enterConfirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "enterEmail": MessageLookupByLibrary.simpleMessage("Enter your email"),
@@ -63,6 +83,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Password needs uppercase, digit, and special char"),
         "enterVehicleNumber":
             MessageLookupByLibrary.simpleMessage("Enter vehicle number"),
+        "enterYourEmail":
+            MessageLookupByLibrary.simpleMessage("Enter your Email"),
+        "enterYourPassword":
+            MessageLookupByLibrary.simpleMessage("Enter your passwrod"),
         "error": MessageLookupByLibrary.simpleMessage("Error"),
         "errorMessageGeneric": MessageLookupByLibrary.simpleMessage(
             "Something went wrong. Please try again."),
@@ -71,6 +95,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("This field is required"),
         "firstLegalName":
             MessageLookupByLibrary.simpleMessage("First legal name"),
+        "flowerOrder": MessageLookupByLibrary.simpleMessage("Flower order"),
+        "floweryRider": MessageLookupByLibrary.simpleMessage("Flowery rider"),
+        "forgetPassword":
+            MessageLookupByLibrary.simpleMessage("Forget Password"),
+        "forgetPasswordDis": MessageLookupByLibrary.simpleMessage(
+            "Please enter your email associated to your account"),
         "gender": MessageLookupByLibrary.simpleMessage("Gender"),
         "goToHome": MessageLookupByLibrary.simpleMessage("goToHome"),
         "idImage": MessageLookupByLibrary.simpleMessage("ID image"),
@@ -87,6 +117,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Must be at least 3 characters"),
         "networkError": MessageLookupByLibrary.simpleMessage(
             "Network error. Please check your connection."),
+        "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
+        "noPendingOrders":
+            MessageLookupByLibrary.simpleMessage("No pending orders"),
         "noValueKeyFound":
             MessageLookupByLibrary.simpleMessage("No value found for key: "),
         "notFound": MessageLookupByLibrary.simpleMessage(
@@ -99,12 +132,38 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Only letters allowed"),
         "oopsSomthingWentWrong":
             MessageLookupByLibrary.simpleMessage("Oops! Something went wrong."),
+        "otpEmpty": MessageLookupByLibrary.simpleMessage(
+            "Verification code is required"),
+        "otpInvalid":
+            MessageLookupByLibrary.simpleMessage("Invalid verification code"),
+        "otpInvalidLength":
+            MessageLookupByLibrary.simpleMessage("Code must be 6 digits"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "passwordDoNotMatch":
+            MessageLookupByLibrary.simpleMessage("Password do not match"),
+        "passwordEmpty":
+            MessageLookupByLibrary.simpleMessage("Password is required"),
+        "passwordIsRequired":
+            MessageLookupByLibrary.simpleMessage("Password is required"),
+        "passwordMustBe": MessageLookupByLibrary.simpleMessage(
+            "Password must be at least 8 characters and include upper, lower, number and special character"),
+        "passwordTooShort": MessageLookupByLibrary.simpleMessage(
+            "Password must be at least 8 characters"),
+        "passwordWeak": MessageLookupByLibrary.simpleMessage(
+            "Password must contain at least one uppercase letter and one number"),
         "paswordNotMatched":
             MessageLookupByLibrary.simpleMessage("Passwords do not match"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
+        "pickupAdderss": MessageLookupByLibrary.simpleMessage("Pickup address"),
+        "pleaseConfirmPassword": MessageLookupByLibrary.simpleMessage(
+            "Please confirm your password"),
+        "reject": MessageLookupByLibrary.simpleMessage("Reject"),
         "requestTimeout": MessageLookupByLibrary.simpleMessage(
             "Request timed out. Please try again."),
+        "resend": MessageLookupByLibrary.simpleMessage("Resend"),
+        "resetPassword": MessageLookupByLibrary.simpleMessage("Reset Password"),
+        "resetPasswordDis": MessageLookupByLibrary.simpleMessage(
+            "Password must not be empty and must contain 6 characters with upper case letter and one number at least"),
         "secondLegalName":
             MessageLookupByLibrary.simpleMessage("Second legal name"),
         "secureStorageErrorMessage": MessageLookupByLibrary.simpleMessage(
@@ -116,6 +175,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Upload ID image"),
         "uploadLicensePhoto":
             MessageLookupByLibrary.simpleMessage("Upload license photo"),
+        "userAddress": MessageLookupByLibrary.simpleMessage("User address"),
         "vehicleLicense":
             MessageLookupByLibrary.simpleMessage("Vehicle license"),
         "vehicleNumber": MessageLookupByLibrary.simpleMessage("Vehicle number"),
