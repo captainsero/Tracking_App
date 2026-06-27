@@ -4,7 +4,7 @@ abstract class RoutePath {
   static const String login = '/login';
   static const String signup = '/signup';
   static const String forgetPassword = '/forgetPassword';
-  static const String verificationCodeView = '/VerificationCodeView';
+  static const String verifyReset = '/verifyResetView';
   static const String resetPassword = '/ResetPassword';
   static const String changePassword = '/changePassword';
   static const String home = '/home';
