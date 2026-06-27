@@ -62,7 +62,8 @@ class _VerifyResetViewState extends State<VerifyResetView> {
                   ).textTheme.titleSmall!.copyWith(fontSize: FontSize.s16),
                 ),
                 TextButton(
-                  onPressed: () async => await context.read().resendCode(),
+                  onPressed: () async =>
+                      await context.read<ForgotPasswordCubit>().resendCode(),
                   style: TextButton.styleFrom(
                     padding: EdgeInsets.zero,
                     minimumSize: Size(AppSize.s0, AppSize.s0),
