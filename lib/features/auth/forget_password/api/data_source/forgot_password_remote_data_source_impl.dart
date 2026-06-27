@@ -28,10 +28,12 @@ class ForgotPasswordRemoteDataSourceImpl
 
   @override
   Future<BaseResponse<ForgotPasswordResponseModel?>> resetPassword(
-    ResetPasswordRequest body,
+    ResetPasswordRequest resetPasswordRequest,
   ) async {
     try {
-      final response = await apiClient.resetPassword(body: body);
+      final response = await apiClient.resetPassword(
+        resetPasswordRequest: resetPasswordRequest.toJson(),
+      );
       return SuccessBaseResponse(
         data: response ?? ForgotPasswordResponseModel(),
       );

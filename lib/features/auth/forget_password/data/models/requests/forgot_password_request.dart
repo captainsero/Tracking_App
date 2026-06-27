@@ -5,7 +5,7 @@ part 'forgot_password_request.g.dart';
 @JsonSerializable()
 class ForgotPasswordRequest {
   @JsonKey(name: "email")
-  final String email;
+  final String? email;
 
   ForgotPasswordRequest({required this.email});
 

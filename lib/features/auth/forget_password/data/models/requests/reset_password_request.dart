@@ -5,12 +5,12 @@ part 'reset_password_request.g.dart';
 @JsonSerializable()
 class ResetPasswordRequest {
   @JsonKey(name: "email")
-  final String email;
+  String? email;
 
   @JsonKey(name: "newPassword")
   final String newPassword;
 
-  ResetPasswordRequest({required this.email, required this.newPassword});
+  ResetPasswordRequest({this.email, required this.newPassword});
 
   factory ResetPasswordRequest.fromJson(Map<String, dynamic> json) =>
       _$ResetPasswordRequestFromJson(json);

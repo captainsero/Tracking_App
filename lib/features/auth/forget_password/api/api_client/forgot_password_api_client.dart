@@ -25,6 +25,6 @@ abstract class ForgotPasswordApiClient {
 
   @PUT(ApiEndpoints.resetPassword)
   Future<ForgotPasswordResponseModel?> resetPassword({
-    @Body() required ResetPasswordRequest body,
+    @Body() required Map<String, dynamic> resetPasswordRequest,
   });
 }

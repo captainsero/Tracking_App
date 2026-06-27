@@ -35,13 +35,9 @@ class ForgotPasswordRepoImpl implements ForgotPasswordRepoContract {
     );
     final handledEmail = SecureStorageHandler.handle(userEmail);
 
-    final updatedBody = ResetPasswordRequest(
-      email: handledEmail!,
-      newPassword: body.newPassword,
-    );
-    return await forgotPasswordRemoteDataSourceContract.resetPassword(
-      updatedBody,
-    );
+    body.email = handledEmail ?? "";
+
+    return await forgotPasswordRemoteDataSourceContract.resetPassword(body);
   }
 
   @override

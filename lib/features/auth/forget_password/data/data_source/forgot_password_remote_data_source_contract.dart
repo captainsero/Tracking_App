@@ -13,6 +13,6 @@ abstract interface class ForgotPasswordRemoteDataSourceContract {
   );
 
   Future<BaseResponse<ForgotPasswordResponseModel?>> resetPassword(
-    ResetPasswordRequest body,
+    ResetPasswordRequest resetPasswordRequest,
   );
 }
