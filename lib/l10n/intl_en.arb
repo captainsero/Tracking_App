@@ -63,5 +63,7 @@
     "confirmLogout": "Confirm logout!!",
     "cancel": "Cancel",
     "language": "Language",
-    "editProfile": "Edit profile"
+    "editProfile": "Edit profile",
+    "currentPassword" : "Current password",
+    "newPassword" : "New password"
 }
