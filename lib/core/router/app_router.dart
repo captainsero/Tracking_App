@@ -16,6 +16,7 @@ import '../../features/auth/sign_up/presentation/view/sign_up_view.dart';
 import '../../features/home/presentation/view/home_view.dart';
 import '../../features/orders/presentaion/view/orders_view.dart';
 import '../../features/splash/presentaion/view/splash_view.dart';
+import '../../features/edit_vehicle/presentation/view/pages/edit_vehicle_page.dart';
 
 abstract class AppRouter {
   static final GoRouter goRouter = GoRouter(
@@ -62,6 +63,17 @@ abstract class AppRouter {
       GoRoute(
         path: RoutePath.successApply,
         builder: (context, state) => SuccessApplyView(),
+      ),
+      GoRoute(
+        path: RoutePath.editVehicle,
+        builder: (context, state) {
+          final extra = state.extra as Map<String, String>?;
+          return EditVehiclePage(
+            initialVehicleType: extra?['vehicleType'],
+            initialVehicleNumber: extra?['vehicleNumber'],
+            initialVehicleLicense: extra?['vehicleLicense'],
+          );
+        },
       ),
     ],
     errorBuilder: (BuildContext context, GoRouterState state) {

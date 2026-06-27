@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "continueText": MessageLookupByLibrary.simpleMessage("Continue"),
         "country": MessageLookupByLibrary.simpleMessage("Country"),
         "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
+        "editVehicle": MessageLookupByLibrary.simpleMessage("Edit vehicle"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emailIsRequired":
             MessageLookupByLibrary.simpleMessage("Email is required"),
@@ -105,6 +106,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
         "requestTimeout": MessageLookupByLibrary.simpleMessage(
             "Request timed out. Please try again."),
+        "saveChanges": MessageLookupByLibrary.simpleMessage("Save changes"),
         "secondLegalName":
             MessageLookupByLibrary.simpleMessage("Second legal name"),
         "secureStorageErrorMessage": MessageLookupByLibrary.simpleMessage(

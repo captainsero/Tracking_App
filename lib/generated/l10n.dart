@@ -689,6 +689,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Edit vehicle`
+  String get editVehicle {
+    return Intl.message(
+      'Edit vehicle',
+      name: 'editVehicle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save changes`
+  String get saveChanges {
+    return Intl.message(
+      'Save changes',
+      name: 'saveChanges',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
