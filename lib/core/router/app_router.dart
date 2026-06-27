@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:tracking_app/config/di/di.dart';
 import 'package:tracking_app/core/router/route_path.dart';
 import 'package:tracking_app/features/auth/sign_up/presentation/view/success_apply_view.dart';
+import 'package:tracking_app/features/change_password/presentation/view/change_password_view.dart';
+import 'package:tracking_app/features/change_password/presentation/view_model/change_password_cubit.dart';
 import 'package:tracking_app/features/error/error_screen.dart';
 import 'package:tracking_app/features/home/presentation/view_model/cubit/home_cubit.dart';
 import 'package:tracking_app/features/onboarding/presentation/view/onboarding_page.dart';
@@ -20,7 +22,7 @@ import '../../features/splash/presentaion/view/splash_view.dart';
 
 abstract class AppRouter {
   static final GoRouter goRouter = GoRouter(
-    initialLocation: RoutePath.onboarding,
+    initialLocation: RoutePath.changePassword,
     routes: [
       GoRoute(
         path: RoutePath.splash,
@@ -56,6 +58,13 @@ abstract class AppRouter {
         builder: (context, state) => BlocProvider(
           create: (context) => getIt.get<ProfileCubit>(),
           child: ProfileView(),
+        ),
+      ),
+      GoRoute(
+        path: RoutePath.changePassword,
+        builder: (context, state) => BlocProvider(
+          create: (_) => getIt.get<ChangePasswordCubit>(),
+          child: const ChangePasswordView(),
         ),
       ),
       GoRoute(
