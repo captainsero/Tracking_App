@@ -58,7 +58,6 @@
     "fieldRequired": "This field is required",
     "continueText": "Continue",
     "enterA": "enterA",
-
     "logout": "Logout",
     "confirmLogout": "Confirm logout!!",
     "cancel": "Cancel",
@@ -66,4 +65,12 @@
     "editProfile": "Edit profile",
     "currentPassword" : "Current password",
     "newPassword" : "New password"
+    "floweryRider": "Flowery rider",
+    "noPendingOrders": "No pending orders",
+    "flowerOrder": "Flower order",
+    "pickupAdderss": "Pickup address",
+    "userAddress": "User address",
+    "egp": "EGP",
+    "reject": "Reject",
+    "accept": "Accept"
 }
