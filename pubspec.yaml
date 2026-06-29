@@ -37,6 +37,7 @@ dependencies:
   flutter_bloc: ^9.1.1
   flutter_localizations:
     sdk: flutter
+  flutter_map: ^8.3.0
   flutter_secure_storage: ^10.0.0
   flutter_svg: ^2.3.0
   get_it: ^9.2.1
@@ -47,6 +48,7 @@ dependencies:
   injectable: ^3.0.0
   intl: ^0.20.2
   json_annotation: ^4.9.0
+  latlong2: ^0.9.1
   lottie: ^3.3.3
   path_provider: ^2.1.5
   pinput: ^5.0.0
@@ -56,12 +58,12 @@ dependencies:
   url_launcher: ^6.3.2
 
 dev_dependencies:
+  bloc_test: ^10.0.0
   build_runner: ^2.15.0
   flutter_launcher_icons: ^0.14.4
   flutter_lints: ^6.0.0
   flutter_test:
     sdk: flutter
-  bloc_test: ^10.0.0
   hive_ce_generator: ^1.11.1
   injectable_generator: ^3.0.2
   intl_utils: ^2.8.8
