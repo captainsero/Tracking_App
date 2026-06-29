@@ -8,4 +8,8 @@ class UserEntity {
     required this.firstName,
     required this.lastName,
   });
+
+  factory UserEntity.empty() {
+    return UserEntity(photo: '', firstName: '', lastName: '');
+  }
 }

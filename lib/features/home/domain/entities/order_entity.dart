@@ -4,9 +4,9 @@ import 'package:tracking_app/features/home/domain/entities/user_entity.dart';
 
 class OrderEntity {
   final String id;
-  final StoreEntity? store;
-  final UserEntity? user;
-  final ShippingAddressEntity? shippingAddress;
+  final StoreEntity store;
+  final UserEntity user;
+  final ShippingAddressEntity shippingAddress;
   final double totalPrice;
 
   OrderEntity({
@@ -16,4 +16,5 @@ class OrderEntity {
     required this.shippingAddress,
     required this.totalPrice,
   });
+
 }

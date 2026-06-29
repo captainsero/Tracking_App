@@ -24,8 +24,12 @@ class StoreModel {
     this.latLong,
   });
 
-  StoreEntity toHomeDomain() =>
-      StoreEntity(image: image ?? '', name: name ?? '', address: address ?? '');
+  StoreEntity toHomeDomain() => StoreEntity(
+    image: image ?? '',
+    name: name ?? '',
+    address: address ?? '',
+    latLong: latLong ?? '',
+  );
 
   factory StoreModel.fromJson(Map<String, dynamic> json) =>
       _$StoreModelFromJson(json);
