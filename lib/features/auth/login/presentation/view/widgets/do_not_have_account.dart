@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tracking_app/core/constants/color_manager.dart';
 import 'package:tracking_app/core/router/route_path.dart';
 
 class DoNotHaveAccount extends StatelessWidget {
-  const DoNotHaveAccount({super.key});
+  DoNotHaveAccount({super.key});
 
-  // TODO: swap this for your app's actual primary/brand color constant.
-  static const Color _signUpColor = Color(0xFFC2185B);
+  final Color _signUpColor = AppColors.primary;
 
   @override
   Widget build(BuildContext context) {

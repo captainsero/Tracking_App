@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:tracking_app/core/router/route_path.dart';
-import 'package:tracking_app/features/auth/login/presentation/view/widgets/Custom%20button.dart';
-import 'package:tracking_app/features/auth/login/presentation/view/widgets/Custom%20toast.dart';
+import 'package:tracking_app/features/auth/login/presentation/view/widgets/custom_button.dart';
+import 'package:tracking_app/features/auth/login/presentation/view/widgets/custom_toast.dart';
 import 'package:tracking_app/generated/l10n.dart';
 
 import 'do_not_have_account.dart';
@@ -99,10 +99,7 @@ class _LoginBodyState extends State<LoginBody> {
                 ),
                 SizedBox(height: 16),
 
-                SizedBox(
-                  width: double.infinity,
-                  child: const DoNotHaveAccount(),
-                ),
+                SizedBox(width: double.infinity, child: DoNotHaveAccount()),
               ],
             ),
           ),

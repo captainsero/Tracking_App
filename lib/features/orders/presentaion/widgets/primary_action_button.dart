@@ -8,11 +8,11 @@ import 'package:tracking_app/core/constants/color_manager.dart';
 /// and shows a spinner when [isLoading] is true. When OrderCubit lands,
 /// the call site becomes:
 ///
-///   BlocBuilder<OrderCubit, OrderState>(
+///   BlocBuilder_OrderCubit, OrderState_(
 ///     builder: (context, state) => PrimaryActionButton(
 ///       label: state.order.status.nextActionLabel,
 ///       isLoading: state.isUpdating,
-///       onPressed: () => context.read<OrderCubit>().advanceStatus(),
+///       onPressed: () => context.read _OrderCubit_().advanceStatus(),
 ///     ),
 ///   )
 ///

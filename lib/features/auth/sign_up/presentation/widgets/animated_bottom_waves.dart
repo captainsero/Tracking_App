@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/constants/color_manager.dart';
 
-
 class AnimatedBottomWaves extends StatefulWidget {
   const AnimatedBottomWaves({super.key});
 
@@ -39,9 +38,7 @@ class _AnimatedBottomWavesState extends State<AnimatedBottomWaves>
         animation: _controller,
         builder: (context, _) {
           return CustomPaint(
-            painter: _AnimatedWavesPainter(
-              animationValue: _controller.value,
-            ),
+            painter: _AnimatedWavesPainter(animationValue: _controller.value),
           );
         },
       ),
@@ -60,7 +57,7 @@ class _AnimatedWavesPainter extends CustomPainter {
     _drawWave(
       canvas,
       size,
-      color: AppColors.primary.withOpacity(0.15),
+      color: AppColors.primary.withValues(alpha: .15),
       amplitude: 18,
       baseY: 70,
       phaseShift: animationValue * 2 * pi,
@@ -71,7 +68,7 @@ class _AnimatedWavesPainter extends CustomPainter {
     _drawWave(
       canvas,
       size,
-      color: AppColors.primary.withOpacity(0.15),
+      color: AppColors.primary.withValues(alpha: 0.15),
       amplitude: 22,
       baseY: 110,
       phaseShift: animationValue * 2 * pi + pi * 0.6,
@@ -80,23 +77,23 @@ class _AnimatedWavesPainter extends CustomPainter {
   }
 
   void _drawWave(
-      Canvas canvas,
-      Size size, {
-        required Color color,
-        required double amplitude,
-        required double baseY,
-        required double phaseShift,
-        required double frequency,
-      }) {
+    Canvas canvas,
+    Size size, {
+    required Color color,
+    required double amplitude,
+    required double baseY,
+    required double phaseShift,
+    required double frequency,
+  }) {
     final paint = Paint()..color = color;
     final path = Path();
 
     path.moveTo(0, baseY);
 
     for (double x = 0; x <= size.width; x++) {
-      final y = baseY +
-          amplitude *
-              sin((x / size.width * 2 * pi * frequency) + phaseShift);
+      final y =
+          baseY +
+          amplitude * sin((x / size.width * 2 * pi * frequency) + phaseShift);
       path.lineTo(x, y);
     }
 

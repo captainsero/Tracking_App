@@ -23,11 +23,41 @@ class CountryPhoneConfig {
 }
 
 final Map<String, CountryPhoneConfig> kCountryPhoneConfigs = {
-  'Egypt':        CountryPhoneConfig(dialCode: '+20',  flag: '🇪🇬', length: 11, hint: '01XXXXXXXXX',  patternStr: r'^01[0125]\d{8}$'),
-  'Saudi Arabia': CountryPhoneConfig(dialCode: '+966', flag: '🇸🇦', length: 10, hint: '05XXXXXXXX',   patternStr: r'^05\d{8}$'),
-  'UAE':          CountryPhoneConfig(dialCode: '+971', flag: '🇦🇪', length: 9,  hint: '05XXXXXXX',    patternStr: r'^05\d{7}$'),
-  'Jordan':       CountryPhoneConfig(dialCode: '+962', flag: '🇯🇴', length: 10, hint: '07XXXXXXXX',   patternStr: r'^07\d{8}$'),
-  'Kuwait':       CountryPhoneConfig(dialCode: '+965', flag: '🇰🇼', length: 8,  hint: 'XXXXXXXX',     patternStr: r'^\d{8}$'),
+  'Egypt': CountryPhoneConfig(
+    dialCode: '+20',
+    flag: '🇪🇬',
+    length: 11,
+    hint: '01XXXXXXXXX',
+    patternStr: r'^01[0125]\d{8}$',
+  ),
+  'Saudi Arabia': CountryPhoneConfig(
+    dialCode: '+966',
+    flag: '🇸🇦',
+    length: 10,
+    hint: '05XXXXXXXX',
+    patternStr: r'^05\d{8}$',
+  ),
+  'UAE': CountryPhoneConfig(
+    dialCode: '+971',
+    flag: '🇦🇪',
+    length: 9,
+    hint: '05XXXXXXX',
+    patternStr: r'^05\d{7}$',
+  ),
+  'Jordan': CountryPhoneConfig(
+    dialCode: '+962',
+    flag: '🇯🇴',
+    length: 10,
+    hint: '07XXXXXXXX',
+    patternStr: r'^07\d{8}$',
+  ),
+  'Kuwait': CountryPhoneConfig(
+    dialCode: '+965',
+    flag: '🇰🇼',
+    length: 8,
+    hint: 'XXXXXXXX',
+    patternStr: r'^\d{8}$',
+  ),
 };
 
 class SignUpPhoneField extends StatefulWidget {
@@ -53,7 +83,7 @@ class _SignUpPhoneFieldState extends State<SignUpPhoneField> {
 
   CountryPhoneConfig get _config =>
       kCountryPhoneConfigs[widget.selectedCountry] ??
-          kCountryPhoneConfigs['Egypt']!;
+      kCountryPhoneConfigs['Egypt']!;
 
   String? _validate(String? value) {
     final l10n = S.current;
@@ -109,7 +139,7 @@ class _SignUpPhoneFieldState extends State<SignUpPhoneField> {
           ),
           padding: const EdgeInsets.symmetric(horizontal: AppPadding.p8),
           decoration: BoxDecoration(
-            color: AppColors.hintColor.withOpacity(0.1),
+            color: AppColors.hintColor.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(AppSize.s6),
           ),
           child: Row(
@@ -128,14 +158,13 @@ class _SignUpPhoneFieldState extends State<SignUpPhoneField> {
             ],
           ),
         ),
-        prefixIconConstraints:
-        const BoxConstraints(minWidth: 0, minHeight: 0),
+        prefixIconConstraints: const BoxConstraints(minWidth: 0, minHeight: 0),
         contentPadding: const EdgeInsets.symmetric(
           horizontal: AppPadding.p16,
           vertical: AppPadding.p16,
         ),
-        border: _border(AppColors.hintColor.withOpacity(0.4)),
-        enabledBorder: _border(AppColors.hintColor.withOpacity(0.4)),
+        border: _border(AppColors.hintColor.withValues(alpha: 0.4)),
+        enabledBorder: _border(AppColors.hintColor.withValues(alpha: 0.4)),
         focusedBorder: _border(AppColors.primary, width: AppSize.s1_5),
         errorBorder: _border(AppColors.error),
         focusedErrorBorder: _border(AppColors.error, width: AppSize.s1_5),

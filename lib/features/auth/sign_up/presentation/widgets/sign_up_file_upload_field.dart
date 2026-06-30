@@ -19,9 +19,9 @@ class SignUpFileUploadField extends StatelessWidget {
   });
 
   OutlineInputBorder _border(Color color) => OutlineInputBorder(
-        borderRadius: BorderRadius.circular(AppSize.s8),
-        borderSide: BorderSide(color: color),
-      );
+    borderRadius: BorderRadius.circular(AppSize.s8),
+    borderSide: BorderSide(color: color),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +39,8 @@ class SignUpFileUploadField extends StatelessWidget {
           horizontal: AppPadding.p16,
           vertical: AppPadding.p12,
         ),
-        border: _border(AppColors.hintColor.withOpacity(0.4)),
-        enabledBorder: _border(AppColors.hintColor.withOpacity(0.4)),
+        border: _border(AppColors.hintColor.withValues(alpha: 0.4)),
+        enabledBorder: _border(AppColors.hintColor.withValues(alpha: 0.4)),
       ),
       child: GestureDetector(
         onTap: onTap,
@@ -51,8 +51,7 @@ class SignUpFileUploadField extends StatelessWidget {
               child: Text(
                 hasFile ? fileName! : hint,
                 style: getRegularStyle(
-                  color:
-                      hasFile ? AppColors.black : AppColors.hintColor,
+                  color: hasFile ? AppColors.black : AppColors.hintColor,
                   fontSize: FontSize.s14,
                   fontFamily: FontConstants.interFamily,
                 ),

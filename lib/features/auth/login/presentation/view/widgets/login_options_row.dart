@@ -43,7 +43,7 @@ class _LoginOptionsRowState extends State<LoginOptionsRow> {
         ),
         GestureDetector(
           onTap: () {
-            // TODO: navigate to the forgot-password screen, e.g.
+            // TODO: context.push(RoutePath.forgotpassword);
             // context.go(Routes.forgetPassword)
           },
           child: Text(

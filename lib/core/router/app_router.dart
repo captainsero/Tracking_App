@@ -12,9 +12,6 @@ import 'package:tracking_app/features/auth/sign_up/presentation/view/success_app
 import 'package:tracking_app/features/error/error_screen.dart';
 import 'package:tracking_app/features/home/presentation/view/home_view.dart';
 import 'package:tracking_app/features/onboarding/presentation/view/onboarding_page.dart';
-import 'package:tracking_app/features/orders/domain/entitty/order_entity.dart';
-import 'package:tracking_app/features/orders/domain/entitty/order_status.dart';
-import 'package:tracking_app/features/orders/presentaion/view/order_details_view.dart';
 import 'package:tracking_app/features/profile/presentation/view/profile_view.dart';
 import 'package:tracking_app/features/profile/presentation/view_model/profile_cubit.dart';
 import 'package:tracking_app/features/splash/presentaion/view/splash_view.dart';

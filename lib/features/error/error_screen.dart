@@ -50,8 +50,7 @@ class ErrorScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    // TODO:change this to home Screen
-                    context.go(RoutePath.placeHolder);
+                    context.go(RoutePath.home);
                   },
                   child: Text(S.current.goToHome),
                 ),

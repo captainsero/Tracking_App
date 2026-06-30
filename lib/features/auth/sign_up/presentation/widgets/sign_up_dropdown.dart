@@ -50,15 +50,14 @@ class SignUpDropdown<T> extends StatelessWidget {
         floatingLabelBehavior: FloatingLabelBehavior.always,
         prefixIcon: prefixWidget != null
             ? Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppPadding.p12,
-            vertical: AppPadding.p10,
-          ),
-          child: prefixWidget,
-        )
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppPadding.p12,
+                  vertical: AppPadding.p10,
+                ),
+                child: prefixWidget,
+              )
             : null,
-        prefixIconConstraints:
-        const BoxConstraints(minWidth: 0, minHeight: 0),
+        prefixIconConstraints: const BoxConstraints(minWidth: 0, minHeight: 0),
         labelStyle: getMediumStyle(
           color: AppColors.hintColor,
           fontSize: FontSize.s14,
@@ -68,8 +67,8 @@ class SignUpDropdown<T> extends StatelessWidget {
           horizontal: AppPadding.p16,
           vertical: AppPadding.p16,
         ),
-        border: _border(AppColors.hintColor.withOpacity(0.4)),
-        enabledBorder: _border(AppColors.hintColor.withOpacity(0.4)),
+        border: _border(AppColors.hintColor.withValues(alpha: .4)),
+        enabledBorder: _border(AppColors.hintColor.withValues(alpha: .4)),
         focusedBorder: _border(AppColors.primary, width: AppSize.s1_5),
         errorBorder: _border(AppColors.error),
         focusedErrorBorder: _border(AppColors.error, width: AppSize.s1_5),
