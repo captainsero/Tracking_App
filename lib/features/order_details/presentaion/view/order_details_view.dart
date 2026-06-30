@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:tracking_app/core/constants/color_manager.dart';
-import 'package:tracking_app/features/orders/domain/entitty/order_entity.dart';
-import 'package:tracking_app/features/orders/presentaion/widgets/contact_card.dart';
-import 'package:tracking_app/features/orders/presentaion/widgets/order_item_tile.dart';
-import 'package:tracking_app/features/orders/presentaion/widgets/order_status_banner.dart';
-import 'package:tracking_app/features/orders/presentaion/widgets/order_stepper_widget.dart';
-import 'package:tracking_app/features/orders/presentaion/widgets/order_summary.dart';
-import 'package:tracking_app/features/orders/presentaion/widgets/primary_action_button.dart';
+import 'package:tracking_app/features/order_details/domain/entitty/order_entity.dart';
+import 'package:tracking_app/features/order_details/presentaion/widgets/contact_card.dart';
+import 'package:tracking_app/features/order_details/presentaion/widgets/order_item_tile.dart';
+import 'package:tracking_app/features/order_details/presentaion/widgets/order_status_banner.dart';
+import 'package:tracking_app/features/order_details/presentaion/widgets/order_stepper_widget.dart';
+import 'package:tracking_app/features/order_details/presentaion/widgets/order_summary.dart';
+import 'package:tracking_app/features/order_details/presentaion/widgets/primary_action_button.dart';
 
 /// Order details screen — currently takes a plain [Order] object so it
 /// works standalone today.

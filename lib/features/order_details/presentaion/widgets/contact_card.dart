@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tracking_app/core/constants/color_manager.dart';
-import 'package:tracking_app/features/orders/domain/entitty/order_entity.dart';
+import 'package:tracking_app/features/order_details/domain/entitty/order_entity.dart';
 
 /// Shared card for "Pickup address" and "User address" — same shape in
 /// the design (avatar, name, address, call + WhatsApp). One widget,

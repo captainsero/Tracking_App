@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:tracking_app/core/constants/color_manager.dart';
-import 'package:tracking_app/features/orders/domain/entitty/order_status.dart';
+import 'package:tracking_app/features/order_details/domain/entitty/order_status.dart';
 
 /// The pink card showing "Status: Accepted / Order ID / date".
 /// Status color could later vary per [status] (e.g. red for cancelled) —
