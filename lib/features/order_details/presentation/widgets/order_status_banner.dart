@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:injectable/injectable.dart';
-import 'package:intl/intl.dart';
 import 'package:tracking_app/core/constants/color_manager.dart';
 import 'package:tracking_app/features/order_details/domain/entities/order_status.dart';
 

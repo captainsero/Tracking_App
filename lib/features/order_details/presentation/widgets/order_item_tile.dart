@@ -28,7 +28,7 @@ class OrderItemTile extends StatelessWidget {
                     width: 44,
                     height: 44,
                     fit: BoxFit.cover,
-                    errorBuilder: (_, __, ___) => _placeholderImage(),
+                    errorBuilder: (_, _, _) => _placeholderImage(),
                   )
                 : _placeholderImage(),
           ),

@@ -60,7 +60,7 @@ class _AnimatedWavesPainter extends CustomPainter {
     _drawWave(
       canvas,
       size,
-      color: AppColors.primary.withOpacity(0.15),
+      color: AppColors.primary.withValues(alpha: 0.15),
       amplitude: 18,
       baseY: 70,
       phaseShift: animationValue * 2 * pi,
@@ -71,7 +71,7 @@ class _AnimatedWavesPainter extends CustomPainter {
     _drawWave(
       canvas,
       size,
-      color: AppColors.primary.withOpacity(0.15),
+      color: AppColors.primary.withValues(alpha: 0.15),
       amplitude: 22,
       baseY: 110,
       phaseShift: animationValue * 2 * pi + pi * 0.6,

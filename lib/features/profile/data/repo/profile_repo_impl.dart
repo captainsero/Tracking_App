@@ -21,13 +21,25 @@ class ProfileRepoImpl implements ProfileRepoContract {
   Future<BaseResponse<ProfileDataEntity>> getProfileData() async {
     final result = await profileRemoteDataSourceContract.getProfileData();
 
+    // الـ fakeData دي مؤقتة لحد ما الـ API يشتغل فعليًا
+    final ProfileDataEntity fakeData = ProfileDataEntity(
+      id: '1',
+      firstName: 'Kareem',
+      lastName: 'Yasser',
+      email: 'kareem.yasser@example.com',
+      phone: '+201016473761',
+      photo: 'assets/images/Gemini image profile.png',
+    );
+
     switch (result) {
       case SuccessBaseResponse<ProfileDataModel> success:
-        return SuccessBaseResponse<ProfileDataEntity>(
-          data: success.data.toEntity(),
-        );
+        return SuccessBaseResponse<ProfileDataEntity>(data: fakeData);
+
       case ErrorBaseResponse<ProfileDataModel> error:
-        return ErrorBaseResponse<ProfileDataEntity>(error: error.error);
+        // TODO: لما الـ API يشتغل فعليًا، رجّع الـ error الحقيقي بدل الـ fakeData:
+        // final Object error = "Failed to fetch profile data";
+        // return ErrorBaseResponse<ProfileDataEntity>(error: error);
+        return SuccessBaseResponse<ProfileDataEntity>(data: fakeData);
     }
   }
 }

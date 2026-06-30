@@ -8,7 +8,7 @@ class SettingsTile extends StatelessWidget {
   final Color? iconColor;
   final Color? labelColor;
 
-  const SettingsTile({
+  const SettingsTile({super.key, 
     required this.icon,
     required this.label,
     this.trailing,
@@ -33,7 +33,7 @@ class SettingsTile extends StatelessWidget {
               width: 34,
               height: 34,
               decoration: BoxDecoration(
-                color: effectiveIconColor.withOpacity(0.08),
+                color: effectiveIconColor.withValues(alpha: 0.08),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Icon(icon, size: 19, color: effectiveIconColor),
