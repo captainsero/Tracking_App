@@ -3,14 +3,16 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i4;
+import 'dart:async' as _i5;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i5;
+import 'package:mockito/src/dummies.dart' as _i6;
 import 'package:tracking_app/features/profile/api/api_client/profile_api_client.dart'
-    as _i3;
+    as _i4;
 import 'package:tracking_app/features/profile/data/models/profile_data_model.dart'
     as _i2;
+import 'package:tracking_app/features/profile/domain/entities/profile_data_entity.dart'
+    as _i3;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -33,36 +35,42 @@ class _FakeProfileDataModel_0 extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
+class _FakeProfileDataEntity_1 extends _i1.SmartFake
+    implements _i3.ProfileDataEntity {
+  _FakeProfileDataEntity_1(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
 /// A class which mocks [ProfileApiClient].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockProfileApiClient extends _i1.Mock implements _i3.ProfileApiClient {
+class MockProfileApiClient extends _i1.Mock implements _i4.ProfileApiClient {
   MockProfileApiClient() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<String> logout() =>
+  _i5.Future<String> logout() =>
       (super.noSuchMethod(
             Invocation.method(#logout, []),
-            returnValue: _i4.Future<String>.value(
-              _i5.dummyValue<String>(this, Invocation.method(#logout, [])),
+            returnValue: _i5.Future<String>.value(
+              _i6.dummyValue<String>(this, Invocation.method(#logout, [])),
             ),
           )
-          as _i4.Future<String>);
+          as _i5.Future<String>);
 
   @override
-  _i4.Future<_i2.ProfileDataModel> getProfileData() =>
+  _i5.Future<_i2.ProfileDataModel> getProfileData() =>
       (super.noSuchMethod(
             Invocation.method(#getProfileData, []),
-            returnValue: _i4.Future<_i2.ProfileDataModel>.value(
+            returnValue: _i5.Future<_i2.ProfileDataModel>.value(
               _FakeProfileDataModel_0(
                 this,
                 Invocation.method(#getProfileData, []),
               ),
             ),
           )
-          as _i4.Future<_i2.ProfileDataModel>);
+          as _i5.Future<_i2.ProfileDataModel>);
 }
 
 /// A class which mocks [ProfileDataModel].
@@ -77,7 +85,7 @@ class MockProfileDataModel extends _i1.Mock implements _i2.ProfileDataModel {
   String get id =>
       (super.noSuchMethod(
             Invocation.getter(#id),
-            returnValue: _i5.dummyValue<String>(this, Invocation.getter(#id)),
+            returnValue: _i6.dummyValue<String>(this, Invocation.getter(#id)),
           )
           as String);
 
@@ -85,7 +93,7 @@ class MockProfileDataModel extends _i1.Mock implements _i2.ProfileDataModel {
   String get firstName =>
       (super.noSuchMethod(
             Invocation.getter(#firstName),
-            returnValue: _i5.dummyValue<String>(
+            returnValue: _i6.dummyValue<String>(
               this,
               Invocation.getter(#firstName),
             ),
@@ -96,7 +104,7 @@ class MockProfileDataModel extends _i1.Mock implements _i2.ProfileDataModel {
   String get lastName =>
       (super.noSuchMethod(
             Invocation.getter(#lastName),
-            returnValue: _i5.dummyValue<String>(
+            returnValue: _i6.dummyValue<String>(
               this,
               Invocation.getter(#lastName),
             ),
@@ -107,7 +115,7 @@ class MockProfileDataModel extends _i1.Mock implements _i2.ProfileDataModel {
   String get email =>
       (super.noSuchMethod(
             Invocation.getter(#email),
-            returnValue: _i5.dummyValue<String>(
+            returnValue: _i6.dummyValue<String>(
               this,
               Invocation.getter(#email),
             ),
@@ -118,7 +126,7 @@ class MockProfileDataModel extends _i1.Mock implements _i2.ProfileDataModel {
   String get gender =>
       (super.noSuchMethod(
             Invocation.getter(#gender),
-            returnValue: _i5.dummyValue<String>(
+            returnValue: _i6.dummyValue<String>(
               this,
               Invocation.getter(#gender),
             ),
@@ -129,7 +137,7 @@ class MockProfileDataModel extends _i1.Mock implements _i2.ProfileDataModel {
   String get phone =>
       (super.noSuchMethod(
             Invocation.getter(#phone),
-            returnValue: _i5.dummyValue<String>(
+            returnValue: _i6.dummyValue<String>(
               this,
               Invocation.getter(#phone),
             ),
@@ -140,7 +148,7 @@ class MockProfileDataModel extends _i1.Mock implements _i2.ProfileDataModel {
   String get photo =>
       (super.noSuchMethod(
             Invocation.getter(#photo),
-            returnValue: _i5.dummyValue<String>(
+            returnValue: _i6.dummyValue<String>(
               this,
               Invocation.getter(#photo),
             ),
@@ -151,7 +159,7 @@ class MockProfileDataModel extends _i1.Mock implements _i2.ProfileDataModel {
   String get role =>
       (super.noSuchMethod(
             Invocation.getter(#role),
-            returnValue: _i5.dummyValue<String>(this, Invocation.getter(#role)),
+            returnValue: _i6.dummyValue<String>(this, Invocation.getter(#role)),
           )
           as String);
 
@@ -175,7 +183,7 @@ class MockProfileDataModel extends _i1.Mock implements _i2.ProfileDataModel {
   String get createdAt =>
       (super.noSuchMethod(
             Invocation.getter(#createdAt),
-            returnValue: _i5.dummyValue<String>(
+            returnValue: _i6.dummyValue<String>(
               this,
               Invocation.getter(#createdAt),
             ),
@@ -189,4 +197,15 @@ class MockProfileDataModel extends _i1.Mock implements _i2.ProfileDataModel {
             returnValue: <String, dynamic>{},
           )
           as Map<String, dynamic>);
+
+  @override
+  _i3.ProfileDataEntity toEntity() =>
+      (super.noSuchMethod(
+            Invocation.method(#toEntity, []),
+            returnValue: _FakeProfileDataEntity_1(
+              this,
+              Invocation.method(#toEntity, []),
+            ),
+          )
+          as _i3.ProfileDataEntity);
 }
