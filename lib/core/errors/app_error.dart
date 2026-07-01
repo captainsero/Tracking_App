@@ -8,6 +8,7 @@ sealed class AppError {
   const AppError();
 
   factory AppError.from(Object? error) {
+    if (error is AppError) return error;
     if (error is DioException) {
       final data = error.response?.data;
 
@@ -76,6 +77,18 @@ class NetworkError extends AppError {
 
 class NotFoundError extends AppError {
   const NotFoundError();
+}
+
+class ServiceDisabled extends AppError {
+  const ServiceDisabled();
+}
+
+class PermissionDenied extends AppError {
+  const PermissionDenied();
+}
+
+class PermissionDeniedForever extends AppError {
+  const PermissionDeniedForever();
 }
 
 class ServerError extends AppError {

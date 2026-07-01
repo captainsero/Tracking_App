@@ -4,6 +4,9 @@ import 'package:tracking_app/features/home/data/models/shipping_address_model.da
 import 'package:tracking_app/features/home/data/models/store_model.dart';
 import 'package:tracking_app/features/home/data/models/user_model.dart';
 import 'package:tracking_app/features/home/domain/entities/order_entity.dart';
+import 'package:tracking_app/features/home/domain/entities/shipping_address_entity.dart';
+import 'package:tracking_app/features/home/domain/entities/store_entity.dart';
+import 'package:tracking_app/features/home/domain/entities/user_entity.dart';
 
 part 'order_model.g.dart';
 
@@ -60,9 +63,10 @@ class OrderModel {
 
   OrderEntity toHomeDomain() => OrderEntity(
     id: id ?? '',
-    store: store?.toHomeDomain(),
-    user: user?.toHomeDomain(),
-    shippingAddress: shippingAddress?.toHomeDomain(),
+    store: store?.toHomeDomain() ?? StoreEntity.empty(),
+    user: user?.toHomeDomain() ?? UserEntity.empty(),
+    shippingAddress:
+        shippingAddress?.toHomeDomain() ?? ShippingAddressEntity.empty(),
     totalPrice: totalPrice ?? 0,
   );
 

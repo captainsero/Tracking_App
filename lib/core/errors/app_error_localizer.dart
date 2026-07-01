@@ -15,6 +15,9 @@ extension AppErrorLocalization on AppError {
         key != null
             ? '${l10n.noValueKeyFound}$key'
             : l10n.secureStorageErrorMessage,
+      ServiceDisabled() => l10n.serviceDisabled,
+      PermissionDenied() => l10n.permissionDenied,
+      PermissionDeniedForever() => l10n.permissionDeniedForever,
     };
   }
 }

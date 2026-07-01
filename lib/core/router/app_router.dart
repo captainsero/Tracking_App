@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tracking_app/config/di/di.dart';
+import 'package:tracking_app/config/shared_models/map_extra.dart';
 import 'package:tracking_app/core/router/route_path.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/view/forgot_password_view.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/view/verify_reset_view.dart';
@@ -10,6 +11,8 @@ import 'package:tracking_app/features/auth/login/presentation/view/pages/login_p
 import 'package:tracking_app/features/auth/sign_up/presentation/view/sign_up_view.dart';
 import 'package:tracking_app/features/error/error_screen.dart';
 import 'package:tracking_app/features/home/presentation/view/home_view.dart';
+import 'package:tracking_app/features/map/presentation/view/map_view.dart';
+import 'package:tracking_app/features/map/presentation/view_model/map_view_model.dart';
 import 'package:tracking_app/features/order_details/domain/entities/order_entity.dart';
 import 'package:tracking_app/features/order_details/domain/entities/order_status.dart';
 import 'package:tracking_app/features/order_details/presentation/view/order_details_view.dart';
@@ -26,7 +29,7 @@ import 'package:tracking_app/features/splash/presentaion/view/splash_view.dart';
 
 abstract class AppRouter {
   static final GoRouter goRouter = GoRouter(
-    initialLocation: RoutePath.onboarding,
+    initialLocation: RoutePath.home,
     routes: [
       GoRoute(
         path: RoutePath.splash,
@@ -126,6 +129,13 @@ abstract class AppRouter {
       GoRoute(
         path: RoutePath.successApply,
         builder: (context, state) => SuccessApplyView(),
+      ),
+      GoRoute(
+        path: RoutePath.map,
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt.get<MapCubit>(),
+          child: MapView(mapExtra: state.extra as MapExtra),
+        ),
       ),
     ],
     errorBuilder: (BuildContext context, GoRouterState state) {

@@ -1,34 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tracking_app/config/shared_models/map_extra.dart';
 import 'package:tracking_app/core/constants/font_manager.dart';
 import 'package:tracking_app/core/constants/screen_size.dart';
 import 'package:tracking_app/core/constants/values_manager.dart';
 import 'package:tracking_app/core/router/route_path.dart';
+import 'package:tracking_app/features/home/domain/entities/shipping_address_entity.dart';
+import 'package:tracking_app/features/home/domain/entities/store_entity.dart';
+import 'package:tracking_app/features/home/domain/entities/user_entity.dart';
 import 'package:tracking_app/features/home/presentation/widgets/home_order_card.dart';
 import 'package:tracking_app/generated/l10n.dart';
 
 class HomeOrderContainer extends StatelessWidget {
   const HomeOrderContainer({
     super.key,
-    required this.orderId,
-    required this.pickupImage,
-    required this.pickupName,
-    required this.pickupAddress,
-    required this.userImage,
-    required this.userName,
-    required this.userAddress,
-    required this.totalPrice,
     required this.onReject,
+    required this.storeEntity,
+    required this.shippingAddressEntity,
+    required this.userEntity,
+    required this.totalPrice,
   });
-  final String orderId;
-  final String pickupImage;
-  final String pickupName;
-  final String pickupAddress;
-  final String userImage;
-  final String userName;
-  final String userAddress;
-  final double totalPrice;
   final VoidCallback onReject;
+  final StoreEntity storeEntity;
+  final ShippingAddressEntity shippingAddressEntity;
+  final UserEntity userEntity;
+  final double totalPrice;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -53,9 +49,9 @@ class HomeOrderContainer extends StatelessWidget {
             ),
 
             HomeOrderCard(
-              image: pickupImage,
-              name: pickupName,
-              address: pickupAddress,
+              image: storeEntity.image,
+              name: storeEntity.name,
+              address: storeEntity.address,
             ),
 
             SizedBox(height: AppSize.s16),
@@ -66,9 +62,9 @@ class HomeOrderContainer extends StatelessWidget {
             ),
 
             HomeOrderCard(
-              image: userImage,
-              name: userName,
-              address: userAddress,
+              image: userEntity.photo,
+              name: '${userEntity.firstName} ${userEntity.lastName}',
+              address: shippingAddressEntity.city,
             ),
 
             SizedBox(height: AppSize.s16),
@@ -102,9 +98,14 @@ class HomeOrderContainer extends StatelessWidget {
                   width: ScreenSize.width / 3,
                   child: ElevatedButton(
                     onPressed: () {
-                      context.go(RoutePath.orderDetails,
-                      //  extra: orderId
-                       );
+                      context.go(
+                        RoutePath.map,
+                        extra: MapExtra(
+                          storeEntity: storeEntity,
+                          shippingAddressEntity: shippingAddressEntity,
+                          userEntity: userEntity,
+                        ),
+                      );
                     },
                     child: Text(
                       S.current.accept,

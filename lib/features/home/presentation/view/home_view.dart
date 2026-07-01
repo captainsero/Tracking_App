@@ -111,20 +111,15 @@ class _HomeViewState extends State<HomeView> {
 
                   final order = orders[index];
                   return HomeOrderContainer(
-                    orderId: order.id,
-                    pickupImage: order.store?.image ?? '',
-                    pickupName: order.store?.name ?? '',
-                    pickupAddress: order.store?.address ?? '',
-                    userImage: order.user?.photo ?? '',
-                    userName:
-                        '${order.user?.firstName ?? ''} ${order.user?.lastName ?? ''}',
-                    userAddress: order.shippingAddress?.city ?? '',
-                    totalPrice: order.totalPrice,
                     onReject: () {
                       context.read<HomeCubit>().onEvent(
                         RejectOrderEvent(orderId: order.id),
                       );
                     },
+                    storeEntity: order.store,
+                    shippingAddressEntity: order.shippingAddress,
+                    userEntity: order.user,
+                    totalPrice: order.totalPrice,
                   );
                 },
               ),
