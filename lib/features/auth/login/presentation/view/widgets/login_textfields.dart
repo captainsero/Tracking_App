@@ -1,43 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:tracking_app/config/validators/text_field_validator.dart';
 import 'package:tracking_app/generated/l10n.dart';
 
-import '../../view_model/cubit/login_cubit.dart';
+class LoginTextfields extends StatefulWidget {
+  const LoginTextfields({
+    super.key,
+    required this.emailController,
+    required this.passwordController,
+  });
 
-class LoginTextfields extends StatelessWidget {
-  const LoginTextfields({super.key});
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
 
-  // Same simple email-format check used to decide between
-  // emailIsRequired / enterValidEmail below.
-  static final RegExp _emailRegExp = RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$');
+  @override
+  State<LoginTextfields> createState() => _LoginTextfieldsState();
+}
+
+class _LoginTextfieldsState extends State<LoginTextfields> {
+  bool _isPasswordObscured = true;
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<LoginCubit>();
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TextFormField(
-          // TODO: confirm `emailController` is the real field name on LoginCubit
-          controller: cubit.emailController,
+          controller: widget.emailController,
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
             labelText: S.of(context).email,
             hintText: S.of(context).Enter_your_email,
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12.r),
-              borderSide: const BorderSide(color: Colors.grey),
-            ),
           ),
           validator: (value) {
             if (value == null || value.trim().isEmpty) {
               return S.of(context).emailIsRequired;
             }
-            if (!_emailRegExp.hasMatch(value.trim())) {
+            if (AppTextFieldValidator.validateEmail(value.trim()) != null) {
               return S.of(context).enterValidEmail;
             }
             return null;
@@ -45,26 +44,30 @@ class LoginTextfields extends StatelessWidget {
         ),
         SizedBox(height: 20.h),
         TextFormField(
-          // TODO: confirm `passwordController` is the real field name on LoginCubit
-          controller: cubit.passwordController,
-          obscureText: true,
+          controller: widget.passwordController,
+          obscureText: _isPasswordObscured,
           decoration: InputDecoration(
             labelText: S.of(context).Password,
             hintText: S.of(context).Enter_your_password,
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12.r),
-              borderSide: const BorderSide(color: Colors.grey),
+            suffixIcon: IconButton(
+              icon: Icon(
+                _isPasswordObscured ? Icons.visibility_off : Icons.visibility,
+                color: _isPasswordObscured
+                    ? Colors.grey
+                    : Theme.of(context).colorScheme.primary,
+              ),
+              onPressed: () {
+                setState(() {
+                  _isPasswordObscured = !_isPasswordObscured;
+                });
+              },
             ),
           ),
           validator: (value) {
-            // NOTE: the provided keys.json only has `enterValidPassword`
-            // ("Password needs uppercase, digit, and special char"), which
-            // reads like a *signup* rule, not a *login* rule. For a login
-            // screen you usually only want a "required" check here (the
-            // server tells you if the password is wrong). Add a dedicated
-            // key (e.g. "passwordIsRequired") if you want a cleaner message.
             if (value == null || value.isEmpty) {
+              return S.of(context).enterValidPassword;
+            }
+            if (AppTextFieldValidator.validatePassword(value.trim()) != null) {
               return S.of(context).enterValidPassword;
             }
             return null;

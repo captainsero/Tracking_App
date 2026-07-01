@@ -1,8 +1,8 @@
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:tracking_app/config/base_response/base_response.dart';
 import 'package:tracking_app/config/base_state/base_state.dart';
+
 import '../../../domain/entities/login_params.dart';
 import '../../../domain/entities/login_response_entity.dart';
 import '../../../domain/use_cases/login_use_case.dart';
@@ -14,9 +14,6 @@ class LoginCubit extends Cubit<LoginStates> {
   LoginCubit(this._loginUserUseCase) : super(LoginStates());
 
   final LoginUseCase _loginUserUseCase;
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-  final formKey = GlobalKey<FormState>();
 
   void doIntent(LoginEvents event) {
     event.when(loginUserEvent: _login);
@@ -26,20 +23,17 @@ class LoginCubit extends Cubit<LoginStates> {
     emit(state.copyWith(isRememberMe: value));
   }
 
-  Future<void> _login() async {
-    if (emailController.text.trim().isEmpty ||
-        passwordController.text.isEmpty) {
-      return;
-    }
-
+  Future<void> _login(String email, String password) async {
     emit(state.copyWith(loginState: const BaseState(isLoading: true)));
+
     final result = await _loginUserUseCase.call(
       params: LoginParams(
-        email: emailController.text.trim(),
-        password: passwordController.text,
+        email: email,
+        password: password,
         rememberMe: state.isRememberMe,
       ),
     );
+
     switch (result) {
       case SuccessBaseResponse<LoginResponseEntity>(:final data):
         emit(state.copyWith(
@@ -50,12 +44,5 @@ class LoginCubit extends Cubit<LoginStates> {
           loginState: BaseState(isLoading: false, errorMessage: errorMessage),
         ));
     }
-  }
-
-  @override
-  Future<void> close() {
-    emailController.dispose();
-    passwordController.dispose();
-    return super.close();
   }
 }

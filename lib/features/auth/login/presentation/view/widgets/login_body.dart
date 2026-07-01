@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:tracking_app/features/auth/login/presentation/view/widgets/Custom%20button.dart';
@@ -6,8 +8,6 @@ import 'package:tracking_app/generated/l10n.dart';
 
 import 'do_not_have_account.dart';
 import 'login_options_row.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../view_model/cubit/login_cubit.dart';
 import '../../view_model/cubit/login_events.dart';
 import '../../view_model/cubit/login_states.dart';
@@ -21,6 +21,29 @@ class LoginBody extends StatefulWidget {
 }
 
 class _LoginBodyState extends State<LoginBody> {
+  final _formKey = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  void _onLoginPressed(LoginCubit cubit) {
+    FocusScope.of(context).unfocus();
+    if (_formKey.currentState!.validate() == false) return;
+
+    cubit.doIntent(
+      LoginEvents.loginUserEvent(
+        email: _emailController.text.trim(),
+        password: _passwordController.text,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<LoginCubit>();
@@ -40,11 +63,14 @@ class _LoginBodyState extends State<LoginBody> {
         child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
           child: Form(
-            key: cubit.formKey,
+            key: _formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const LoginTextfields(),
+                LoginTextfields(
+                  emailController: _emailController,
+                  passwordController: _passwordController,
+                ),
                 SizedBox(height: 8.h),
 
                 const LoginOptionsRow(),
@@ -57,7 +83,6 @@ class _LoginBodyState extends State<LoginBody> {
                   listener: (context, states) {
                     final loginState = states.loginState;
                     if (loginState.data != null) {
-                      // TODO: no "success" key was provided, hardcoded for now.
                       CustomToast(
                         context: context,
                         header: S.of(context).Success,
@@ -66,8 +91,6 @@ class _LoginBodyState extends State<LoginBody> {
 
                       // context.go(Routes.appLayout);
                     } else if (loginState.errorMessage != null) {
-                      // TODO: no specific "invalid email or password" key was
-                      // provided, so the generic error message is used here.
                       CustomToast(
                         context: context,
                         header: S.of(context).error,
@@ -80,20 +103,9 @@ class _LoginBodyState extends State<LoginBody> {
                     final isLoading = states.loginState.isLoading == true;
 
                     return CustomButton(
-                      // TODO: no localization key was provided for the button
-                      // label, so it's hardcoded here.
                       title: 'Login',
                       isLoading: isLoading,
-                      onPressed: isLoading
-                          ? null
-                          : () {
-                              FocusScope.of(context).unfocus();
-                              if (cubit.formKey.currentState!.validate() ==
-                                  false) {
-                                return;
-                              }
-                              cubit.doIntent(LoginEvents.loginUserEvent());
-                            },
+                      onPressed: isLoading ? null : () => _onLoginPressed(cubit),
                     );
                   },
                 ),
