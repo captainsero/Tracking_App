@@ -90,7 +90,7 @@ class MapCubit extends Cubit<MapState> {
           ),
         );
 
-      // _startLiveTracking(end);
+      _startLiveTracking(end);
 
       case ErrorBaseResponse<List<MapPathModel>>():
         emit(
