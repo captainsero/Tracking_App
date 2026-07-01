@@ -24,8 +24,12 @@ class ShippingAddressModel {
     this.long,
   });
 
-  ShippingAddressEntity toHomeDomain() =>
-      ShippingAddressEntity(street: street ?? '', city: city ?? '');
+  ShippingAddressEntity toHomeDomain() => ShippingAddressEntity(
+    street: street ?? '',
+    city: city ?? '',
+    lat: lat ?? '',
+    long: long ?? '',
+  );
 
   factory ShippingAddressModel.fromJson(Map<String, dynamic> json) =>
       _$ShippingAddressModelFromJson(json);

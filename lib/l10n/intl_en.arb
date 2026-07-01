@@ -98,5 +98,8 @@
     "userAddress": "User address",
     "egp": "EGP",
     "reject": "Reject",
-    "accept": "Accept"
+    "accept": "Accept",
+    "serviceDisabled": "Service disabled",
+    "permissionDenied": "Permission denied",
+    "permissionDeniedForever": "Permission denied forever"
 }
