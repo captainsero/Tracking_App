@@ -259,6 +259,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Success`
+  String get Success {
+    return Intl.message(
+      'Success',
+      name: 'Success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue as guest`
+  String get Continue_as_guest {
+    return Intl.message(
+      'Continue as guest',
+      name: 'Continue_as_guest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remember me`
+  String get Remember_me {
+    return Intl.message(
+      'Remember me',
+      name: 'Remember_me',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forget password?`
+  String get Forget_password {
+    return Intl.message(
+      'Forget password?',
+      name: 'Forget_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get email {
+    return Intl.message(
+      'Email',
+      name: 'email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your email`
+  String get Enter_your_email {
+    return Intl.message(
+      'Enter your email',
+      name: 'Enter_your_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your password`
+  String get Enter_your_password {
+    return Intl.message(
+      'Enter your password',
+      name: 'Enter_your_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get Password {
+    return Intl.message(
+      'Password',
+      name: 'Password',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

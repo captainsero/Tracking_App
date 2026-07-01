@@ -6,7 +6,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../api/api_client/login_api_client.dart';
 
-@LazySingleton(as: LoginRemoteDataSourceContract)
+@Injectable(as: LoginRemoteDataSourceContract)
 class LoginRemoteDataSourceImpl implements LoginRemoteDataSourceContract {
   final LoginApiClient apiClient;
 
@@ -23,7 +23,6 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSourceContract {
     } catch (e) {
       return ErrorBaseResponse<LoginResponseModel>(
         error: e,
-        errorMessage: e.toString(),
       );
     }
   }

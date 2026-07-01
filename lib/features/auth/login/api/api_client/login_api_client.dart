@@ -7,8 +7,8 @@ import 'package:tracking_app/features/auth/login/data/models/login_response_mode
 
 part 'login_api_client.g.dart';
 
-@RestApi(baseUrl: ApiEndpoints.login)
 @lazySingleton
+@RestApi(baseUrl: ApiEndpoints.login)
 abstract class LoginApiClient {
   @factoryMethod
   factory LoginApiClient(Dio dio) = _LoginApiClient;

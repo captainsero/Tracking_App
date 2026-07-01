@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:tracking_app/config/base_response/base_response.dart';
 import 'package:tracking_app/config/base_state/base_state.dart';
+import '../../../domain/entities/login_params.dart';
 import '../../../domain/entities/login_response_entity.dart';
 import '../../../domain/use_cases/login_use_case.dart';
 import 'login_events.dart';
@@ -33,9 +34,11 @@ class LoginCubit extends Cubit<LoginStates> {
 
     emit(state.copyWith(loginState: const BaseState(isLoading: true)));
     final result = await _loginUserUseCase.call(
-      email: emailController.text.trim(),
-      password: passwordController.text,
-      rememberMe: state.isRememberMe,
+      params: LoginParams(
+        email: emailController.text.trim(),
+        password: passwordController.text,
+        rememberMe: state.isRememberMe,
+      ),
     );
     switch (result) {
       case SuccessBaseResponse<LoginResponseEntity>(:final data):

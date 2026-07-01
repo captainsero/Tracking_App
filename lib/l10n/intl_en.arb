@@ -19,5 +19,13 @@
     "enterValidPassword": "Password needs uppercase, digit, and special char",
     "error": "Error",
     "oopsSomthingWentWrong": "Oops! Something went wrong.",
-    "goToHome": "goToHome"
+    "goToHome": "goToHome",
+    "Success": "Success",
+    "Continue_as_guest": "Continue as guest",
+    "Remember_me": "Remember me",
+    "Forget_password": "Forget password?",
+    "email": "Email",
+    "Enter_your_email": "Enter your email",
+    "Enter_your_password": "Enter your password",
+    "Password": "Password"
 }

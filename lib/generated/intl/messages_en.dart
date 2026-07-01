@@ -22,12 +22,24 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "Continue_as_guest":
+            MessageLookupByLibrary.simpleMessage("Continue as guest"),
+        "Enter_your_email":
+            MessageLookupByLibrary.simpleMessage("Enter your email"),
+        "Enter_your_password":
+            MessageLookupByLibrary.simpleMessage("Enter your password"),
+        "Forget_password":
+            MessageLookupByLibrary.simpleMessage("Forget password?"),
+        "Password": MessageLookupByLibrary.simpleMessage("Password"),
+        "Remember_me": MessageLookupByLibrary.simpleMessage("Remember me"),
+        "Success": MessageLookupByLibrary.simpleMessage("Success"),
         "codeIsRequired":
             MessageLookupByLibrary.simpleMessage("Code is required"),
         "confirmPassword": MessageLookupByLibrary.simpleMessage(
             "Please confirm your password"),
         "connectionTimeout": MessageLookupByLibrary.simpleMessage(
             "Request timed out. Please check your internet connection."),
+        "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emailIsRequired":
             MessageLookupByLibrary.simpleMessage("Email is required"),
         "enterValidEgyptianPhoneNumber": MessageLookupByLibrary.simpleMessage(

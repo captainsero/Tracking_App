@@ -60,7 +60,7 @@ class _LoginBodyState extends State<LoginBody> {
                       // TODO: no "success" key was provided, hardcoded for now.
                       CustomToast(
                         context: context,
-                        header: 'Success',
+                        header: S.of(context).Success,
                         type: ToastificationType.success,
                       ).showToast();
 
@@ -115,7 +115,7 @@ class _LoginBodyState extends State<LoginBody> {
                       ),
                     ),
                     child: Text(
-                      'Continue as guest',
+                      S.of(context).Continue_as_guest,
                       style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w600,

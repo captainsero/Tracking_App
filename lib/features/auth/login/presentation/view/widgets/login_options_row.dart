@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tracking_app/generated/l10n.dart';
 
 class LoginOptionsRow extends StatefulWidget {
   const LoginOptionsRow({super.key});
@@ -39,7 +40,7 @@ class _LoginOptionsRowState extends State<LoginOptionsRow> {
               ),
             ),
             SizedBox(width: 8.w),
-            Text('Remember me', style: TextStyle(fontSize: 14.sp)),
+            Text(S.of(context).Remember_me, style: TextStyle(fontSize: 14.sp)),
           ],
         ),
         GestureDetector(
@@ -48,7 +49,7 @@ class _LoginOptionsRowState extends State<LoginOptionsRow> {
             // context.go(Routes.forgetPassword)
           },
           child: Text(
-            'Forget password?',
+            S.of(context).Forget_password,
             style: TextStyle(
               fontSize: 14.sp,
               fontWeight: FontWeight.w500,

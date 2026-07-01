@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tracking_app/core/constants/color_manager.dart';
 
 /// Reusable pill-shaped primary button used across the app (login, register,
 /// etc). Shows a spinner instead of the title while [isLoading] is true.
@@ -21,11 +22,9 @@ class CustomButton extends StatelessWidget {
   final Color textColor;
   final double? height;
 
-  static const Color _defaultColor = Color(0xFFC2185B);
-
   @override
   Widget build(BuildContext context) {
-    final Color resolvedColor = backgroundColor ?? _defaultColor;
+    final Color resolvedColor = backgroundColor ?? AppColors.primary;
 
     return SizedBox(
       width: double.infinity,

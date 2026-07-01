@@ -25,8 +25,8 @@ class LoginTextfields extends StatelessWidget {
           controller: cubit.emailController,
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
-            labelText: 'Email',
-            hintText: 'Enter you email',
+            labelText: S.of(context).email,
+            hintText: S.of(context).Enter_your_email,
             floatingLabelBehavior: FloatingLabelBehavior.always,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12.r),
@@ -49,8 +49,8 @@ class LoginTextfields extends StatelessWidget {
           controller: cubit.passwordController,
           obscureText: true,
           decoration: InputDecoration(
-            labelText: 'Password',
-            hintText: 'Enter you password',
+            labelText: S.of(context).Password,
+            hintText: S.of(context).Enter_your_password,
             floatingLabelBehavior: FloatingLabelBehavior.always,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12.r),

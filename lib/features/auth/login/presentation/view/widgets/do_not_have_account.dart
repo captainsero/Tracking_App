@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tracking_app/core/constants/color_manager.dart';
 
 class DoNotHaveAccount extends StatelessWidget {
   const DoNotHaveAccount({super.key});
-
-  // TODO: swap this for your app's actual primary/brand color constant.
-  static const Color _signUpColor = Color(0xFFC2185B);
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +24,10 @@ class DoNotHaveAccount extends StatelessWidget {
               'Sign up',
               style: TextStyle(
                 fontSize: 14.sp,
-                color: _signUpColor,
+                color: AppColors.primary,
                 fontWeight: FontWeight.w600,
                 decoration: TextDecoration.underline,
-                decorationColor: _signUpColor,
+                decorationColor: AppColors.primary,
               ),
             ),
           ),

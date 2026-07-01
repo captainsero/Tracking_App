@@ -3,10 +3,13 @@ sealed class LoginEvents {
   factory LoginEvents.loginUserEvent() = LoginUserEvent;
 
   void when({required Function() loginUserEvent}) {
-    if (this is LoginUserEvent) {
-      loginUserEvent();
+    switch (this) {
+      case LoginUserEvent():
+        loginUserEvent();
     }
   }
 }
 
-class LoginUserEvent extends LoginEvents {}
+class LoginUserEvent extends LoginEvents {
+  const LoginUserEvent();
+}

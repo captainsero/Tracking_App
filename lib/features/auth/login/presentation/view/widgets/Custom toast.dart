@@ -2,23 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tracking_app/core/constants/color_manager.dart';
 
-/// Kept the same name used across the codebase so existing call sites
-/// (`type: ToastificationType.success`) keep working without any change.
 enum ToastificationType { success, error, warning, info }
 
-/// Lightweight, dependency-free toast. Shows a small banner near the top of
-/// the screen using an [OverlayEntry] and auto-dismisses after [duration].
-///
-/// Usage stays exactly like before:
-/// ```dart
-/// CustomToast(
-///   context: context,
-///   header: S.of(context).error,
-///   description: S.of(context).errorMessageGeneric,
-///   type: ToastificationType.error,
-/// ).showToast();
-/// ```
 class CustomToast {
   CustomToast({
     required this.context,
@@ -120,13 +107,13 @@ class _ToastBannerState extends State<_ToastBanner>
   Color get _color {
     switch (widget.type) {
       case ToastificationType.success:
-        return const Color(0xFF2E7D32);
+        return AppColors.success;
       case ToastificationType.error:
-        return const Color(0xFFC62828);
+        return AppColors.error;
       case ToastificationType.warning:
-        return const Color(0xFFF9A825);
+        return AppColors.warning;
       case ToastificationType.info:
-        return const Color(0xFF1565C0);
+        return AppColors.info;
     }
   }
 
