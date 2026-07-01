@@ -29,6 +29,7 @@ class StoreModel {
     name: name ?? '',
     address: address ?? '',
     latLong: latLong ?? '',
+    phone: phoneNumber ?? '',
   );
 
   factory StoreModel.fromJson(Map<String, dynamic> json) =>
