@@ -73,4 +73,15 @@ abstract class AppTextFieldValidator {
     }
     return null;
   }
+
+  static ValidationError? validateNid(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return ValidationError.idNumberRequired;
+    }
+    final nidRegex = RegExp(ValidatorsConstants.regExpValidateNid);
+    if (!nidRegex.hasMatch(value.trim())) {
+      return ValidationError.enterIdNumber;
+    }
+    return null;
+  }
 }

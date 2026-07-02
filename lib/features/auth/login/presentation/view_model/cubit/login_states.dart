@@ -4,7 +4,7 @@ import 'package:tracking_app/config/base_state/base_state.dart';
 import '../../../domain/entities/login_response_entity.dart';
 
 class LoginStates extends Equatable {
-  LoginStates({
+  const LoginStates({
     this.loginState = const BaseState<LoginResponseEntity>(),
     this.isRememberMe = false,
   });
