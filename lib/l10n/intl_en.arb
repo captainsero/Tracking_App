@@ -20,6 +20,9 @@
     "error": "Error",
     "oopsSomthingWentWrong": "Oops! Something went wrong.",
     "goToHome": "goToHome",
+    "onBoardingWelcomeText": "Welcome to Elevate Tracking App",
+    "onBoardingLogin": "Login",
+    "onBoardingApplyNow": "Apply Now"
     "apply": "Apply",
     "welcome": "Welcome!!",
     "applySubtitle": "You want to be a delivery man?\nJoin our team",
@@ -59,4 +62,13 @@
     "logout": "Logout",
     "confirmLogout": "Confirm logout!!",
     "cancel": "Cancel"
+    "goToHome": "goToHome",
+    "Success": "Success",
+    "Continue_as_guest": "Continue as guest",
+    "Remember_me": "Remember me",
+    "Forget_password": "Forget password?",
+    "email": "Email",
+    "Enter_your_email": "Enter your email",
+    "Enter_your_password": "Enter your password",
+    "Password": "Password"
 }

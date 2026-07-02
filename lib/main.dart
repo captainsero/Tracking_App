@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tracking_app/config/di/di.dart';
 import 'package:tracking_app/core/constants/screen_size.dart';
 import 'package:tracking_app/core/router/app_router.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       routerConfig: AppRouter.goRouter,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
     );
   }
 }
