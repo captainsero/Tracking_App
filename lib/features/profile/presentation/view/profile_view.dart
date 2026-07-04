@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tracking_app/core/locale/locale_cubit.dart';
+import 'package:tracking_app/core/router/route_path.dart';
 import 'package:tracking_app/features/profile/presentation/view_model/profile_cubit.dart';
 import 'package:tracking_app/features/profile/presentation/view_model/profile_event.dart';
 import 'package:tracking_app/features/profile/presentation/view_model/profile_state.dart';
@@ -101,7 +102,9 @@ class _ProfileViewState extends State<ProfileView> {
                   SettingsTile(
                     icon: Icons.person_outline,
                     label: S.current.editProfile,
-                    onTap: () {},
+                    onTap: () {
+                      context.go(RoutePath.profileEdit);
+                    },
                   ),
                   SettingsTile(
                     icon: Icons.logout_outlined,

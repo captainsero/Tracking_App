@@ -98,5 +98,15 @@
     "userAddress": "عنوان المستخدم",
     "egp": "جنيه مصري",
     "reject": "رفض",
-    "accept": "قبول"
+    "accept": "قبول",
+    "Edit_Profile": "تعديل الملف الشخصي",
+    "fistName": "الاسم الأول",
+    "lastName": "اسم العائلة",
+    "email": "البريد الإلكتروني",
+    "phoneNumber": "رقم الهاتف",
+    "changePassword": "تغيير",
+    "gender": "الجنس",
+    "male": "ذكر",
+    "female": "أنثى",
+    "saveChanges": "حفظ التغييرات"
 }

@@ -730,10 +730,10 @@ class S {
     );
   }
 
-  /// `Phone number`
+  /// `Phone Number`
   String get phoneNumber {
     return Intl.message(
-      'Phone number',
+      'Phone Number',
       name: 'phoneNumber',
       desc: '',
       args: [],
@@ -1045,6 +1045,56 @@ class S {
     return Intl.message(
       'Accept',
       name: 'accept',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Profile`
+  String get Edit_Profile {
+    return Intl.message(
+      'Edit Profile',
+      name: 'Edit_Profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First Name`
+  String get fistName {
+    return Intl.message(
+      'First Name',
+      name: 'fistName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last Name`
+  String get lastName {
+    return Intl.message(
+      'Last Name',
+      name: 'lastName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change`
+  String get changePassword {
+    return Intl.message(
+      'Change',
+      name: 'changePassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save Changes`
+  String get saveChanges {
+    return Intl.message(
+      'Save Changes',
+      name: 'saveChanges',
       desc: '',
       args: [],
     );

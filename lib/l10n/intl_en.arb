@@ -98,5 +98,15 @@
     "userAddress": "User address",
     "egp": "EGP",
     "reject": "Reject",
-    "accept": "Accept"
+    "accept": "Accept",
+    "Edit_Profile": "Edit Profile",
+    "fistName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "phoneNumber": "Phone Number",
+    "changePassword": "Change",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female",
+    "saveChanges": "Save Changes"
 }

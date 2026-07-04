@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "Edit_Profile":
+            MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
         "accept": MessageLookupByLibrary.simpleMessage("قبول"),
         "apply": MessageLookupByLibrary.simpleMessage("تقديم"),
         "applySubtitle": MessageLookupByLibrary.simpleMessage(
@@ -29,6 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "applySuccess":
             MessageLookupByLibrary.simpleMessage("تم إرسال الطلب بنجاح!"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+        "changePassword": MessageLookupByLibrary.simpleMessage("تغيير"),
         "codeIsRequired": MessageLookupByLibrary.simpleMessage("الرمز مطلوب"),
         "confirmLogout":
             MessageLookupByLibrary.simpleMessage("تأكيد تسجيل الخروج!!"),
@@ -97,13 +100,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "fieldRequired":
             MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
         "firstLegalName": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
+        "fistName": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
         "flowerOrder": MessageLookupByLibrary.simpleMessage("طلب زهور"),
         "floweryRider": MessageLookupByLibrary.simpleMessage("مندوب Flowery"),
         "forgetPassword":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور"),
         "forgetPasswordDis": MessageLookupByLibrary.simpleMessage(
             "يرجى إدخال البريد الإلكتروني المرتبط بحسابك"),
-        "gender": MessageLookupByLibrary.simpleMessage("النوع"),
+        "gender": MessageLookupByLibrary.simpleMessage("الجنس"),
         "goToHome":
             MessageLookupByLibrary.simpleMessage("الذهاب إلى الصفحة الرئيسية"),
         "idImage": MessageLookupByLibrary.simpleMessage("صورة البطاقة"),
@@ -114,6 +118,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "invalidIdNumber": MessageLookupByLibrary.simpleMessage(
             "أدخل رقمًا قوميًا صالحًا مكونًا من 14 رقمًا"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
+        "lastName": MessageLookupByLibrary.simpleMessage("اسم العائلة"),
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "male": MessageLookupByLibrary.simpleMessage("ذكر"),
         "mustBeAtLeast3Characters": MessageLookupByLibrary.simpleMessage(
@@ -168,6 +173,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("إعادة تعيين كلمة المرور"),
         "resetPasswordDis": MessageLookupByLibrary.simpleMessage(
             "يجب ألا تكون كلمة المرور فارغة وأن تحتوي على 6 أحرف على الأقل، مع حرف كبير ورقم واحد على الأقل"),
+        "saveChanges": MessageLookupByLibrary.simpleMessage("حفظ التغييرات"),
         "secondLegalName": MessageLookupByLibrary.simpleMessage("الاسم الثاني"),
         "secureStorageErrorMessage": MessageLookupByLibrary.simpleMessage(
             "فشل في حفظ المعلومات بشكل آمن. يرجى المحاولة مرة أخرى."),

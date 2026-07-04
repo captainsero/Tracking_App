@@ -8,6 +8,7 @@ import 'package:tracking_app/features/auth/forget_password/presentation/view/ver
 import 'package:tracking_app/features/auth/forget_password/presentation/view_model/cubit/forgot_password_cubit.dart';
 import 'package:tracking_app/features/auth/login/presentation/view/pages/login_page.dart';
 import 'package:tracking_app/features/auth/sign_up/presentation/view/sign_up_view.dart';
+import 'package:tracking_app/features/edit_profile/presentation/view/pages/edit_profile_page.dart';
 import 'package:tracking_app/features/error/error_screen.dart';
 import 'package:tracking_app/features/home/presentation/view/home_view.dart';
 import 'package:tracking_app/features/order_details/domain/entities/order_entity.dart';
@@ -85,6 +86,10 @@ abstract class AppRouter {
           create: (context) => getIt.get<ProfileCubit>(),
           child: ProfileView(),
         ),
+      ),
+      GoRoute(
+        path: RoutePath.profileEdit,
+        builder: (context, state) => EditProfilePage(),
       ),
       GoRoute(
         path: RoutePath.changePassword,
