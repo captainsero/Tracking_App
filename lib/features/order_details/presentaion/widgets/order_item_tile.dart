@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tracking_app/core/constants/color_manager.dart';
-import 'package:tracking_app/features/order_details/domain/entitty/order_entity.dart';
+import 'package:tracking_app/features/order_details/domain/entitty/order_item_entity.dart';
 
-/// One row inside "Order details" — image, name, quantity badge, price.
 class OrderItemTile extends StatelessWidget {
-  final OrderItem item;
+  final OrderItemEntity item;
 
   const OrderItemTile({super.key, required this.item});
 

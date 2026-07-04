@@ -35,7 +35,7 @@ enum OrderStatus {
     }
   }
 
-  String get apiValue {
+  String get toRemoteValue {
     switch (this) {
       case OrderStatus.pending:
         return 'pending';

@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:tracking_app/config/di/di.dart';
 import 'package:tracking_app/core/constants/screen_size.dart';
@@ -8,6 +9,7 @@ import 'package:tracking_app/generated/l10n.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
+  await Firebase.initializeApp();
 
   runApp(const MyApp());
 }
