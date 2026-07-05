@@ -71,7 +71,7 @@ class EditProfileBody extends StatelessWidget {
           if (updateState.data != null) {
             CustomToast(
               context: context,
-              header: 'Profile Updated Successfully',
+              header: S.of(context).profileUpdatedSuccessfully,
               type: ToastificationType.success,
             ).showToast();
           } else if (updateState.errorMessage != null) {
@@ -156,11 +156,23 @@ class EditProfileBody extends StatelessWidget {
                   const SizedBox(height: 34),
 
                   // ── Save Button ──────────────────────────────────────────
-                  SaveButton(
-                    isLoading: state.updateProfileState.isLoading == true,
-                    onPressed: () {
-                      FocusScope.of(context).unfocus();
-                      cubit.doIntent(EditProfileEvents.updateProfileEvent());
+                  ListenableBuilder(
+                    listenable: Listenable.merge([
+                      cubit.firstNameController,
+                      cubit.lastNameController,
+                      cubit.phoneController,
+                    ]),
+                    builder: (context, child) {
+                      final hasChanges = cubit.hasChanges;
+                      return SaveButton(
+                        isLoading: state.updateProfileState.isLoading == true,
+                        onPressed: hasChanges
+                            ? () {
+                                FocusScope.of(context).unfocus();
+                                cubit.doIntent(EditProfileEvents.updateProfileEvent());
+                              }
+                            : null,
+                      );
                     },
                   ),
                 ],

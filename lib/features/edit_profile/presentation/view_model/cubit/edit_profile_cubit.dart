@@ -23,6 +23,19 @@ class EditProfileCubit extends Cubit<EditProfileStates> {
   final phoneController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
+  String? _initialFirstName;
+  String? _initialLastName;
+  String? _initialPhone;
+  String? _initialGender;
+
+  bool get hasChanges {
+    return firstNameController.text != (_initialFirstName ?? '') ||
+        lastNameController.text != (_initialLastName ?? '') ||
+        phoneController.text != (_initialPhone ?? '') ||
+        state.selectedGender != _initialGender ||
+        state.selectedImagePath != null;
+  }
+
   /// Pre-populate fields with current user data coming from the profile screen.
   void initFields({
     required String firstName,
@@ -33,6 +46,10 @@ class EditProfileCubit extends Cubit<EditProfileStates> {
     firstNameController.text = firstName;
     lastNameController.text = lastName;
     phoneController.text = phone;
+    _initialFirstName = firstName;
+    _initialLastName = lastName;
+    _initialPhone = phone;
+    _initialGender = gender;
     emit(state.copyWith(selectedGender: gender));
   }
 

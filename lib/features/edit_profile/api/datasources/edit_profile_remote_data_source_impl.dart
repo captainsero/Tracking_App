@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:tracking_app/config/base_response/base_response.dart';
 import 'package:tracking_app/features/edit_profile/api/api_client/edit_profile_api_client.dart';
@@ -19,11 +20,10 @@ class EditProfileRemoteDataSourceImpl
     try {
       final response = await _apiClient.editProfile(body);
       return SuccessBaseResponse<EditProfileResponseModel>(data: response);
+    } on DioException catch (e) {
+      return ErrorBaseResponse<EditProfileResponseModel>(error: e);
     } catch (e) {
-      return ErrorBaseResponse<EditProfileResponseModel>(
-        error: e,
-        errorMessage: e.toString(),
-      );
+      return const ErrorBaseResponse<EditProfileResponseModel>();
     }
   }
 }

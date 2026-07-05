@@ -108,5 +108,9 @@
     "gender": "Gender",
     "male": "Male",
     "female": "Female",
-    "saveChanges": "Save Changes"
+    "saveChanges": "Save Changes",
+    "profileUpdatedSuccessfully": "Profile updated successfully",
+    "english": "English",
+    "arabic": "Arabic"
+
 }

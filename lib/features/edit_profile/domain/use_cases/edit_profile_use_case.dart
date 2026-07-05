@@ -12,7 +12,7 @@ class EditProfileUseCase {
 
   Future<BaseResponse<EditProfileResponseEntity>> call({
     required EditProfileRequestEntity entity,
-  }) async {
-    return await repository.editProfile(entity: entity);
+  }) {
+    return repository.editProfile(entity: entity);
   }
 }

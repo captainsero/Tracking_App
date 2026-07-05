@@ -1,4 +1,3 @@
-// language_picker_sheet.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/locale/locale_cubit.dart';
@@ -39,11 +38,11 @@ void showLanguagePickerSheet(BuildContext context) {
                   // ── English option ───────────────────────────────
                   LanguagePickerSheet(
                     flag: '🇬🇧',
-                    label: 'English',
-                    nativeLabel: 'English',
+                    label: S.of(context).english,
+                    nativeLabel: S.of(context).english,
                     isSelected: currentLocale.languageCode == 'en',
                     onTap: () {
-                      localeCubit.changeLocale(const Locale('en'));
+                      localeCubit.changeLocale(AppLanguage.english);
                       Navigator.pop(sheetContext);
                     },
                   ),
@@ -53,11 +52,11 @@ void showLanguagePickerSheet(BuildContext context) {
                   // ── Arabic option ────────────────────────────────
                   LanguagePickerSheet(
                     flag: '🇸🇦',
-                    label: 'العربية',
-                    nativeLabel: 'Arabic',
+                    label: S.of(context).arabic,
+                    nativeLabel: S.of(context).arabic,
                     isSelected: currentLocale.languageCode == 'ar',
                     onTap: () {
-                      localeCubit.changeLocale(const Locale('ar'));
+                      localeCubit.changeLocale(AppLanguage.arabic);
                       Navigator.pop(sheetContext);
                     },
                   ),

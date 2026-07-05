@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tracking_app/core/constants/font_manager.dart';
 import 'package:tracking_app/generated/l10n.dart';
 import 'package:tracking_app/core/constants/color_manager.dart';
 
@@ -20,7 +21,7 @@ class GenderToggle extends StatelessWidget {
           S.of(context).gender,
           style: TextStyle(
             fontSize: 14,
-            fontFamily: 'Inter',
+            fontFamily: FontConstants.interFamily,
             fontWeight: FontWeight.w600,
             color: AppColors.black,
           ),
@@ -89,7 +90,7 @@ class _GenderRadioOption extends StatelessWidget {
             label,
             style: TextStyle(
               fontSize: 14,
-              fontFamily: 'Inter',
+              fontFamily: FontConstants.interFamily,
               fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
               color: isSelected ? AppColors.primary : AppColors.unSelectedIconColor,
             ),

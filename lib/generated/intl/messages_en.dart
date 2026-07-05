@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "You want to be a delivery man?\nJoin our team"),
         "applySuccess": MessageLookupByLibrary.simpleMessage(
             "Application submitted successfully!"),
+        "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "changePassword": MessageLookupByLibrary.simpleMessage("Change"),
         "codeIsRequired":
@@ -62,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Email verification"),
         "emailVerificationDis": MessageLookupByLibrary.simpleMessage(
             "Please enter your code that send to your email adress"),
+        "english": MessageLookupByLibrary.simpleMessage("English"),
         "enterA": MessageLookupByLibrary.simpleMessage("enterA"),
         "enterAValidEmail":
             MessageLookupByLibrary.simpleMessage("Enter a Valid email"),
@@ -161,6 +163,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pickupAdderss": MessageLookupByLibrary.simpleMessage("Pickup address"),
         "pleaseConfirmPassword": MessageLookupByLibrary.simpleMessage(
             "Please confirm your password"),
+        "profileUpdatedSuccessfully": MessageLookupByLibrary.simpleMessage(
+            "Profile updated successfully"),
         "reject": MessageLookupByLibrary.simpleMessage("Reject"),
         "requestTimeout": MessageLookupByLibrary.simpleMessage(
             "Request timed out. Please try again."),

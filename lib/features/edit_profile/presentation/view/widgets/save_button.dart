@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tracking_app/core/constants/font_manager.dart';
 import 'package:tracking_app/generated/l10n.dart';
 import 'package:tracking_app/core/constants/color_manager.dart';
 
@@ -6,7 +7,7 @@ class SaveButton extends StatelessWidget {
   const SaveButton({super.key, required this.isLoading, required this.onPressed});
 
   final bool isLoading;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class SaveButton extends StatelessWidget {
                   color: AppColors.white,
                   fontSize: 15,
                   fontWeight: FontWeight.w500,
-                  fontFamily: 'Inter',
+                  fontFamily: FontConstants.interFamily,
                 ),
               ),
       ),
