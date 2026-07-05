@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "هل ترغب في العمل كمندوب توصيل؟\nانضم إلى فريقنا"),
         "applySuccess":
             MessageLookupByLibrary.simpleMessage("تم إرسال الطلب بنجاح!"),
+        "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
         "changePassword": MessageLookupByLibrary.simpleMessage("تغيير"),
         "codeIsRequired": MessageLookupByLibrary.simpleMessage("الرمز مطلوب"),
@@ -64,6 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("التحقق من البريد الإلكتروني"),
         "emailVerificationDis": MessageLookupByLibrary.simpleMessage(
             "يرجى إدخال الرمز الذي تم إرساله إلى بريدك الإلكتروني"),
+        "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
         "enterA": MessageLookupByLibrary.simpleMessage("أدخل"),
         "enterAValidEmail": MessageLookupByLibrary.simpleMessage(
             "أدخل بريدًا إلكترونيًا صالحًا"),
@@ -165,6 +167,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pickupAdderss": MessageLookupByLibrary.simpleMessage("عنوان الاستلام"),
         "pleaseConfirmPassword":
             MessageLookupByLibrary.simpleMessage("يرجى تأكيد كلمة المرور"),
+        "profileUpdatedSuccessfully":
+            MessageLookupByLibrary.simpleMessage("تم تحديث الملف الشخصي بنجاح"),
         "reject": MessageLookupByLibrary.simpleMessage("رفض"),
         "requestTimeout": MessageLookupByLibrary.simpleMessage(
             "انتهت مهلة الطلب. يرجى المحاولة مرة أخرى."),

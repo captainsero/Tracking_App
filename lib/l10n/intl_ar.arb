@@ -108,5 +108,8 @@
     "gender": "الجنس",
     "male": "ذكر",
     "female": "أنثى",
-    "saveChanges": "حفظ التغييرات"
+    "saveChanges": "حفظ التغييرات",
+    "profileUpdatedSuccessfully": "تم تحديث الملف الشخصي بنجاح",
+    "english": "الإنجليزية",
+    "arabic": "العربية"
 }

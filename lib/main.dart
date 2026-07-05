@@ -14,10 +14,9 @@ void main() async {
   // Load the last saved locale from SharedPreferences before the app starts.
   final savedLocale = await LocaleCubit.loadSavedLocale();
 
-  runApp(BlocProvider(
-    create: (_) => LocaleCubit(savedLocale),
-    child: const MyApp(),
-  ));
+  runApp(
+    BlocProvider(create: (_) => LocaleCubit(savedLocale), child: const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -42,7 +41,7 @@ class MyApp extends StatelessWidget {
           routerConfig: AppRouter.goRouter,
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
-          themeMode: ThemeMode.light,
+          themeMode: ThemeMode.system, // Use system theme mode
         );
       },
     );

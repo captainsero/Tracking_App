@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tracking_app/core/constants/color_manager.dart';
-import 'package:tracking_app/core/constants/font_manager.dart';
 
 class CustomLabelField extends StatefulWidget {
   const CustomLabelField({
@@ -12,6 +10,7 @@ class CustomLabelField extends StatefulWidget {
     this.keyboardType,
     this.validator,
     this.readOnly = false,
+    this.borderRadius = 8,
   });
 
   final String label;
@@ -21,6 +20,7 @@ class CustomLabelField extends StatefulWidget {
   final TextInputType? keyboardType;
   final FormFieldValidator<String>? validator;
   final bool readOnly;
+  final double borderRadius;
 
   @override
   State<CustomLabelField> createState() => _CustomLabelFieldState();
@@ -42,11 +42,22 @@ class _CustomLabelFieldState extends State<CustomLabelField> {
     super.dispose();
   }
 
+  OutlineInputBorder _buildBorder(Color color, {double width = 1}) {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(widget.borderRadius),
+      borderSide: BorderSide(color: color, width: width),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    final Color iconColor = _isFocused
-        ? AppColors.primary
-        : AppColors.unSelectedIconColor;
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final inputTheme = theme.inputDecorationTheme;
+
+    final Color activeColor = _isFocused
+        ? colorScheme.primary
+        : theme.hintColor;
 
     return TextFormField(
       focusNode: _focus,
@@ -54,56 +65,34 @@ class _CustomLabelFieldState extends State<CustomLabelField> {
       keyboardType: widget.keyboardType,
       readOnly: widget.readOnly,
       validator: widget.validator,
-      style: TextStyle(
-        fontSize: 14,
-        color: widget.readOnly ? AppColors.hintColor : AppColors.black,
-        fontFamily: FontConstants.interFamily,
+      style: theme.textTheme.titleSmall?.copyWith(
+        color: widget.readOnly
+            ? theme.hintColor
+            : theme.textTheme.titleSmall?.color,
       ),
       decoration: InputDecoration(
         labelText: widget.label,
-        labelStyle: TextStyle(
-          color: AppColors.hintColor,
-          fontSize: 14,
-          fontFamily: FontConstants.interFamily,
-        ),
-        floatingLabelStyle: TextStyle(
-          color: AppColors.primary,
-          fontSize: 14,
-          fontFamily: FontConstants.interFamily,
-          backgroundColor: AppColors.white,
+        labelStyle: inputTheme.labelStyle,
+        floatingLabelStyle: inputTheme.floatingLabelStyle?.copyWith(
+          color: colorScheme.primary,
+          backgroundColor: theme.scaffoldBackgroundColor,
         ),
         floatingLabelBehavior: FloatingLabelBehavior.auto,
         hintText: widget.hint,
         prefixIcon: widget.icon != null
-            ? Icon(widget.icon, color: iconColor, size: 17)
+            ? Icon(widget.icon, color: activeColor, size: 17)
             : null,
         filled: true,
-        fillColor: AppColors.white,
-        hintStyle: TextStyle(
-          color: AppColors.unSelectedIconColor,
-          fontSize: 14,
-          fontFamily: FontConstants.interFamily,
-        ),
+        fillColor: theme.scaffoldBackgroundColor,
+        hintStyle: inputTheme.hintStyle,
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 14,
           vertical: 11,
         ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: AppColors.lightGrey, width: 0.5),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: AppColors.primary, width: 1.2),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: AppColors.error, width: 0.5),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: AppColors.error, width: 1.2),
-        ),
+        enabledBorder: _buildBorder(theme.hintColor.withOpacity(0.4)),
+        focusedBorder: _buildBorder(colorScheme.primary, width: 1.5),
+        errorBorder: _buildBorder(colorScheme.error),
+        focusedErrorBorder: _buildBorder(colorScheme.error, width: 1.5),
       ),
     );
   }

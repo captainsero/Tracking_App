@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tracking_app/generated/l10n.dart';
-import 'package:tracking_app/core/constants/color_manager.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tracking_app/core/router/route_path.dart';
@@ -22,9 +21,11 @@ class EditProfileBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = context.read<EditProfileCubit>();
 
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.white,
         elevation: 0,
         scrolledUnderElevation: 0,
         centerTitle: true,
@@ -41,13 +42,16 @@ class EditProfileBody extends StatelessWidget {
             },
             icon: Icon(
               Icons.arrow_back_ios_new_rounded,
-              color: AppColors.black,
+              color: colorScheme.onSurface,
               size: 16,
             ),
             style: IconButton.styleFrom(
-              backgroundColor: AppColors.white,
+              backgroundColor: theme.scaffoldBackgroundColor,
               shape: const CircleBorder(),
-              side: BorderSide(color: AppColors.cardBorder, width: 0.8),
+              side: BorderSide(
+                color: theme.dividerColor,
+                width: 0.8,
+              ),
               minimumSize: const Size(36, 36),
               padding: EdgeInsets.zero,
             ),
@@ -55,12 +59,7 @@ class EditProfileBody extends StatelessWidget {
         ),
         title: Text(
           S.of(context).Edit_Profile,
-          style: TextStyle(
-            color: AppColors.black,
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            fontFamily: 'Inter',
-          ),
+          style: theme.appBarTheme.titleTextStyle,
         ),
       ),
       body: BlocConsumer<EditProfileCubit, EditProfileStates>(

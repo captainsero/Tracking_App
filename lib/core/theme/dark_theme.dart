@@ -23,49 +23,49 @@ ThemeData darkTheme = ThemeData(
 
   textTheme: TextTheme(
     displayLarge: getBoldStyle(
-      color: AppColors.black,
+      color: AppColors.white,
       fontSize: FontSize.s40,
       fontFamily: FontConstants.interFamily,
     ),
     displayMedium: getSemiBoldStyle(
-      color: AppColors.black,
+      color: AppColors.white,
       fontSize: FontSize.s35,
       fontFamily: FontConstants.interFamily,
     ),
     displaySmall: getMediumStyle(
-      color: AppColors.black,
+      color: AppColors.white,
       fontSize: FontSize.s30,
       fontFamily: FontConstants.interFamily,
     ),
 
     headlineLarge: getSemiBoldStyle(
-      color: AppColors.black,
+      color: AppColors.white,
       fontSize: FontSize.s24,
       fontFamily: FontConstants.interFamily,
     ),
     headlineMedium: getMediumStyle(
-      color: AppColors.black,
+      color: AppColors.white,
       fontSize: FontSize.s22,
       fontFamily: FontConstants.interFamily,
     ),
     headlineSmall: getRegularStyle(
-      color: AppColors.black,
+      color: AppColors.white,
       fontSize: FontSize.s18,
       fontFamily: FontConstants.interFamily,
     ),
 
     titleLarge: getSemiBoldStyle(
-      color: AppColors.black,
+      color: AppColors.white,
       fontSize: FontSize.s22,
       fontFamily: FontConstants.interFamily,
     ),
     titleMedium: getMediumStyle(
-      color: AppColors.black,
+      color: AppColors.white,
       fontSize: FontSize.s16,
       fontFamily: FontConstants.interFamily,
     ),
     titleSmall: getRegularStyle(
-      color: AppColors.black,
+      color: AppColors.white,
       fontSize: FontSize.s14,
       fontFamily: FontConstants.interFamily,
     ),
@@ -105,9 +105,9 @@ ThemeData darkTheme = ThemeData(
 
   appBarTheme: AppBarTheme(
     backgroundColor: AppColors.transparent,
-    foregroundColor: AppColors.black,
+    foregroundColor: AppColors.white,
     titleTextStyle: getRegularStyle(
-      color: AppColors.black,
+      color: AppColors.white,
       fontSize: FontSize.s20,
       fontFamily: FontConstants.interFamily,
     ),

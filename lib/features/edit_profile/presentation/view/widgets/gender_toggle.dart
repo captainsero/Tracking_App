@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tracking_app/core/constants/font_manager.dart';
 import 'package:tracking_app/generated/l10n.dart';
-import 'package:tracking_app/core/constants/color_manager.dart';
 
 class GenderToggle extends StatelessWidget {
   const GenderToggle({
@@ -19,11 +17,8 @@ class GenderToggle extends StatelessWidget {
       children: [
         Text(
           S.of(context).gender,
-          style: TextStyle(
-            fontSize: 14,
-            fontFamily: FontConstants.interFamily,
+          style: Theme.of(context).textTheme.titleSmall?.copyWith(
             fontWeight: FontWeight.w600,
-            color: AppColors.black,
           ),
         ),
         const SizedBox(width: 50),
@@ -77,9 +72,9 @@ class _GenderRadioOption extends StatelessWidget {
               onChanged: (v) => onChanged(v!),
               fillColor: WidgetStateProperty.resolveWith<Color>((states) {
                 if (states.contains(WidgetState.selected)) {
-                  return AppColors.primary;
+                  return Theme.of(context).colorScheme.primary;
                 }
-                return AppColors.unSelectedIconColor;
+                return Theme.of(context).hintColor;
               }),
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
               visualDensity: VisualDensity.compact,
@@ -88,11 +83,11 @@ class _GenderRadioOption extends StatelessWidget {
           const SizedBox(width: 4),
           Text(
             label,
-            style: TextStyle(
-              fontSize: 14,
-              fontFamily: FontConstants.interFamily,
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
               fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
-              color: isSelected ? AppColors.primary : AppColors.unSelectedIconColor,
+              color: isSelected
+                  ? Theme.of(context).colorScheme.primary
+                  : Theme.of(context).hintColor,
             ),
           ),
         ],
