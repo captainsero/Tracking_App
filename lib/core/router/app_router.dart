@@ -9,6 +9,7 @@ import 'package:tracking_app/features/auth/forget_password/presentation/view/ver
 import 'package:tracking_app/features/auth/forget_password/presentation/view_model/cubit/forgot_password_cubit.dart';
 import 'package:tracking_app/features/auth/login/presentation/view/pages/login_page.dart';
 import 'package:tracking_app/features/auth/sign_up/presentation/view/sign_up_view.dart';
+import 'package:tracking_app/features/edit_profile/presentation/view/pages/edit_profile_page.dart';
 import 'package:tracking_app/features/error/error_screen.dart';
 import 'package:tracking_app/features/home/presentation/view/home_view.dart';
 import 'package:tracking_app/features/map/presentation/view/map_view.dart';
@@ -26,6 +27,7 @@ import 'package:tracking_app/features/onboarding/presentation/view/onboarding_pa
 import 'package:tracking_app/features/profile/presentation/view/profile_view.dart';
 import 'package:tracking_app/features/profile/presentation/view_model/profile_cubit.dart';
 import 'package:tracking_app/features/splash/presentaion/view/splash_view.dart';
+import 'package:tracking_app/features/profile/domain/entities/profile_data_entity.dart';
 
 abstract class AppRouter {
   static final GoRouter goRouter = GoRouter(
@@ -88,6 +90,19 @@ abstract class AppRouter {
           create: (context) => getIt.get<ProfileCubit>(),
           child: ProfileView(),
         ),
+      ),
+      GoRoute(
+        path: RoutePath.profileEdit,
+        builder: (context, state) {
+          final profileData = state.extra as ProfileDataEntity?;
+          return EditProfilePage(
+            firstName: profileData?.firstName ?? '',
+            lastName: profileData?.lastName ?? '',
+            phone: profileData?.phone ?? '',
+            email: profileData?.email ?? '',
+            gender: profileData?.gender ?? '',
+          );
+        },
       ),
       GoRoute(
         path: RoutePath.changePassword,

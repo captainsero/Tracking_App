@@ -26,6 +26,7 @@ void main() {
           email: '',
           phone: '',
           photo: '',
+          gender: '',
         ),
       ),
     );

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class ErrorInfoCard extends StatelessWidget {
   final VoidCallback onRetry;
 
-  const ErrorInfoCard({required this.onRetry});
+  const ErrorInfoCard({super.key, required this.onRetry});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class ErrorInfoCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(14),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -47,7 +47,7 @@ class ErrorInfoCard extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 13),
                 shape: const StadiumBorder(),
                 elevation: 3,
-                shadowColor: const Color(0xFFE91E8C).withOpacity(0.35),
+                shadowColor: const Color(0xFFE91E8C).withValues(alpha: 0.35),
               ),
               child: const Text(
                 'Retry',

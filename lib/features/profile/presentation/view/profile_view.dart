@@ -2,10 +2,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tracking_app/core/locale/locale_cubit.dart';
+import 'package:tracking_app/core/router/route_path.dart';
 import 'package:tracking_app/features/profile/presentation/view_model/profile_cubit.dart';
 import 'package:tracking_app/features/profile/presentation/view_model/profile_event.dart';
 import 'package:tracking_app/features/profile/presentation/view_model/profile_state.dart';
 import 'package:tracking_app/features/profile/presentation/widgets/error_info_card.dart';
+import 'package:tracking_app/features/profile/presentation/widgets/language_picker_sheet.dart';
 import 'package:tracking_app/features/profile/presentation/widgets/logout_dialog.dart';
 import 'package:tracking_app/features/profile/presentation/widgets/profile_appbar.dart';
 import 'package:tracking_app/features/profile/presentation/widgets/profile_card.dart';
@@ -74,23 +77,37 @@ class _ProfileViewState extends State<ProfileView> {
               // ── Options Section ──────────────────────────────────
               OptionsSection(
                 children: [
-                  SettingsTile(
-                    icon: Icons.language_outlined,
-                    label: S.current.language,
-                    trailing: Text(
-                      'English',
-                      style: TextStyle(
-                        fontSize: 13.5,
-                        color: Colors.grey.shade500,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    onTap: () {},
+                  // Language tile — reacts to locale changes
+                  BlocBuilder<LocaleCubit, Locale>(
+                    builder: (ctx, locale) {
+                      final isArabic = locale.languageCode == 'ar';
+                      final currentLangLabel = isArabic ? 'العربية' : 'English';
+
+                      return SettingsTile(
+                        icon: Icons.language_outlined,
+                        label: S.current.language,
+                        trailing: Text(
+                          currentLangLabel,
+                          style: TextStyle(
+                            fontSize: 13.5,
+                            color: Colors.grey.shade500,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        onTap: () => showLanguagePickerSheet(context),
+                      );
+                    },
                   ),
+
                   SettingsTile(
                     icon: Icons.person_outline,
                     label: S.current.editProfile,
-                    onTap: () {},
+                    onTap: () {
+                      context.go(
+                        RoutePath.profileEdit,
+                        extra: data,
+                      );
+                    },
                   ),
                   SettingsTile(
                     icon: Icons.logout_outlined,

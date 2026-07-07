@@ -29,10 +29,10 @@ class ProfileDataModel {
   @JsonKey(name: 'role')
   final String role;
 
-  @JsonKey(name: 'wishlist')
+  @JsonKey(name: 'wishlist', defaultValue: [])
   final List<dynamic> wishlist;
 
-  @JsonKey(name: 'addresses')
+  @JsonKey(name: 'addresses', defaultValue: [])
   final List<dynamic> addresses;
 
   @JsonKey(name: 'createdAt')
@@ -47,13 +47,20 @@ class ProfileDataModel {
     required this.phone,
     required this.photo,
     required this.role,
-    required this.wishlist,
-    required this.addresses,
+    this.wishlist = const [],
+    this.addresses = const [],
     required this.createdAt,
   });
 
-  factory ProfileDataModel.fromJson(Map<String, dynamic> json) =>
-      _$ProfileDataModelFromJson(json);
+  factory ProfileDataModel.fromJson(Map<String, dynamic> json) {
+    // The API wraps driver data under a 'driver' key:
+    // { "message": "success", "driver": { ... } }
+    // Unwrap it if present so the generated code can read the fields.
+    final data = json.containsKey('driver')
+        ? json['driver'] as Map<String, dynamic>
+        : json;
+    return _$ProfileDataModelFromJson(data);
+  }
 
   Map<String, dynamic> toJson() => _$ProfileDataModelToJson(this);
 
@@ -65,6 +72,7 @@ class ProfileDataModel {
       email: email,
       phone: phone,
       photo: photo,
+      gender: gender,
     );
   }
 }

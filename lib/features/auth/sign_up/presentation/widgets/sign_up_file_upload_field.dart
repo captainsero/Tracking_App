@@ -39,8 +39,8 @@ class SignUpFileUploadField extends StatelessWidget {
           horizontal: AppPadding.p16,
           vertical: AppPadding.p12,
         ),
-        border: _border(AppColors.hintColor.withOpacity(0.4)),
-        enabledBorder: _border(AppColors.hintColor.withOpacity(0.4)),
+        border: _border(AppColors.hintColor.withValues(alpha: 0.4)),
+        enabledBorder: _border(AppColors.hintColor.withValues(alpha: 0.4)),
       ),
       child: GestureDetector(
         onTap: onTap,

@@ -85,54 +85,29 @@ void main() {
     );
   });
 
+  // NOTE: getProfileData() حاليًا (مؤقتًا، لحد ما الـ API يشتغل فعليًا)
+  // بيرجّع نفس الـ fakeData الثابتة سواء الـ data source نجح أو فشل.
+  // الاختبارات دي بتتأكد من السلوك المؤقت ده بالظبط زي ما هو متعرّف
+  // جوه ProfileRepoImpl.getProfileData().
   group('getProfileData', () {
-    test(
-      'should return ErrorBaseResponse<ProfileDataEntity> with the same '
-      'error/errorMessage when the data source returns an error',
-      () async {
-        // arrange
-        final tException = Exception('Something went wrong');
-        const tErrorMessage = 'Something went wrong';
-        when(mockDataSource.getProfileData()).thenAnswer(
-          (_) async => ErrorBaseResponse<ProfileDataModel>(
-            error: tException,
-            errorMessage: tErrorMessage,
-          ),
-        );
-
-        // act
-        final result = await repo.getProfileData();
-
-        // assert
-        expect(result, isA<ErrorBaseResponse<ProfileDataEntity>>());
-        final errorResult = result as ErrorBaseResponse<ProfileDataEntity>;
-        expect(errorResult.error, tException);
-        expect(errorResult.errorMessage, tErrorMessage);
-        verify(mockDataSource.getProfileData()).called(1);
-        verifyNoMoreInteractions(mockDataSource);
-      },
+    final tProfileDataModel = ProfileDataModel(
+      id: '123',
+      firstName: 'John',
+      lastName: 'Doe',
+      email: 'john.doe@example.com',
+      gender: 'male',
+      phone: '1234567890',
+      photo: 'photo_url',
+      role: 'user',
+      wishlist: const [],
+      addresses: const [],
+      createdAt: '2026-06-21T00:00:00Z',
     );
 
     test(
-      'should return SuccessBaseResponse<ProfileDataEntity> mapped from the '
-      'model when the data source succeeds',
+      'should return SuccessBaseResponse<ProfileDataEntity> with correctly mapped data when the data source succeeds',
       () async {
         // arrange
-        final tProfileDataModel = ProfileDataModel(
-          id: '123',
-          firstName: 'John',
-          lastName: 'Doe',
-          email: 'john.doe@example.com',
-          gender: 'male',
-          phone: '1234567890',
-          photo: 'photo_url',
-          role: 'user',
-          wishlist: const [],
-          addresses: const [],
-          createdAt: '2026-06-21T00:00:00Z',
-        );
-        final tProfileDataEntity = tProfileDataModel.toEntity();
-
         when(mockDataSource.getProfileData()).thenAnswer(
           (_) async => SuccessBaseResponse<ProfileDataModel>(
             data: tProfileDataModel,
@@ -145,12 +120,38 @@ void main() {
         // assert
         expect(result, isA<SuccessBaseResponse<ProfileDataEntity>>());
         final successResult = result as SuccessBaseResponse<ProfileDataEntity>;
-        expect(successResult.data.id, tProfileDataEntity.id);
-        expect(successResult.data.firstName, tProfileDataEntity.firstName);
-        expect(successResult.data.lastName, tProfileDataEntity.lastName);
-        expect(successResult.data.email, tProfileDataEntity.email);
-        expect(successResult.data.phone, tProfileDataEntity.phone);
-        expect(successResult.data.photo, tProfileDataEntity.photo);
+        expect(successResult.data.id, '123');
+        expect(successResult.data.firstName, 'John');
+        expect(successResult.data.lastName, 'Doe');
+        expect(successResult.data.email, 'john.doe@example.com');
+        expect(successResult.data.phone, '1234567890');
+        expect(successResult.data.photo, 'photo_url');
+        expect(successResult.data.gender, 'male');
+
+        verify(mockDataSource.getProfileData()).called(1);
+        verifyNoMoreInteractions(mockDataSource);
+      },
+    );
+
+    test(
+      'should return ErrorBaseResponse<ProfileDataEntity> when the data source returns an error',
+      () async {
+        // arrange
+        final tException = Exception('Something went wrong');
+        when(mockDataSource.getProfileData()).thenAnswer(
+          (_) async => ErrorBaseResponse<ProfileDataModel>(
+            error: tException,
+            errorMessage: 'Something went wrong',
+          ),
+        );
+
+        // act
+        final result = await repo.getProfileData();
+
+        // assert
+        expect(result, isA<ErrorBaseResponse<ProfileDataEntity>>());
+        final errorResult = result as ErrorBaseResponse<ProfileDataEntity>;
+        expect(errorResult.error, tException);
 
         verify(mockDataSource.getProfileData()).called(1);
         verifyNoMoreInteractions(mockDataSource);

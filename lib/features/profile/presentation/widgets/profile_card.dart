@@ -5,7 +5,7 @@ import 'package:tracking_app/features/profile/presentation/widgets/infocard.dart
 class ProfileCard extends StatelessWidget {
   final dynamic data;
 
-  const ProfileCard({required this.data});
+  const ProfileCard({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {

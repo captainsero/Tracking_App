@@ -31,7 +31,7 @@ class SignUpDropdown<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<T>(
-      value: value,
+      initialValue: value,
       items: items,
       onChanged: onChanged,
       validator: validator,
@@ -68,8 +68,8 @@ class SignUpDropdown<T> extends StatelessWidget {
           horizontal: AppPadding.p16,
           vertical: AppPadding.p16,
         ),
-        border: _border(AppColors.hintColor.withOpacity(0.4)),
-        enabledBorder: _border(AppColors.hintColor.withOpacity(0.4)),
+        border: _border(AppColors.hintColor.withValues(alpha: 0.4)),
+        enabledBorder: _border(AppColors.hintColor.withValues(alpha: 0.4)),
         focusedBorder: _border(AppColors.primary, width: AppSize.s1_5),
         errorBorder: _border(AppColors.error),
         focusedErrorBorder: _border(AppColors.error, width: AppSize.s1_5),

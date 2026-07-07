@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class InfoCard extends StatelessWidget {
-  const InfoCard({required this.child, this.onTap});
+  const InfoCard({super.key, required this.child, this.onTap});
 
   final Widget child;
   final VoidCallback? onTap;

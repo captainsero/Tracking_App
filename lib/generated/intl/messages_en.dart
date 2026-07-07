@@ -22,13 +22,16 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "Edit_Profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "accept": MessageLookupByLibrary.simpleMessage("Accept"),
         "apply": MessageLookupByLibrary.simpleMessage("Apply"),
         "applySubtitle": MessageLookupByLibrary.simpleMessage(
             "You want to be a delivery man?\nJoin our team"),
         "applySuccess": MessageLookupByLibrary.simpleMessage(
             "Application submitted successfully!"),
+        "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "changePassword": MessageLookupByLibrary.simpleMessage("Change"),
         "codeIsRequired":
             MessageLookupByLibrary.simpleMessage("Code is required"),
         "confirmLogout":
@@ -60,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Email verification"),
         "emailVerificationDis": MessageLookupByLibrary.simpleMessage(
             "Please enter your code that send to your email adress"),
+        "english": MessageLookupByLibrary.simpleMessage("English"),
         "enterA": MessageLookupByLibrary.simpleMessage("enterA"),
         "enterAValidEmail":
             MessageLookupByLibrary.simpleMessage("Enter a Valid email"),
@@ -95,6 +99,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("This field is required"),
         "firstLegalName":
             MessageLookupByLibrary.simpleMessage("First legal name"),
+        "fistName": MessageLookupByLibrary.simpleMessage("First Name"),
         "flowerOrder": MessageLookupByLibrary.simpleMessage("Flower order"),
         "floweryRider": MessageLookupByLibrary.simpleMessage("Flowery rider"),
         "forgetPassword":
@@ -111,6 +116,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "invalidIdNumber": MessageLookupByLibrary.simpleMessage(
             "Enter a valid 14-digit ID number"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "male": MessageLookupByLibrary.simpleMessage("Male"),
         "mustBeAtLeast3Characters": MessageLookupByLibrary.simpleMessage(
@@ -153,10 +159,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "Password must contain at least one uppercase letter and one number"),
         "paswordNotMatched":
             MessageLookupByLibrary.simpleMessage("Passwords do not match"),
-        "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
+        "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "pickupAdderss": MessageLookupByLibrary.simpleMessage("Pickup address"),
         "pleaseConfirmPassword": MessageLookupByLibrary.simpleMessage(
             "Please confirm your password"),
+        "profileUpdatedSuccessfully": MessageLookupByLibrary.simpleMessage(
+            "Profile updated successfully"),
         "reject": MessageLookupByLibrary.simpleMessage("Reject"),
         "requestTimeout": MessageLookupByLibrary.simpleMessage(
             "Request timed out. Please try again."),
@@ -164,6 +172,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "resetPassword": MessageLookupByLibrary.simpleMessage("Reset Password"),
         "resetPasswordDis": MessageLookupByLibrary.simpleMessage(
             "Password must not be empty and must contain 6 characters with upper case letter and one number at least"),
+        "saveChanges": MessageLookupByLibrary.simpleMessage("Save Changes"),
         "secondLegalName":
             MessageLookupByLibrary.simpleMessage("Second legal name"),
         "secureStorageErrorMessage": MessageLookupByLibrary.simpleMessage(

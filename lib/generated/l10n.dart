@@ -730,10 +730,10 @@ class S {
     );
   }
 
-  /// `Phone number`
+  /// `Phone Number`
   String get phoneNumber {
     return Intl.message(
-      'Phone number',
+      'Phone Number',
       name: 'phoneNumber',
       desc: '',
       args: [],
@@ -1049,6 +1049,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Edit Profile`
+  String get Edit_Profile {
+    return Intl.message(
+      'Edit Profile',
+      name: 'Edit_Profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First Name`
+  String get fistName {
+    return Intl.message(
+      'First Name',
+      name: 'fistName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last Name`
+  String get lastName {
+    return Intl.message(
+      'Last Name',
+      name: 'lastName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change`
+  String get changePassword {
+    return Intl.message(
+      'Change',
+      name: 'changePassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save Changes`
+  String get saveChanges {
+    return Intl.message(
+      'Save Changes',
+      name: 'saveChanges',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile updated successfully`
+  String get profileUpdatedSuccessfully {
+    return Intl.message(
+      'Profile updated successfully',
+      name: 'profileUpdatedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `English`
+  String get english {
+    return Intl.message(
+      'English',
+      name: 'english',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Arabic`
+  String get arabic {
+    return Intl.message(
+      'Arabic',
+      name: 'arabic',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -1057,6 +1137,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'ar'),
     ];
   }
 

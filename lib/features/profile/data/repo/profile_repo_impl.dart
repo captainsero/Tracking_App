@@ -26,6 +26,7 @@ class ProfileRepoImpl implements ProfileRepoContract {
         return SuccessBaseResponse<ProfileDataEntity>(
           data: success.data.toEntity(),
         );
+
       case ErrorBaseResponse<ProfileDataModel> error:
         return ErrorBaseResponse<ProfileDataEntity>(error: error.error);
     }

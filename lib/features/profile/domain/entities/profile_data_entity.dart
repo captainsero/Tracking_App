@@ -5,6 +5,7 @@ class ProfileDataEntity {
   final String email;
   final String phone;
   final String photo;
+  final String gender;
 
   ProfileDataEntity({
     required this.id,
@@ -13,6 +14,7 @@ class ProfileDataEntity {
     required this.email,
     required this.phone,
     required this.photo,
+    required this.gender,
   });
 
   String get fullName => '$firstName $lastName';

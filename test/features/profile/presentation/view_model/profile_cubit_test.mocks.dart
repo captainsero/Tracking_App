@@ -156,17 +156,6 @@ class MockProfileDataEntity extends _i1.Mock implements _i8.ProfileDataEntity {
           as String);
 
   @override
-  String get gender =>
-      (super.noSuchMethod(
-            Invocation.getter(#gender),
-            returnValue: _i6.dummyValue<String>(
-              this,
-              Invocation.getter(#gender),
-            ),
-          )
-          as String);
-
-  @override
   String get phone =>
       (super.noSuchMethod(
             Invocation.getter(#phone),
@@ -189,36 +178,12 @@ class MockProfileDataEntity extends _i1.Mock implements _i8.ProfileDataEntity {
           as String);
 
   @override
-  String get role =>
+  String get gender =>
       (super.noSuchMethod(
-            Invocation.getter(#role),
-            returnValue: _i6.dummyValue<String>(this, Invocation.getter(#role)),
-          )
-          as String);
-
-  @override
-  List<dynamic> get wishlist =>
-      (super.noSuchMethod(
-            Invocation.getter(#wishlist),
-            returnValue: <dynamic>[],
-          )
-          as List<dynamic>);
-
-  @override
-  List<dynamic> get addresses =>
-      (super.noSuchMethod(
-            Invocation.getter(#addresses),
-            returnValue: <dynamic>[],
-          )
-          as List<dynamic>);
-
-  @override
-  String get createdAt =>
-      (super.noSuchMethod(
-            Invocation.getter(#createdAt),
+            Invocation.getter(#gender),
             returnValue: _i6.dummyValue<String>(
               this,
-              Invocation.getter(#createdAt),
+              Invocation.getter(#gender),
             ),
           )
           as String);
