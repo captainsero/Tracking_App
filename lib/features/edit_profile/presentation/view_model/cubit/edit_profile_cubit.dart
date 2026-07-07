@@ -21,6 +21,7 @@ class EditProfileCubit extends Cubit<EditProfileStates> {
   final firstNameController = TextEditingController();
   final lastNameController = TextEditingController();
   final phoneController = TextEditingController();
+  final emailController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   String? _initialFirstName;
@@ -42,15 +43,17 @@ class EditProfileCubit extends Cubit<EditProfileStates> {
     required String lastName,
     required String phone,
     required String gender,
+    required String email,
   }) {
     firstNameController.text = firstName;
     lastNameController.text = lastName;
     phoneController.text = phone;
+    emailController.text = email;
     _initialFirstName = firstName;
     _initialLastName = lastName;
     _initialPhone = phone;
     _initialGender = gender;
-    emit(state.copyWith(selectedGender: gender));
+    emit(state.copyWith(selectedGender: gender, email: email));
   }
 
   /// Called when the user taps a gender radio button.
@@ -116,6 +119,7 @@ class EditProfileCubit extends Cubit<EditProfileStates> {
     firstNameController.dispose();
     lastNameController.dispose();
     phoneController.dispose();
+    emailController.dispose();
     return super.close();
   }
 }

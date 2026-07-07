@@ -90,34 +90,24 @@ void main() {
   // الاختبارات دي بتتأكد من السلوك المؤقت ده بالظبط زي ما هو متعرّف
   // جوه ProfileRepoImpl.getProfileData().
   group('getProfileData', () {
-    final tFakeEntity = ProfileDataEntity(
-      id: '1',
-      firstName: 'Kareem',
-      lastName: 'Yasser',
-      email: 'kareem.yasser@example.com',
-      phone: '+201016473761',
-      photo: 'assets/images/Gemini image profile.png',
+    final tProfileDataModel = ProfileDataModel(
+      id: '123',
+      firstName: 'John',
+      lastName: 'Doe',
+      email: 'john.doe@example.com',
+      gender: 'male',
+      phone: '1234567890',
+      photo: 'photo_url',
+      role: 'user',
+      wishlist: const [],
+      addresses: const [],
+      createdAt: '2026-06-21T00:00:00Z',
     );
 
     test(
-      'should return SuccessBaseResponse<ProfileDataEntity> with fixed '
-      'fakeData when the data source succeeds',
+      'should return SuccessBaseResponse<ProfileDataEntity> with correctly mapped data when the data source succeeds',
       () async {
         // arrange
-        final tProfileDataModel = ProfileDataModel(
-          id: '123',
-          firstName: 'John',
-          lastName: 'Doe',
-          email: 'john.doe@example.com',
-          gender: 'male',
-          phone: '1234567890',
-          photo: 'photo_url',
-          role: 'user',
-          wishlist: const [],
-          addresses: const [],
-          createdAt: '2026-06-21T00:00:00Z',
-        );
-
         when(mockDataSource.getProfileData()).thenAnswer(
           (_) async => SuccessBaseResponse<ProfileDataModel>(
             data: tProfileDataModel,
@@ -130,13 +120,13 @@ void main() {
         // assert
         expect(result, isA<SuccessBaseResponse<ProfileDataEntity>>());
         final successResult = result as SuccessBaseResponse<ProfileDataEntity>;
-        // الـ repo بيرجّع fakeData ثابتة، مش الـ mapping من الـ model الحقيقي
-        expect(successResult.data.id, tFakeEntity.id);
-        expect(successResult.data.firstName, tFakeEntity.firstName);
-        expect(successResult.data.lastName, tFakeEntity.lastName);
-        expect(successResult.data.email, tFakeEntity.email);
-        expect(successResult.data.phone, tFakeEntity.phone);
-        expect(successResult.data.photo, tFakeEntity.photo);
+        expect(successResult.data.id, '123');
+        expect(successResult.data.firstName, 'John');
+        expect(successResult.data.lastName, 'Doe');
+        expect(successResult.data.email, 'john.doe@example.com');
+        expect(successResult.data.phone, '1234567890');
+        expect(successResult.data.photo, 'photo_url');
+        expect(successResult.data.gender, 'male');
 
         verify(mockDataSource.getProfileData()).called(1);
         verifyNoMoreInteractions(mockDataSource);
@@ -144,8 +134,7 @@ void main() {
     );
 
     test(
-      'should still return SuccessBaseResponse<ProfileDataEntity> with fixed '
-      'fakeData when the data source returns an error (temporary fallback)',
+      'should return ErrorBaseResponse<ProfileDataEntity> when the data source returns an error',
       () async {
         // arrange
         final tException = Exception('Something went wrong');
@@ -160,16 +149,9 @@ void main() {
         final result = await repo.getProfileData();
 
         // assert
-        // مؤقتًا، حتى في حالة الـ error، الـ repo بيرجّع fakeData بدل
-        // ما يبعت ErrorBaseResponse الحقيقي
-        expect(result, isA<SuccessBaseResponse<ProfileDataEntity>>());
-        final successResult = result as SuccessBaseResponse<ProfileDataEntity>;
-        expect(successResult.data.id, tFakeEntity.id);
-        expect(successResult.data.firstName, tFakeEntity.firstName);
-        expect(successResult.data.lastName, tFakeEntity.lastName);
-        expect(successResult.data.email, tFakeEntity.email);
-        expect(successResult.data.phone, tFakeEntity.phone);
-        expect(successResult.data.photo, tFakeEntity.photo);
+        expect(result, isA<ErrorBaseResponse<ProfileDataEntity>>());
+        final errorResult = result as ErrorBaseResponse<ProfileDataEntity>;
+        expect(errorResult.error, tException);
 
         verify(mockDataSource.getProfileData()).called(1);
         verifyNoMoreInteractions(mockDataSource);

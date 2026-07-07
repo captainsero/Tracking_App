@@ -105,7 +105,7 @@ class _ProfileViewState extends State<ProfileView> {
                     onTap: () {
                       context.go(
                         RoutePath.profileEdit,
-                        extra: data?.gender ?? '',
+                        extra: data,
                       );
                     },
                   ),

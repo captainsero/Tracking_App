@@ -7,6 +7,7 @@ class EditProfileStates extends Equatable {
     this.updateProfileState = const BaseState<EditProfileResponseEntity>(),
     this.selectedImagePath,
     this.selectedGender,
+    this.email,
   });
 
   /// State for the save/update operation.
@@ -18,11 +19,15 @@ class EditProfileStates extends Equatable {
   /// Currently selected gender value: 'male' or 'female'.
   final String? selectedGender;
 
+  /// Read-only email shown in the form (fetched from the profile API).
+  final String? email;
+
   EditProfileStates copyWith({
     BaseState<EditProfileResponseEntity>? updateProfileState,
     String? selectedImagePath,
     bool clearImage = false,
     String? selectedGender,
+    String? email,
   }) {
     return EditProfileStates(
       updateProfileState:
@@ -30,6 +35,7 @@ class EditProfileStates extends Equatable {
       selectedImagePath:
           clearImage ? null : selectedImagePath ?? this.selectedImagePath,
       selectedGender: selectedGender ?? this.selectedGender,
+      email: email ?? this.email,
     );
   }
 
@@ -38,5 +44,6 @@ class EditProfileStates extends Equatable {
         updateProfileState,
         selectedImagePath,
         selectedGender,
+        email,
       ];
 }

@@ -30,6 +30,7 @@ class EditProfilePage extends StatelessWidget {
           lastName: lastName,
           phone: phone,
           gender: gender,
+          email: email,
         ),
       child: const EditProfileBody(),
     );

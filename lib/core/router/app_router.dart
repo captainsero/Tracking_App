@@ -24,6 +24,7 @@ import 'package:tracking_app/features/onboarding/presentation/view/onboarding_pa
 import 'package:tracking_app/features/profile/presentation/view/profile_view.dart';
 import 'package:tracking_app/features/profile/presentation/view_model/profile_cubit.dart';
 import 'package:tracking_app/features/splash/presentaion/view/splash_view.dart';
+import 'package:tracking_app/features/profile/domain/entities/profile_data_entity.dart';
 
 abstract class AppRouter {
   static final GoRouter goRouter = GoRouter(
@@ -90,8 +91,14 @@ abstract class AppRouter {
       GoRoute(
         path: RoutePath.profileEdit,
         builder: (context, state) {
-          final gender = (state.extra is String) ? state.extra as String : '';
-          return EditProfilePage(gender: gender);
+          final profileData = state.extra as ProfileDataEntity?;
+          return EditProfilePage(
+            firstName: profileData?.firstName ?? '',
+            lastName: profileData?.lastName ?? '',
+            phone: profileData?.phone ?? '',
+            email: profileData?.email ?? '',
+            gender: profileData?.gender ?? '',
+          );
         },
       ),
       GoRoute(

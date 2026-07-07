@@ -81,12 +81,15 @@ void main() {
         lastName: 'Doe',
         phone: '01000000000',
         gender: 'male',
+        email: 'john.doe@example.com',
       ),
       verify: (cubit) {
         expect(cubit.firstNameController.text, 'John');
         expect(cubit.lastNameController.text, 'Doe');
         expect(cubit.phoneController.text, '01000000000');
+        expect(cubit.emailController.text, 'john.doe@example.com');
         expect(cubit.state.selectedGender, 'male');
+        expect(cubit.state.email, 'john.doe@example.com');
       },
     );
   });
