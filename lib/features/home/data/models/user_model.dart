@@ -40,6 +40,7 @@ class UserModel {
     photo: photo ?? '',
     firstName: firstName ?? '',
     lastName: lastName ?? '',
+    phone: phone ?? '',
   );
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>

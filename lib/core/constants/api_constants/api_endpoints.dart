@@ -12,4 +12,5 @@ abstract class ApiEndpoints {
   static const String changePassword = "$_baseUrl/drivers/change-password";
   static const String pendingOrders = "$_baseUrl/orders/pending-orders";
   static const String editProfile = "$_baseUrl/drivers/editProfile";
+  static const String getRouteCoordinates = "/route/v1/driving/{coordinates}";
 }

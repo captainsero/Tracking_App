@@ -66,5 +66,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app needs access to your location to show your current position on the map and calculate the delivery route.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This app needs access to your location to track the delivery route even when the app is in the background.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This app needs access to your location to track the delivery route.</string>
 </dict>
 </plist>
