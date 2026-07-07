@@ -103,7 +103,10 @@ class _ProfileViewState extends State<ProfileView> {
                     icon: Icons.person_outline,
                     label: S.current.editProfile,
                     onTap: () {
-                      context.go(RoutePath.profileEdit);
+                      context.go(
+                        RoutePath.profileEdit,
+                        extra: data?.gender ?? '',
+                      );
                     },
                   ),
                   SettingsTile(

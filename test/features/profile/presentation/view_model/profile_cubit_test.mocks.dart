@@ -178,6 +178,17 @@ class MockProfileDataEntity extends _i1.Mock implements _i8.ProfileDataEntity {
           as String);
 
   @override
+  String get gender =>
+      (super.noSuchMethod(
+            Invocation.getter(#gender),
+            returnValue: _i6.dummyValue<String>(
+              this,
+              Invocation.getter(#gender),
+            ),
+          )
+          as String);
+
+  @override
   String get fullName =>
       (super.noSuchMethod(
             Invocation.getter(#fullName),

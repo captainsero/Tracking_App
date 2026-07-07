@@ -10,6 +10,7 @@ class EditProfilePage extends StatelessWidget {
   final String lastName;
   final String phone;
   final String email;
+  final String gender;
 
   const EditProfilePage({
     super.key,
@@ -17,6 +18,7 @@ class EditProfilePage extends StatelessWidget {
     this.lastName = '',
     this.phone = '',
     this.email = '',
+    this.gender = '',
   });
 
   @override
@@ -26,7 +28,8 @@ class EditProfilePage extends StatelessWidget {
         ..initFields(
           firstName: firstName,
           lastName: lastName,
-          phone: phone, gender: '',
+          phone: phone,
+          gender: gender,
         ),
       child: const EditProfileBody(),
     );

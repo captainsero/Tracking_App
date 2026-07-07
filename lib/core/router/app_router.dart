@@ -89,7 +89,10 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: RoutePath.profileEdit,
-        builder: (context, state) => EditProfilePage(),
+        builder: (context, state) {
+          final gender = (state.extra is String) ? state.extra as String : '';
+          return EditProfilePage(gender: gender);
+        },
       ),
       GoRoute(
         path: RoutePath.changePassword,

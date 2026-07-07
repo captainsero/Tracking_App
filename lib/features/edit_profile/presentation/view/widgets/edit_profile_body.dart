@@ -149,7 +149,6 @@ class EditProfileBody extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: GenderToggle(
                       selectedGender: state.selectedGender,
-                      onChanged: cubit.selectGender,
                     ),
                   ),
                   const SizedBox(height: 34),

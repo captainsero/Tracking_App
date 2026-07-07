@@ -5,11 +5,9 @@ class GenderToggle extends StatelessWidget {
   const GenderToggle({
     super.key,
     required this.selectedGender,
-    required this.onChanged,
   });
 
   final String? selectedGender;
-  final ValueChanged<String> onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -26,14 +24,12 @@ class GenderToggle extends StatelessWidget {
           value: 'male',
           label: S.of(context).male,
           groupValue: selectedGender,
-          onChanged: onChanged,
         ),
         const SizedBox(width: 40),
         _GenderRadioOption(
           value: 'female',
           label: S.of(context).female,
           groupValue: selectedGender,
-          onChanged: onChanged,
         ),
       ],
     );
@@ -45,53 +41,48 @@ class _GenderRadioOption extends StatelessWidget {
     required this.value,
     required this.label,
     required this.groupValue,
-    required this.onChanged,
   });
 
   final String value;
   final String label;
   final String? groupValue;
-  final ValueChanged<String> onChanged;
 
   @override
   Widget build(BuildContext context) {
     final bool isSelected = groupValue == value;
 
-    return GestureDetector(
-      onTap: () => onChanged(value),
-      behavior: HitTestBehavior.opaque,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(
-            width: 20,
-            height: 20,
-            child: Radio<String>(
-              value: value,
-              groupValue: groupValue,
-              onChanged: (v) => onChanged(v!),
-              fillColor: WidgetStateProperty.resolveWith<Color>((states) {
-                if (states.contains(WidgetState.selected)) {
-                  return Theme.of(context).colorScheme.primary;
-                }
-                return Theme.of(context).hintColor;
-              }),
-              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              visualDensity: VisualDensity.compact,
-            ),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        SizedBox(
+          width: 20,
+          height: 20,
+          child: Radio<String>(
+            value: value,
+            groupValue: groupValue,
+            // null onChanged makes the Radio non-interactive (read-only)
+            onChanged: null,
+            fillColor: WidgetStateProperty.resolveWith<Color>((states) {
+              if (states.contains(WidgetState.selected)) {
+                return Theme.of(context).colorScheme.primary;
+              }
+              return Theme.of(context).hintColor;
+            }),
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            visualDensity: VisualDensity.compact,
           ),
-          const SizedBox(width: 4),
-          Text(
-            label,
-            style: Theme.of(context).textTheme.titleSmall?.copyWith(
-              fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
-              color: isSelected
-                  ? Theme.of(context).colorScheme.primary
-                  : Theme.of(context).hintColor,
-            ),
+        ),
+        const SizedBox(width: 4),
+        Text(
+          label,
+          style: Theme.of(context).textTheme.titleSmall?.copyWith(
+            fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+            color: isSelected
+                ? Theme.of(context).colorScheme.primary
+                : Theme.of(context).hintColor,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
