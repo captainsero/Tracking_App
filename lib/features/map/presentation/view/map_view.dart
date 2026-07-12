@@ -42,7 +42,10 @@ class _MapViewState extends State<MapView> {
           children: [
             SizedBox(
               height: ScreenSize.height / 2,
-              child: OrderMapWidget(endLocation: endLocation),
+              child: OrderMapWidget(
+                endLocation: endLocation,
+                orderId: widget.mapExtra.orderId,
+              ),
             ),
 
             Divider(

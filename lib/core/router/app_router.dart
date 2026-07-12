@@ -31,7 +31,7 @@ import 'package:tracking_app/features/profile/domain/entities/profile_data_entit
 
 abstract class AppRouter {
   static final GoRouter goRouter = GoRouter(
-    initialLocation: RoutePath.home,
+    initialLocation: RoutePath.login,
     routes: [
       GoRoute(
         path: RoutePath.splash,

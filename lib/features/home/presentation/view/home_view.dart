@@ -116,6 +116,7 @@ class _HomeViewState extends State<HomeView> {
                         RejectOrderEvent(orderId: order.id),
                       );
                     },
+                    orderId: order.id,
                     storeEntity: order.store,
                     shippingAddressEntity: order.shippingAddress,
                     userEntity: order.user,

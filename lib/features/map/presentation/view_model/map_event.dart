@@ -4,8 +4,9 @@ sealed class MapEvents {}
 
 class GetRouteEvent extends MapEvents {
   final LatLng endPoint;
+  final String orderId;
 
-  GetRouteEvent({required this.endPoint});
+  GetRouteEvent({required this.endPoint, required this.orderId});
 }
 
 class CallUserEvent extends MapEvents {

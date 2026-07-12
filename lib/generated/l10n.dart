@@ -1129,6 +1129,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Service disabled`
+  String get serviceDisabled {
+    return Intl.message(
+      'Service disabled',
+      name: 'serviceDisabled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Permission denied`
+  String get permissionDenied {
+    return Intl.message(
+      'Permission denied',
+      name: 'permissionDenied',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Permission denied forever`
+  String get permissionDeniedForever {
+    return Intl.message(
+      'Permission denied forever',
+      name: 'permissionDeniedForever',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

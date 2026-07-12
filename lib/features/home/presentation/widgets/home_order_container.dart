@@ -15,12 +15,14 @@ class HomeOrderContainer extends StatelessWidget {
   const HomeOrderContainer({
     super.key,
     required this.onReject,
+    required this.orderId,
     required this.storeEntity,
     required this.shippingAddressEntity,
     required this.userEntity,
     required this.totalPrice,
   });
   final VoidCallback onReject;
+  final String orderId;
   final StoreEntity storeEntity;
   final ShippingAddressEntity shippingAddressEntity;
   final UserEntity userEntity;
@@ -101,6 +103,7 @@ class HomeOrderContainer extends StatelessWidget {
                       context.go(
                         RoutePath.map,
                         extra: MapExtra(
+                          orderId: orderId,
                           storeEntity: storeEntity,
                           shippingAddressEntity: shippingAddressEntity,
                           userEntity: userEntity,

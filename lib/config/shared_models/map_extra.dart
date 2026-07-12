@@ -3,11 +3,13 @@ import 'package:tracking_app/features/home/domain/entities/store_entity.dart';
 import 'package:tracking_app/features/home/domain/entities/user_entity.dart';
 
 class MapExtra {
+  final String orderId;
   final StoreEntity storeEntity;
   final ShippingAddressEntity shippingAddressEntity;
   final UserEntity userEntity;
 
   MapExtra({
+    required this.orderId,
     required this.storeEntity,
     required this.shippingAddressEntity,
     required this.userEntity,

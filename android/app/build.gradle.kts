@@ -3,6 +3,18 @@ plugins {
     id("kotlin-android")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
+    id("com.google.gms.google-services")
+}
+
+dependencies {
+    // Import the Firebase BoM — keep this in sync with the Florista app's
+    // BoM version so both apps talk to the same Firestore backend using
+    // compatible client library versions.
+    implementation(platform("com.google.firebase:firebase-bom:34.15.0"))
+
+    // Required by flutter_local_notifications — enables use of Java 8+ APIs
+    // (e.g. java.time) on older Android API levels via desugaring.
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
 }
 
 android {
@@ -11,6 +23,7 @@ android {
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
