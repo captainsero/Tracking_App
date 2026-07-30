@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:tracking_app/config/secure_storage/secure_storage_service.dart';
@@ -9,9 +10,19 @@ sealed class AppError {
   factory AppError.from(Object? error) {
     if (error is DioException) {
       final data = error.response?.data;
-      final apiMessage = (data is Map<String, dynamic>)
-          ? data['message']?.toString()
-          : null;
+
+      String? apiMessage;
+
+      if (data is Map<String, dynamic>) {
+        apiMessage = (data['message'] ?? data['error'])?.toString();
+      } else if (data is String && data.isNotEmpty) {
+        try {
+          final decoded = jsonDecode(data) as Map<String, dynamic>;
+          apiMessage = (decoded['message'] ?? decoded['error'])?.toString();
+        } catch (_) {
+          // raw string is not JSON, ignore
+        }
+      }
 
       if (apiMessage != null && apiMessage.isNotEmpty) {
         return ApiMessageError(apiMessage);
